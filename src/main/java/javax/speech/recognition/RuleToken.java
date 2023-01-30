@@ -13,14 +13,14 @@ public class RuleToken extends Rule {
      *
      * @see javax.speech.recognition.RuleToken#getText()
      */
-   protected String text;
+    protected String text;
 
     /**
      * Empty constructor sets token text to null.
      */
-   public RuleToken() {
-      this.setText((String)null);
-   }
+    public RuleToken() {
+        this.setText((String) null);
+    }
 
     /**
      * Construct a RuleToken with the speakable string.
@@ -28,26 +28,26 @@ public class RuleToken extends Rule {
      * or escapes of JSGF tokens (except as necessary to
      * properly format a Java string).
      */
-   public RuleToken(String text) {
-      this.setText(text);
-   }
+    public RuleToken(String text) {
+        this.setText(text);
+    }
 
-   private boolean containsWhiteSpace(String text) {
-      for(int i = 0; i < text.length(); ++i) {
-         if (Character.isWhitespace(text.charAt(i))) {
-            return true;
-         }
-      }
+    private boolean containsWhiteSpace(String text) {
+        for (int i = 0; i < text.length(); ++i) {
+            if (Character.isWhitespace(text.charAt(i))) {
+                return true;
+            }
+        }
 
-      return false;
-   }
+        return false;
+    }
 
     /**
      * Return a deep copy of this rule.
      */
-   public Rule copy() {
-      return new RuleToken(this.text);
-   }
+    public Rule copy() {
+        return new RuleToken(this.text);
+    }
 
     /**
      * Get the text of the token.
@@ -58,16 +58,16 @@ public class RuleToken extends Rule {
      *
      * @see javax.speech.recognition.RuleToken#toString()
      */
-   public String getText() {
-      return this.text;
-   }
+    public String getText() {
+        return this.text;
+    }
 
     /**
      * Set the text.
      */
-   public void setText(String text) {
-      this.text = text;
-   }
+    public void setText(String text) {
+        this.text = text;
+    }
 
     /**
      * Return a string representing the RuleToken in partial
@@ -76,22 +76,22 @@ public class RuleToken extends Rule {
      * if necessary (contains whitespace or escaped characters)
      * and the quote and backslash characters are escaped.
      */
-   public String toString() {
-      if (!this.containsWhiteSpace(this.text) && this.text.indexOf(92) < 0 && this.text.indexOf(34) < 0) {
-         return this.text;
-      } else {
-         StringBuffer sb = new StringBuffer(this.text);
+    public String toString() {
+        if (!this.containsWhiteSpace(this.text) && this.text.indexOf(92) < 0 && this.text.indexOf(34) < 0) {
+            return this.text;
+        } else {
+            StringBuffer sb = new StringBuffer(this.text);
 
-         for(int i = sb.length() - 1; i >= 0; --i) {
-            char c;
-            if ((c = sb.charAt(i)) == '"' || c == '\\') {
-               sb.insert(i, '\\');
+            for (int i = sb.length() - 1; i >= 0; --i) {
+                char c;
+                if ((c = sb.charAt(i)) == '"' || c == '\\') {
+                    sb.insert(i, '\\');
+                }
             }
-         }
 
-         sb.insert(0, '"');
-         sb.append('"');
-         return sb.toString();
-      }
-   }
+            sb.insert(0, '"');
+            sb.append('"');
+            return sb.toString();
+        }
+    }
 }

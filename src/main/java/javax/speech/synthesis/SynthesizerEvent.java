@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import javax.speech.EngineEvent;
 
+
 /**
  * Event issued by Synthesizer to indicate a change in
  * state or other activity.  A SynthesizerEvent is
@@ -46,7 +47,7 @@ public class SynthesizerEvent extends EngineEvent {
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      * @see javax.speech.synthesis.Synthesizer#QUEUE_EMPTY
      */
-   public static final int QUEUE_EMPTIED = 700;
+    public static final int QUEUE_EMPTIED = 700;
 
     /**
      * The speech output queue has changed.  This event may indicate
@@ -72,7 +73,7 @@ public class SynthesizerEvent extends EngineEvent {
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_ENDED
      * @see javax.speech.synthesis.Synthesizer#QUEUE_NOT_EMPTY
      */
-   public static final int QUEUE_UPDATED = 701;
+    public static final int QUEUE_UPDATED = 701;
 
     /**
      * topOfQueueChanged is true for
@@ -81,27 +82,22 @@ public class SynthesizerEvent extends EngineEvent {
      *
      * @see javax.speech.synthesis.SynthesizerEvent#getTopOfQueueChanged()
      */
-   protected boolean topOfQueueChanged = false;
+    protected boolean topOfQueueChanged = false;
 
     /**
      * Construct a SynthesizerEvent with a specified event id
      * and topOfQueueChanged flag.
      *
-     * @param source
-     *  the Synthesizer that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param topOfQueueChanged
-     *  true if top item on speech output queue changed
-     * @param oldEngineState
-     *  engine state prior to this event
-     * @param newEngineState
-     *  engine state following this event
+     * @param source            the Synthesizer that issued the event
+     * @param id                the identifier for the event type
+     * @param topOfQueueChanged true if top item on speech output queue changed
+     * @param oldEngineState    engine state prior to this event
+     * @param newEngineState    engine state following this event
      */
-   public SynthesizerEvent(Synthesizer source, int id, boolean topOfQueueChanged, long oldEngineState, long newEngineState) {
-      super(source, id, oldEngineState, newEngineState);
-      this.topOfQueueChanged = topOfQueueChanged;
-   }
+    public SynthesizerEvent(Synthesizer source, int id, boolean topOfQueueChanged, long oldEngineState, long newEngineState) {
+        super(source, id, oldEngineState, newEngineState);
+        this.topOfQueueChanged = topOfQueueChanged;
+    }
 
     /**
      * Return the topOfQueueChanged value.  The value
@@ -110,9 +106,9 @@ public class SynthesizerEvent extends EngineEvent {
      *
      * @see javax.speech.synthesis.SynthesizerEvent#topOfQueueChanged
      */
-   public boolean getTopOfQueueChanged() {
-      return this.topOfQueueChanged;
-   }
+    public boolean getTopOfQueueChanged() {
+        return this.topOfQueueChanged;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -120,18 +116,18 @@ public class SynthesizerEvent extends EngineEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 700:
+    public String paramString() {
+        switch (super.id) {
+        case 700:
             return "QUEUE_EMPTIED";
-         case 701:
+        case 701:
             if (this.topOfQueueChanged) {
-               return "QUEUE_UPDATED (topOfQueue changed)";
+                return "QUEUE_UPDATED (topOfQueue changed)";
             }
 
             return "QUEUE_UPDATED";
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

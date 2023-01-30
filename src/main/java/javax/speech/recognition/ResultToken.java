@@ -204,7 +204,7 @@ public interface ResultToken {
      * The spoken form of a "New Paragraph" directive
      * may vary between recognizers.
      */
-   String NEW_PARAGRAPH = "\u2029";
+    String NEW_PARAGRAPH = "\u2029";
 
     /**
      * Special token representing the written form of
@@ -212,7 +212,7 @@ public interface ResultToken {
      * The spoken form of a "New Line" directive
      * may vary between recognizers.
      */
-   String NEW_LINE = "\n";
+    String NEW_LINE = "\n";
 
     /**
      * A SpacingHint returned when a token should be
@@ -234,7 +234,7 @@ public interface ResultToken {
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
-   int SEPARATE = 0;
+    int SEPARATE = 0;
 
     /**
      * A SpacingHint flag set true when a token should be
@@ -250,7 +250,7 @@ public interface ResultToken {
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
-   int ATTACH_PREVIOUS = 1;
+    int ATTACH_PREVIOUS = 1;
 
     /**
      * A SpacingHint flag set true when a token should be
@@ -266,7 +266,7 @@ public interface ResultToken {
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
-   int ATTACH_FOLLOWING = 2;
+    int ATTACH_FOLLOWING = 2;
 
     /**
      * A SpacingHint flag set true when a token should be
@@ -284,7 +284,7 @@ public interface ResultToken {
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
-   int ATTACH_GROUP = 4;
+    int ATTACH_GROUP = 4;
 
     /**
      * A CapitalizationHint indicating that the following word
@@ -294,7 +294,7 @@ public interface ResultToken {
      * <A href="#Presentation">description</A>
      * above.)
      */
-   int CAP_AS_IS = 10;
+    int CAP_AS_IS = 10;
 
     /**
      * A CapitalizationHint indicating that the following word
@@ -303,7 +303,7 @@ public interface ResultToken {
      * <A href="#Presentation">description</A>
      * above.)
      */
-   int CAP_FIRST = 11;
+    int CAP_FIRST = 11;
 
     /**
      * A CapitalizationHint indicating that the following word
@@ -312,7 +312,7 @@ public interface ResultToken {
      * <A href="#Presentation">description</A>
      * above.)
      */
-   int UPPERCASE = 12;
+    int UPPERCASE = 12;
 
     /**
      * A CapitalizationHint indicating that the following word
@@ -321,7 +321,7 @@ public interface ResultToken {
      * <A href="#Presentation">description</A>
      * above.)
      */
-   int LOWERCASE = 13;
+    int LOWERCASE = 13;
 
     /**
      * Get the capitalization hint. (See
@@ -333,7 +333,7 @@ public interface ResultToken {
      * LOWERCASE.
      * Tokens from a RuleGrammar result always return CAP_AS_IS.
      */
-   int getCapitalizationHint();
+    int getCapitalizationHint();
 
     /**
      * Get the approximate end time for the token.
@@ -353,12 +353,12 @@ public interface ResultToken {
      *
      * @see java.lang.System#currentTimeMillis()
      */
-   long getEndTime();
+    long getEndTime();
 
     /**
      * Return a reference to the result that contains this token.
      */
-   Result getResult();
+    Result getResult();
 
     /**
      * Get the spacing hints. (See
@@ -372,7 +372,7 @@ public interface ResultToken {
      * ATTACH_GROUP.
      * Tokens from a RuleGrammar result always return SEPARATE.
      */
-   int getSpacingHint();
+    int getSpacingHint();
 
     /**
      * Get the spoken text of a token.  In dictation, the spoken form
@@ -381,7 +381,7 @@ public interface ResultToken {
      * <A href="#Spoken_Written">difference between spoken and written forms</A>
      * is discussed above.
      */
-   String getSpokenText();
+    String getSpokenText();
 
     /**
      * Get the approximate start time for the token.
@@ -401,7 +401,7 @@ public interface ResultToken {
      *
      * @see java.lang.System#currentTimeMillis()
      */
-   long getStartTime();
+    long getStartTime();
 
     /**
      * Get the written form of a spoken token.
@@ -409,5 +409,5 @@ public interface ResultToken {
      * <A href="#Spoken_Written">Spoken and written forms</A>
      * are discussed above.
      */
-   String getWrittenText();
+    String getWrittenText();
 }

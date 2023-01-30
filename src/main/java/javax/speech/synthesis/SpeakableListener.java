@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import java.util.EventListener;
 
+
 /**
  * The listener interface for receiving notification of events
  * during spoken output of a Speakable.
@@ -38,54 +39,54 @@ public interface SpeakableListener extends EventListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      */
-   void markerReached(SpeakableEvent var1);
+    void markerReached(SpeakableEvent e);
 
     /**
      * A SPEAKABLE_CANCELLED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      */
-   void speakableCancelled(SpeakableEvent var1);
+    void speakableCancelled(SpeakableEvent e);
 
     /**
      * A SPEAKABLE_ENDED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_ENDED
      */
-   void speakableEnded(SpeakableEvent var1);
+    void speakableEnded(SpeakableEvent e);
 
     /**
      * A SPEAKABLE_PAUSED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_PAUSED
      */
-   void speakablePaused(SpeakableEvent var1);
+    void speakablePaused(SpeakableEvent e);
 
     /**
      * A SPEAKABLE_RESUMED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_RESUMED
      */
-   void speakableResumed(SpeakableEvent var1);
+    void speakableResumed(SpeakableEvent e);
 
     /**
      * A SPEAKABLE_STARTED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_STARTED
      */
-   void speakableStarted(SpeakableEvent var1);
+    void speakableStarted(SpeakableEvent e);
 
     /**
      * A TOP_OF_QUEUE event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#TOP_OF_QUEUE
      */
-   void topOfQueue(SpeakableEvent var1);
+    void topOfQueue(SpeakableEvent e);
 
     /**
      * A WORD_STARTED event has occurred.
      *
      * @see javax.speech.synthesis.SpeakableEvent#WORD_STARTED
      */
-   void wordStarted(SpeakableEvent var1);
+    void wordStarted(SpeakableEvent e);
 }

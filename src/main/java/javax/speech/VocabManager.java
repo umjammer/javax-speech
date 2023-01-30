@@ -30,12 +30,12 @@ public interface VocabManager {
     /**
      * Add a word to the vocabulary.
      */
-   void addWord(Word var1);
+    void addWord(Word w);
 
     /**
      * Add an array of words to the vocabulary.
      */
-   void addWords(Word[] var1);
+    void addWords(Word[] w);
 
     /**
      * Get all words from the vocabulary manager matching text.
@@ -44,11 +44,11 @@ public interface VocabManager {
      * This method only returns words that have been added
      * by the addWord methods - it does not provide
      * access to the engine's internal word lists.
-     * @param text
-     *  word requested from VocabManager
+     *
+     * @param text word requested from VocabManager
      * @return list of Words matching text
      */
-   Word[] getWords(String text);
+    Word[] getWords(String text);
 
     /**
      * Returns a list of problematic words encountered during
@@ -65,13 +65,14 @@ public interface VocabManager {
      * for problem words in the return array allowing the developer
      * to fix (rather than create) the pronunciation.
      */
-   Word[] listProblemWords();
+    Word[] listProblemWords();
 
     /**
      * Remove a word from the vocabulary.
+     *
      * @throws java.lang.IllegalArgumentException Word is not known to the VocabManager.
      */
-   void removeWord(Word var1) throws IllegalArgumentException;
+    void removeWord(Word w) throws IllegalArgumentException;
 
     /**
      * Remove an array of words from the vocabulary.
@@ -81,5 +82,5 @@ public interface VocabManager {
      *
      * @throws java.lang.IllegalArgumentException Word is not known to the VocabManager.
      */
-   void removeWords(Word[] var1) throws IllegalArgumentException;
+    void removeWords(Word[] w) throws IllegalArgumentException;
 }

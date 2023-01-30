@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.AudioEvent;
 
+
 /**
  * Event issued to indicate detection of speech in the incoming
  * audio stream or to periodically indicate the audio input level.
@@ -91,14 +92,14 @@ public class RecognizerAudioEvent extends AudioEvent {
      * <p>
      * A
      * <A href="#startStop">detailed description of SPEECH_STARTED and
-     *  SPEECH_STOPPED events</A>
+     * SPEECH_STOPPED events</A>
      * is provided above.
      *
      * @see javax.speech.recognition.RecognizerAudioListener#speechStarted(javax.speech.recognition.RecognizerAudioEvent)
      * @see javax.speech.SpeechEvent#getId()
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STOPPED
      */
-   public static final int SPEECH_STARTED = 1100;
+    public static final int SPEECH_STARTED = 1100;
 
     /**
      * The recognizer has detected the end of speech or noise
@@ -108,47 +109,46 @@ public class RecognizerAudioEvent extends AudioEvent {
      * <p>
      * A
      * <A href="#startStop">detailed description of SPEECH_STARTED and
-     *  SPEECH_STOPPED events</A>
+     * SPEECH_STOPPED events</A>
      * is provided above.
      *
      * @see javax.speech.recognition.RecognizerAudioListener#speechStopped(javax.speech.recognition.RecognizerAudioEvent)
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STARTED
      * @see javax.speech.SpeechEvent#getId()
      */
-   public static final int SPEECH_STOPPED = 1101;
+    public static final int SPEECH_STOPPED = 1101;
 
     /**
      * AUDIO_LEVEL event indicates a change in the
      * volume level of the incoming audio.
      * A
      * <A href="#level">detailed description of the AUDIO_LEVEL
-     *  event</A>
+     * event</A>
      * is provided above.
      *
      * @see javax.speech.recognition.RecognizerAudioListener#audioLevel(javax.speech.recognition.RecognizerAudioEvent)
      */
-   public static final int AUDIO_LEVEL = 1102;
+    public static final int AUDIO_LEVEL = 1102;
 
     /**
      * Audio level defined on a scale from 0 to 1.
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#getAudioLevel()
      */
-   protected float audioLevel = 0.0F;
+    protected float audioLevel = 0.0F;
 
     /**
      * Constructs an RecognizerAudioEvent with a specified
      * event identifier.
      * The audioLevel is set to 0.0.
-     * @param source
-     *  the Recognizer that issued the event
-     * @param id
-     *  the identifier for the event type
+     *
+     * @param source the Recognizer that issued the event
+     * @param id     the identifier for the event type
      */
-   public RecognizerAudioEvent(Recognizer source, int id) {
-      super(source, id);
-      this.audioLevel = 0.0F;
-   }
+    public RecognizerAudioEvent(Recognizer source, int id) {
+        super(source, id);
+        this.audioLevel = 0.0F;
+    }
 
     /**
      * Constructs an RecognizerAudioEvent with a specified
@@ -156,17 +156,15 @@ public class RecognizerAudioEvent extends AudioEvent {
      * The audioLevel should be 0.0
      * for SPEECH_STARTED and SPEECH_STOPPED
      * events.
-     * @param source
-     *  the Recognizer that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param audioLevel
-     *  the audio level for this event
+     *
+     * @param source     the Recognizer that issued the event
+     * @param id         the identifier for the event type
+     * @param audioLevel the audio level for this event
      */
-   public RecognizerAudioEvent(Recognizer source, int id, float audioLevel) {
-      super(source, id);
-      this.audioLevel = audioLevel;
-   }
+    public RecognizerAudioEvent(Recognizer source, int id, float audioLevel) {
+        super(source, id);
+        this.audioLevel = audioLevel;
+    }
 
     /**
      * Get the audio input level in the range 0 to 1.
@@ -179,9 +177,9 @@ public class RecognizerAudioEvent extends AudioEvent {
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#AUDIO_LEVEL
      */
-   public float getAudioLevel() {
-      return this.audioLevel;
-   }
+    public float getAudioLevel() {
+        return this.audioLevel;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -189,16 +187,16 @@ public class RecognizerAudioEvent extends AudioEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 1100:
+    public String paramString() {
+        switch (super.id) {
+        case 1100:
             return "SPEECH_STARTED";
-         case 1101:
+        case 1101:
             return "SPEECH_STOPPED";
-         case 1102:
+        case 1102:
             return "AUDIO_LEVEL: " + this.audioLevel;
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

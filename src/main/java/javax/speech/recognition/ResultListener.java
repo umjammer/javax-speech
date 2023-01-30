@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.util.EventListener;
 
+
 /**
  * The methods of a ResultListener receive notifications of
  * events related to a Result object.  A ResultListener
@@ -68,7 +69,7 @@ public interface ResultListener extends EventListener {
      * @see javax.speech.recognition.ResultEvent#AUDIO_RELEASED
      * @see javax.speech.recognition.FinalResult#isAudioAvailable()
      */
-   void audioReleased(ResultEvent var1);
+    void audioReleased(ResultEvent e);
 
     /**
      * A GRAMMAR_FINALIZED event has occured because
@@ -81,7 +82,7 @@ public interface ResultListener extends EventListener {
      *
      * @see javax.speech.recognition.ResultEvent#GRAMMAR_FINALIZED
      */
-   void grammarFinalized(ResultEvent var1);
+    void grammarFinalized(ResultEvent e);
 
     /**
      * An RESULT_ACCEPTED event has occured indicating
@@ -144,7 +145,7 @@ public interface ResultListener extends EventListener {
      * @see javax.speech.recognition.RecognizerEvent
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void resultAccepted(ResultEvent var1);
+    void resultAccepted(ResultEvent e);
 
     /**
      * A RESULT_CREATED event is issued when a
@@ -166,7 +167,7 @@ public interface ResultListener extends EventListener {
      * @see javax.speech.recognition.ResultEvent#RESULT_CREATED
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_PROCESSING
      */
-   void resultCreated(ResultEvent var1);
+    void resultCreated(ResultEvent e);
 
     /**
      * An RESULT_REJECTED event has occured indicating
@@ -194,7 +195,7 @@ public interface ResultListener extends EventListener {
      * @see javax.speech.recognition.FinalRuleResult
      * @see javax.speech.recognition.FinalDictationResult
      */
-   void resultRejected(ResultEvent var1);
+    void resultRejected(ResultEvent e);
 
     /**
      * A RESULT_UPDATED event has occured because a token has
@@ -208,7 +209,7 @@ public interface ResultListener extends EventListener {
      *
      * @see javax.speech.recognition.ResultEvent#RESULT_UPDATED
      */
-   void resultUpdated(ResultEvent var1);
+    void resultUpdated(ResultEvent e);
 
     /**
      * A TRAINING_INFO_RELEASED event has occured.
@@ -226,5 +227,5 @@ public interface ResultListener extends EventListener {
      * @see javax.speech.recognition.ResultEvent#TRAINING_INFO_RELEASED
      * @see javax.speech.recognition.FinalResult#isTrainingInfoAvailable()
      */
-   void trainingInfoReleased(ResultEvent var1);
+    void trainingInfoReleased(ResultEvent e);
 }

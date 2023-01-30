@@ -41,11 +41,11 @@ public interface EngineCreate {
      * A new engine should be created in the DEALLOCATED state.
      *
      * @throws java.lang.IllegalArgumentException The properties of the EngineModeDesc do not refer to a known
-     *    engine or engine mode.
-     * @throws javax.speech.EngineException The engine defined by this EngineModeDesc could not be properly created.
-     * @throws java.lang.SecurityException if the caller does not have createRecognizer permission but
-     *    is attempting to create a Recognizer
+     *                                            engine or engine mode.
+     * @throws javax.speech.EngineException       The engine defined by this EngineModeDesc could not be properly created.
+     * @throws java.lang.SecurityException        if the caller does not have createRecognizer permission but
+     *                                            is attempting to create a Recognizer
      * @see javax.speech.Engine#DEALLOCATED
      */
-   Engine createEngine() throws IllegalArgumentException, EngineException, SecurityException;
+    Engine createEngine() throws IllegalArgumentException, EngineException, SecurityException;
 }

@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.util.StringTokenizer;
 
+
 /**
  * A RuleName is a reference to a named rule.
  * A RuleName is equivalent to the various forms
@@ -83,22 +84,22 @@ public class RuleName extends Rule {
      * qualified rulename, or simple rulename depending upon how the
      * object is constructed.
      */
-   protected String fullRuleName;
+    protected String fullRuleName;
 
     /**
      * The rule's package name or null if not specified.
      */
-   protected String packageName;
+    protected String packageName;
 
     /**
      * The rule's simple grammar name or null if not specified.
      */
-   protected String simpleGrammarName;
+    protected String simpleGrammarName;
 
     /**
      * The simple rulename.
      */
-   protected String simpleRuleName;
+    protected String simpleRuleName;
 
     /**
      * Special
@@ -106,7 +107,7 @@ public class RuleName extends Rule {
      * rule of JSGF
      * defining a rule that is always matched.
      */
-   public static RuleName NULL = new RuleName("NULL");
+    public static RuleName NULL = new RuleName("NULL");
 
     /**
      * Special
@@ -114,16 +115,16 @@ public class RuleName extends Rule {
      * rule of JSGF
      * defining a rule that can never be matched.
      */
-   public static RuleName VOID = new RuleName("VOID");
+    public static RuleName VOID = new RuleName("VOID");
 
     /**
      * Empty constructor which sets the rule to
      * NULL
      * .
      */
-   public RuleName() {
-      this.setRuleName("NULL");
-   }
+    public RuleName() {
+        this.setRuleName("NULL");
+    }
 
     /**
      * Construct a RuleName from a string.
@@ -131,9 +132,9 @@ public class RuleName extends Rule {
      * The rulename may be a simple rulename, qualified rulename
      * or full-qualified rulename.
      */
-   public RuleName(String var1) {
-      this.setRuleName(var1);
-   }
+    public RuleName(String ruleName) {
+        this.setRuleName(ruleName);
+    }
 
     /**
      * Construct a RuleName from its package-, grammar-
@@ -142,24 +143,21 @@ public class RuleName extends Rule {
      * The package name may be null.  The grammar name may be null
      * only if packageName is null.
      *
-     * @param packageName
-     *  the package name of a fully-qualified rulename or null
-     * @param simpleGrammarName
-     *  the grammar name of a fully-qualified or qualified rule or null
-     * @param simpleRuleName
-     *  the simple rulename
+     * @param packageName       the package name of a fully-qualified rulename or null
+     * @param simpleGrammarName the grammar name of a fully-qualified or qualified rule or null
+     * @param simpleRuleName    the simple rulename
      * @throws java.lang.IllegalArgumentException null simpleGrammarName with non-null packageName
      */
-   public RuleName(String packageName, String simpleGrammarName, String simpleRuleName) throws IllegalArgumentException {
-      this.setRuleName(packageName, simpleGrammarName, simpleRuleName);
-   }
+    public RuleName(String packageName, String simpleGrammarName, String simpleRuleName) throws IllegalArgumentException {
+        this.setRuleName(packageName, simpleGrammarName, simpleRuleName);
+    }
 
     /**
      * Return a deep copy of this rule.
      */
-   public Rule copy() {
-      return new RuleName(this.packageName, this.simpleGrammarName, this.simpleRuleName);
-   }
+    public Rule copy() {
+        return new RuleName(this.packageName, this.simpleGrammarName, this.simpleRuleName);
+    }
 
     /**
      * Get the full grammar name.
@@ -167,40 +165,40 @@ public class RuleName extends Rule {
      * the return value is the simple grammar name.
      * May return null.
      */
-   public String getFullGrammarName() {
-      return this.packageName != null ? this.packageName + "." + this.simpleGrammarName : this.simpleGrammarName;
-   }
+    public String getFullGrammarName() {
+        return this.packageName != null ? this.packageName + "." + this.simpleGrammarName : this.simpleGrammarName;
+    }
 
     /**
      * Get the rule's package name.
      */
-   public String getPackageName() {
-      return this.packageName;
-   }
+    public String getPackageName() {
+        return this.packageName;
+    }
 
     /**
      * Get therulename including the package and grammar name
      * if they are non-null.  The return value may be a fully-qualified
      * rulename, qualified rulename, or simple rulename.
      */
-   public String getRuleName() {
-      return this.fullRuleName;
-   }
+    public String getRuleName() {
+        return this.fullRuleName;
+    }
 
     /**
      * Get the simple grammar name.
      * May be null.
      */
-   public String getSimpleGrammarName() {
-      return this.simpleGrammarName;
-   }
+    public String getSimpleGrammarName() {
+        return this.simpleGrammarName;
+    }
 
     /**
      * Get the simple rulename.
      */
-   public String getSimpleRuleName() {
-      return this.simpleRuleName;
-   }
+    public String getSimpleRuleName() {
+        return this.simpleRuleName;
+    }
 
     /**
      * Tests whether this RuleName is a legal JSGF rulename.
@@ -210,9 +208,9 @@ public class RuleName extends Rule {
      * @see javax.speech.recognition.RuleName#isLegalRuleName(java.lang.String)
      * @see javax.speech.recognition.RuleName#isRuleNamePart(char)
      */
-   public boolean isLegalRuleName() {
-      return isLegalRuleName(this.fullRuleName);
-   }
+    public boolean isLegalRuleName() {
+        return isLegalRuleName(this.fullRuleName);
+    }
 
     /**
      * Tests whether a string is a legal JSGF rulename format.
@@ -230,40 +228,40 @@ public class RuleName extends Rule {
      * @see javax.speech.recognition.RuleName#isLegalRuleName()
      * @see javax.speech.recognition.RuleName#isRuleNamePart(char)
      */
-   public static boolean isLegalRuleName(String name) {
-      if (name == null) {
-         return false;
-      } else {
-         name = stripRuleName(name);
-         if (name.endsWith(".*")) {
-            name = name.substring(0, name.length() - 2);
-         }
-
-         if (name.length() == 0) {
+    public static boolean isLegalRuleName(String name) {
+        if (name == null) {
             return false;
-         } else if (!name.startsWith(".") && !name.endsWith(".") && name.indexOf("..") < 0) {
-            StringTokenizer tokenizer = new StringTokenizer(name, ".");
-
-            while(tokenizer.hasMoreTokens()) {
-               String token = tokenizer.nextToken();
-               int length = token.length();
-               if (length == 0) {
-                  return false;
-               }
-
-               for(int i = 0; i < length; ++i) {
-                  if (!isRuleNamePart(token.charAt(i))) {
-                     return false;
-                  }
-               }
+        } else {
+            name = stripRuleName(name);
+            if (name.endsWith(".*")) {
+                name = name.substring(0, name.length() - 2);
             }
 
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
+            if (name.length() == 0) {
+                return false;
+            } else if (!name.startsWith(".") && !name.endsWith(".") && name.indexOf("..") < 0) {
+                StringTokenizer tokenizer = new StringTokenizer(name, ".");
+
+                while (tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    int length = token.length();
+                    if (length == 0) {
+                        return false;
+                    }
+
+                    for (int i = 0; i < length; ++i) {
+                        if (!isRuleNamePart(token.charAt(i))) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
     /**
      * Tests whether a character is a legal part of a
@@ -272,42 +270,42 @@ public class RuleName extends Rule {
      * @see javax.speech.recognition.RuleName#isLegalRuleName()
      * @see javax.speech.recognition.RuleName#isLegalRuleName(java.lang.String)
      */
-   public static boolean isRuleNamePart(char c) {
-      if (Character.isJavaIdentifierPart(c)) {
-         return true;
-      } else {
-         return c == '!' || c == '#' || c == '%' || c == '&' || c == '(' || c == ')' || c == '+' || c == ',' ||
-                 c == '-' || c == '/' || c == ':' || c == ';' || c == '=' || c == '@' || c == '[' || c == '\\' ||
-                 c == ']' || c == '^' || c == '|' || c == '~';
-      }
-   }
+    public static boolean isRuleNamePart(char c) {
+        if (Character.isJavaIdentifierPart(c)) {
+            return true;
+        } else {
+            return c == '!' || c == '#' || c == '%' || c == '&' || c == '(' || c == ')' || c == '+' || c == ',' ||
+                    c == '-' || c == '/' || c == ':' || c == ';' || c == '=' || c == '@' || c == '[' || c == '\\' ||
+                    c == ']' || c == '^' || c == '|' || c == '~';
+        }
+    }
 
     /**
      * Set the rulename.
      * The rulename may be a simple-, qualified- or fully-qualified rulename.
      * Leading and trailing angle brackets are stripped if found.
      */
-   public void setRuleName(String ruleName) {
-      String name = stripRuleName(ruleName);
-      this.fullRuleName = name;
-      int period1 = name.lastIndexOf('.');
-      if (period1 < 0) {
-         this.packageName = null;
-         this.simpleGrammarName = null;
-         this.simpleRuleName = name;
-      } else {
-         int period2 = name.lastIndexOf('.', period1 - 1);
-         if (period2 < 0) {
+    public void setRuleName(String ruleName) {
+        String name = stripRuleName(ruleName);
+        this.fullRuleName = name;
+        int period1 = name.lastIndexOf('.');
+        if (period1 < 0) {
             this.packageName = null;
-            this.simpleGrammarName = name.substring(0, period1);
-            this.simpleRuleName = name.substring(period1 + 1);
-         } else {
-            this.packageName = name.substring(0, period2);
-            this.simpleGrammarName = name.substring(period2 + 1, period1);
-            this.simpleRuleName = name.substring(period1 + 1);
-         }
-      }
-   }
+            this.simpleGrammarName = null;
+            this.simpleRuleName = name;
+        } else {
+            int period2 = name.lastIndexOf('.', period1 - 1);
+            if (period2 < 0) {
+                this.packageName = null;
+                this.simpleGrammarName = name.substring(0, period1);
+                this.simpleRuleName = name.substring(period1 + 1);
+            } else {
+                this.packageName = name.substring(0, period2);
+                this.simpleGrammarName = name.substring(period2 + 1, period1);
+                this.simpleRuleName = name.substring(period1 + 1);
+            }
+        }
+    }
 
     /**
      * Set the rule's name with package name, simple grammar name
@@ -318,31 +316,31 @@ public class RuleName extends Rule {
      *
      * @throws java.lang.IllegalArgumentException null simpleGrammarName with non-null packageName
      */
-   public void setRuleName(String packageName, String simpleGrammarName, String simpleRuleName)
-           throws IllegalArgumentException {
-      if (simpleGrammarName == null && packageName != null) {
-         throw new IllegalArgumentException("null simpleGrammarName with non-null packageName");
-      } else {
-         this.packageName = packageName;
-         this.simpleGrammarName = simpleGrammarName;
-         this.simpleRuleName = stripRuleName(simpleRuleName);
-         StringBuffer sb = new StringBuffer();
-         if (packageName != null) {
-            sb.append(packageName + '.');
-         }
+    public void setRuleName(String packageName, String simpleGrammarName, String simpleRuleName)
+            throws IllegalArgumentException {
+        if (simpleGrammarName == null && packageName != null) {
+            throw new IllegalArgumentException("null simpleGrammarName with non-null packageName");
+        } else {
+            this.packageName = packageName;
+            this.simpleGrammarName = simpleGrammarName;
+            this.simpleRuleName = stripRuleName(simpleRuleName);
+            StringBuffer sb = new StringBuffer();
+            if (packageName != null) {
+                sb.append(packageName + '.');
+            }
 
-         if (simpleGrammarName != null) {
-            sb.append(simpleGrammarName + '.');
-         }
+            if (simpleGrammarName != null) {
+                sb.append(simpleGrammarName + '.');
+            }
 
-         sb.append(simpleRuleName);
-         this.fullRuleName = sb.toString();
-      }
-   }
+            sb.append(simpleRuleName);
+            this.fullRuleName = sb.toString();
+        }
+    }
 
-   private static String stripRuleName(String var0) {
-      return var0.startsWith("<") && var0.endsWith(">") ? var0.substring(1, var0.length() - 1) : var0;
-   }
+    private static String stripRuleName(String s) {
+        return s.startsWith("<") && s.endsWith(">") ? s.substring(1, s.length() - 1) : s;
+    }
 
     /**
      * Return a String representing the RuleName as
@@ -351,7 +349,7 @@ public class RuleName extends Rule {
      * RuleName
      * .
      */
-   public String toString() {
-      return "<" + this.fullRuleName + ">";
-   }
+    public String toString() {
+        return "<" + this.fullRuleName + ">";
+    }
 }

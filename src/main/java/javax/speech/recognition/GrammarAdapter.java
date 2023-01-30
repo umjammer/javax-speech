@@ -13,8 +13,8 @@ public class GrammarAdapter implements GrammarListener {
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      */
-   public void grammarActivated(GrammarEvent var1) {
-   }
+    public void grammarActivated(GrammarEvent e) {
+    }
 
     /**
      * Event issued when a Recognizer has committed
@@ -26,14 +26,14 @@ public class GrammarAdapter implements GrammarListener {
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_CHANGES_COMMITTED
      */
-   public void grammarChangesCommitted(GrammarEvent var1) {
-   }
+    public void grammarChangesCommitted(GrammarEvent e) {
+    }
 
     /**
      * A GRAMMAR_DEACTIVATED event occurred.
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      */
-   public void grammarDeactivated(GrammarEvent var1) {
-   }
+    public void grammarDeactivated(GrammarEvent e) {
+    }
 }

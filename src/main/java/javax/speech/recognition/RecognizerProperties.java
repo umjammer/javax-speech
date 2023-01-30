@@ -3,6 +3,7 @@ package javax.speech.recognition;
 import java.beans.PropertyVetoException;
 import javax.speech.EngineProperties;
 
+
 /**
  * Enables control of the properties of a Recognizer.
  * The RecognizerProperties object is obtained by
@@ -42,57 +43,59 @@ public interface RecognizerProperties extends EngineProperties {
 
     /**
      * Get the "CompleteTimeout" property.
+     *
      * @see javax.speech.recognition.RecognizerProperties#setCompleteTimeout(float)
      */
-   float getCompleteTimeout();
+    float getCompleteTimeout();
 
     /**
      * Get the recognizer's "ConfidenceLevel" property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setConfidenceLevel(float)
      */
-   float getConfidenceLevel();
+    float getConfidenceLevel();
 
     /**
      * Get the "IncompleteTimeout" property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setIncompleteTimeout(float)
      */
-   float getIncompleteTimeout();
+    float getIncompleteTimeout();
 
     /**
      * Get the "NumResultAlternatives" property.
+     *
      * @see javax.speech.recognition.RecognizerProperties#setNumResultAlternatives(int)
      */
-   int getNumResultAlternatives();
+    int getNumResultAlternatives();
 
     /**
      * Get the "Sensitivity" property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setSensitivity(float)
      */
-   float getSensitivity();
+    float getSensitivity();
 
     /**
      * Get the "SpeedVsAccuracy" property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setSpeedVsAccuracy(float)
      */
-   float getSpeedVsAccuracy();
+    float getSpeedVsAccuracy();
 
     /**
      * Get the "ResultAudioProvided" property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setResultAudioProvided(boolean)
      */
-   boolean isResultAudioProvided();
+    boolean isResultAudioProvided();
 
     /**
      * Get the TrainingProvided property.
      *
      * @see javax.speech.recognition.RecognizerProperties#setTrainingProvided(boolean)
      */
-   boolean isTrainingProvided();
+    boolean isTrainingProvided();
 
     /**
      * Set the CompleteTimeout property in seconds.
@@ -112,7 +115,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#getCompleteTimeout()
      */
-   void setCompleteTimeout(float var1) throws PropertyVetoException;
+    void setCompleteTimeout(float timeout) throws PropertyVetoException;
 
     /**
      * Set the recognizer's "ConfidenceLevel" property.
@@ -125,7 +128,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#getConfidenceLevel()
      */
-   void setConfidenceLevel(float var1) throws PropertyVetoException;
+    void setConfidenceLevel(float confidenceLevel) throws PropertyVetoException;
 
     /**
      * Set the IncompleteTimeout property in seconds.
@@ -162,7 +165,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#getIncompleteTimeout()
      */
-   void setIncompleteTimeout(float var1) throws PropertyVetoException;
+    void setIncompleteTimeout(float timeout) throws PropertyVetoException;
 
     /**
      * Set the "NumResultAlternatives" property.
@@ -188,7 +191,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @see FinalDictationResult#getAlternativeTokens(ResultToken, ResultToken, int)
      * @see javax.speech.recognition.FinalRuleResult#getAlternativeTokens(int)
      */
-   void setNumResultAlternatives(int var1) throws PropertyVetoException;
+    void setNumResultAlternatives(int num) throws PropertyVetoException;
 
     /**
      * Set the "ResultAudioProvided" property.
@@ -205,12 +208,13 @@ public interface RecognizerProperties extends EngineProperties {
      * A Recognizer that does not provide audio
      * for any results throws a PropertyVetoException
      * when an app attempts to set the value to true.
+     *
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#isResultAudioProvided()
      * @see javax.speech.recognition.FinalResult#getAudio()
      * @see javax.speech.recognition.FinalResult#getAudio(ResultToken, ResultToken)
      */
-   void setResultAudioProvided(boolean var1) throws PropertyVetoException;
+    void setResultAudioProvided(boolean audio) throws PropertyVetoException;
 
     /**
      * Set the "Sensitivity" property.
@@ -230,7 +234,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#getSensitivity()
      */
-   void setSensitivity(float var1) throws PropertyVetoException;
+    void setSensitivity(float sensitivity) throws PropertyVetoException;
 
     /**
      * Get the "SpeedVsAccuracy" property.
@@ -252,7 +256,7 @@ public interface RecognizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the recognizer rejects or limits the new value
      * @see javax.speech.recognition.RecognizerProperties#getSpeedVsAccuracy()
      */
-   void setSpeedVsAccuracy(float var1) throws PropertyVetoException;
+    void setSpeedVsAccuracy(float speedVsAccuracy) throws PropertyVetoException;
 
     /**
      * Set the TrainingProvided property.
@@ -272,5 +276,5 @@ public interface RecognizerProperties extends EngineProperties {
      * @see javax.speech.recognition.RecognizerProperties#isTrainingProvided()
      * @see javax.speech.recognition.FinalResult#tokenCorrection(java.lang.String[], ResultToken, ResultToken, int)
      */
-   void setTrainingProvided(boolean var1) throws PropertyVetoException;
+    void setTrainingProvided(boolean trainingProvided) throws PropertyVetoException;
 }

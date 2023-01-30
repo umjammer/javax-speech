@@ -2,6 +2,7 @@ package javax.speech;
 
 import java.util.Vector;
 
+
 /**
  * EngineList is a container for a set of EngineModeDesc objects.
  * An EngineList is used in the selection of speech
@@ -32,16 +33,16 @@ public class EngineList extends Vector {
      *
      * @see javax.speech.EngineModeDesc#match(javax.speech.EngineModeDesc)
      */
-   public synchronized boolean anyMatch(EngineModeDesc require) {
-      for(int i = 0; i < this.size(); ++i) {
-         EngineModeDesc engineModeDesc = (EngineModeDesc)this.elementAt(i);
-         if (engineModeDesc.match(require)) {
-            return true;
-         }
-      }
+    public synchronized boolean anyMatch(EngineModeDesc require) {
+        for (int i = 0; i < this.size(); ++i) {
+            EngineModeDesc engineModeDesc = (EngineModeDesc) this.elementAt(i);
+            if (engineModeDesc.match(require)) {
+                return true;
+            }
+        }
 
-      return false;
-   }
+        return false;
+    }
 
     /**
      * Order the list so that elements matching the required
@@ -55,29 +56,29 @@ public class EngineList extends Vector {
      * desc.setRunning(true);
      * list.orderByMatch(desc);
      */
-   public synchronized void orderByMatch(EngineModeDesc require) {
-      EngineList list1 = new EngineList();
-      EngineList list2 = new EngineList();
+    public synchronized void orderByMatch(EngineModeDesc require) {
+        EngineList list1 = new EngineList();
+        EngineList list2 = new EngineList();
 
-      for(int i = 0; i < this.size(); ++i) {
-         EngineModeDesc engineModeDesc = (EngineModeDesc)this.elementAt(i);
-         if (engineModeDesc.match(require)) {
-            list1.addElement(engineModeDesc);
-         } else {
-            list2.addElement(engineModeDesc);
-         }
-      }
+        for (int i = 0; i < this.size(); ++i) {
+            EngineModeDesc engineModeDesc = (EngineModeDesc) this.elementAt(i);
+            if (engineModeDesc.match(require)) {
+                list1.addElement(engineModeDesc);
+            } else {
+                list2.addElement(engineModeDesc);
+            }
+        }
 
-      this.removeAllElements();
+        this.removeAllElements();
 
-      for(int i = 0; i < list1.size(); ++i) {
-         this.addElement(list1.elementAt(i));
-      }
+        for (int i = 0; i < list1.size(); ++i) {
+            this.addElement(list1.elementAt(i));
+        }
 
-      for(int i = 0; i < list2.size(); ++i) {
-         this.addElement(list2.elementAt(i));
-      }
-   }
+        for (int i = 0; i < list2.size(); ++i) {
+            this.addElement(list2.elementAt(i));
+        }
+    }
 
     /**
      * Remove EngineModeDesc entries from the list
@@ -93,14 +94,14 @@ public class EngineList extends Vector {
      *
      * @see javax.speech.EngineModeDesc#match(javax.speech.EngineModeDesc)
      */
-   public synchronized void rejectMatch(EngineModeDesc reject) {
-      for(int i = this.size() - 1; i >= 0; --i) {
-         EngineModeDesc engineModeDesc = (EngineModeDesc)this.elementAt(i);
-         if (engineModeDesc.match(reject)) {
-            this.removeElementAt(i);
-         }
-      }
-   }
+    public synchronized void rejectMatch(EngineModeDesc reject) {
+        for (int i = this.size() - 1; i >= 0; --i) {
+            EngineModeDesc engineModeDesc = (EngineModeDesc) this.elementAt(i);
+            if (engineModeDesc.match(reject)) {
+                this.removeElementAt(i);
+            }
+        }
+    }
 
     /**
      * Remove EngineModeDesc entries from the list
@@ -117,13 +118,13 @@ public class EngineList extends Vector {
      *
      * @see javax.speech.EngineModeDesc#match(javax.speech.EngineModeDesc)
      */
-   public synchronized void requireMatch(EngineModeDesc require) {
-      for(int i = this.size() - 1; i >= 0; --i) {
-         EngineModeDesc engineModeDesc = (EngineModeDesc)this.elementAt(i);
-         if (!engineModeDesc.match(require)) {
-            this.removeElementAt(i);
-         }
-      }
+    public synchronized void requireMatch(EngineModeDesc require) {
+        for (int i = this.size() - 1; i >= 0; --i) {
+            EngineModeDesc engineModeDesc = (EngineModeDesc) this.elementAt(i);
+            if (!engineModeDesc.match(require)) {
+                this.removeElementAt(i);
+            }
+        }
 
-   }
+    }
 }

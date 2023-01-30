@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.EngineAdapter;
 
+
 /**
  * The adapter which receives events for a Recognizer.
  * The methods in this class are empty;  this class is provided as a
@@ -24,8 +25,8 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_CHANGES_COMMITTED
      */
-   public void changesCommitted(RecognizerEvent var1) {
-   }
+    public void changesCommitted(RecognizerEvent e) {
+    }
 
     /**
      * FOCUS_GAINED event has been issued as a
@@ -34,8 +35,8 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_GAINED
      */
-   public void focusGained(RecognizerEvent var1) {
-   }
+    public void focusGained(RecognizerEvent e) {
+    }
 
     /**
      * FOCUS_LOST event has been issued as a
@@ -44,8 +45,8 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      */
-   public void focusLost(RecognizerEvent var1) {
-   }
+    public void focusLost(RecognizerEvent e) {
+    }
 
     /**
      * A RECOGNIZER_PROCESSING event has been issued
@@ -54,8 +55,8 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_PROCESSING
      */
-   public void recognizerProcessing(RecognizerEvent var1) {
-   }
+    public void recognizerProcessing(RecognizerEvent e) {
+    }
 
     /**
      * RECOGNIZER_SUSPENDED event has been issued as a
@@ -65,6 +66,6 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   public void recognizerSuspended(RecognizerEvent var1) {
-   }
+    public void recognizerSuspended(RecognizerEvent e) {
+    }
 }

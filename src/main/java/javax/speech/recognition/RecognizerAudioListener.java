@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.AudioListener;
 
+
 /**
  * Extends the set of audio event of an engine for a recognizer
  * by adding a audio level event.
@@ -19,19 +20,19 @@ public interface RecognizerAudioListener extends AudioListener {
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#AUDIO_LEVEL
      */
-   void audioLevel(RecognizerAudioEvent var1);
+    void audioLevel(RecognizerAudioEvent e);
 
     /**
      * The recognizer has detected a possible start of speech.
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STARTED
      */
-   void speechStarted(RecognizerAudioEvent var1);
+    void speechStarted(RecognizerAudioEvent e);
 
     /**
      * The recognizer has detected a possible end of speech.
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STOPPED
      */
-   void speechStopped(RecognizerAudioEvent var1);
+    void speechStopped(RecognizerAudioEvent e);
 }

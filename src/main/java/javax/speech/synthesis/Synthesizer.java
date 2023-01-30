@@ -44,7 +44,7 @@ import javax.speech.VocabManager;
  * Inherits location mechanism by
  * <p>
  * <A href="../Central.html#availableSynthesizers(javax.speech.EngineModeDesc)">
- *       Central.availableSynthesizers</A>
+ * Central.availableSynthesizers</A>
  * <p>
  * method and
  * {@link EngineModeDesc}
@@ -88,7 +88,7 @@ import javax.speech.VocabManager;
  * and
  * <p>
  * {@link Engine#testEngineState(long)}
- *
+ * <p>
  * methods from the
  * <p>
  * {@link Engine}
@@ -145,11 +145,11 @@ import javax.speech.VocabManager;
  * Inherits
  * <p>
  * <A href="../Engine.html#addEngineListener(javax.speech.EngineListener)">
- *             addEngineListener</A>
+ * addEngineListener</A>
  * and
  * <p>
  * <A href="../Engine.html#removeEngineListener(javax.speech.EngineListener)">
- *             removeEngineListener</A>
+ * removeEngineListener</A>
  * <p>
  * methods and uses the
  * <p>
@@ -166,20 +166,20 @@ import javax.speech.VocabManager;
  * Adds
  * <p>
  * <A href="#speak(javax.speech.synthesis.Speakable, javax.speech.synthesis.SpeakableListener)">
- *             speak(Speakable, Listener)</A>
+ * speak(Speakable, Listener)</A>
  * ,
  * <p>
  * <A href="#speak(java.net.URL, javax.speech.synthesis.SpeakableListener)">
- *             speak(URL, Listener)</A>
+ * speak(URL, Listener)</A>
  * ,
  * <p>
  * <A href="#speak(java.lang.String, javax.speech.synthesis.SpeakableListener)">
- *             speak(String, Listener)</A>
+ * speak(String, Listener)</A>
  * <p>
  * and
  * <p>
  * <A href="#speakPlainText(java.lang.String, javax.speech.synthesis.SpeakableListener)">
- *             speakPlainText(String)</A>
+ * speakPlainText(String)</A>
  * <p>
  * methods to place text on the output queue of the synthesizer.
  * <p>
@@ -210,7 +210,7 @@ import javax.speech.VocabManager;
  * or can be  marked up using the
  * <p>
  * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSML/index.html">
- *  Java Speech Markup Language (JSML)</A>
+ * Java Speech Markup Language (JSML)</A>
  * .
  * <p>
  * Plain text is spoken using the speakPlainText method.
@@ -356,7 +356,7 @@ public interface Synthesizer extends Engine {
      * @see javax.speech.Engine#testEngineState(long)
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      */
-   long QUEUE_EMPTY = 65536L;
+    long QUEUE_EMPTY = 65536L;
 
     /**
      * Bit of state that is set when the speech output
@@ -384,7 +384,7 @@ public interface Synthesizer extends Engine {
      * @see javax.speech.Engine#testEngineState(long)
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      */
-   long QUEUE_NOT_EMPTY = 131072L;
+    long QUEUE_NOT_EMPTY = 131072L;
 
     /**
      * Request notifications of all SpeakableEvents for
@@ -406,11 +406,10 @@ public interface Synthesizer extends Engine {
      * A SpeakableListener can be attached or removed in any
      * Engine state.
      *
-     * @param listener
-     *  the listener that will receive SpeakableEvents
+     * @param listener the listener that will receive SpeakableEvents
      * @see javax.speech.synthesis.Synthesizer#removeSpeakableListener(javax.speech.synthesis.SpeakableListener)
      */
-   void addSpeakableListener(SpeakableListener listener);
+    void addSpeakableListener(SpeakableListener listener);
 
     /**
      * Cancel output of the current object at the top of the output queue.
@@ -439,7 +438,7 @@ public interface Synthesizer extends Engine {
      * DEALLOCATED or DEALLOCATING_RESOURCES states.
      *
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#cancel(java.lang.Object)
      * @see javax.speech.synthesis.Synthesizer#cancelAll()
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
@@ -447,7 +446,7 @@ public interface Synthesizer extends Engine {
      * @see javax.speech.synthesis.SpeakableEvent#TOP_OF_QUEUE
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      */
-   void cancel() throws EngineStateError;
+    void cancel() throws EngineStateError;
 
     /**
      * Remove a specified item from the speech output queue.  The
@@ -478,18 +477,17 @@ public interface Synthesizer extends Engine {
      * state.  An error is thrown for synthesizers in the
      * DEALLOCATED or DEALLOCATING_RESOURCES states.
      *
-     * @param source
-     *  object to be removed from the speech output queue
+     * @param source object to be removed from the speech output queue
      * @throws java.lang.IllegalArgumentException if the source object is not found in the speech output queue.
-     * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws javax.speech.EngineStateError      if called for a synthesizer in the DEALLOCATED or
+     *                                            DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#cancel()
      * @see javax.speech.synthesis.Synthesizer#cancelAll()
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      */
-   void cancel(Object source) throws IllegalArgumentException, EngineStateError;
+    void cancel(Object source) throws IllegalArgumentException, EngineStateError;
 
     /**
      * Cancel all objects in the synthesizer speech output queue and stop
@@ -511,13 +509,13 @@ public interface Synthesizer extends Engine {
      * DEALLOCATED or DEALLOCATING_RESOURCES states.
      *
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#cancel()
      * @see javax.speech.synthesis.Synthesizer#cancel(java.lang.Object)
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      */
-   void cancelAll() throws EngineStateError;
+    void cancelAll() throws EngineStateError;
 
     /**
      * Return an Enumeration containing a snapshot of
@@ -553,13 +551,13 @@ public interface Synthesizer extends Engine {
      *
      * @return an Enumeration of the speech output queue or null
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.SynthesizerQueueItem
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.Engine#addEngineListener(javax.speech.EngineListener)
      */
-   Enumeration enumerateQueue() throws EngineStateError;
+    Enumeration enumerateQueue() throws EngineStateError;
 
     /**
      * Return the SynthesizerProperties object (a JavaBean).
@@ -575,7 +573,7 @@ public interface Synthesizer extends Engine {
      * @return the SynthesizerProperties object for this engine
      * @see javax.speech.Engine#getEngineProperties()
      */
-   SynthesizerProperties getSynthesizerProperties();
+    SynthesizerProperties getSynthesizerProperties();
 
     /**
      * Returns the phoneme string for a text string.  The return string
@@ -598,13 +596,12 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param text
-     *  plain text to be converted to phonemes
+     * @param text plain text to be converted to phonemes
      * @return phonemic representation of text or null
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      */
-   String phoneme(String text) throws EngineStateError;
+    String phoneme(String text) throws EngineStateError;
 
     /**
      * Remove a SpeakableListener from this Synthesizer.
@@ -614,13 +611,13 @@ public interface Synthesizer extends Engine {
      *
      * @see javax.speech.synthesis.Synthesizer#addSpeakableListener(javax.speech.synthesis.SpeakableListener)
      */
-   void removeSpeakableListener(SpeakableListener var1);
+    void removeSpeakableListener(SpeakableListener listener);
 
     /**
      * Speak a string containing text formatted with the
      * <p>
      * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSML/index.html">
-     *  Java Speech Markup Language</A>
+     * Java Speech Markup Language</A>
      * .  The JSML text is checked for
      * formatting errors and a JSMLException is thrown
      * if any are found.  If legal, the text is placed at the end of
@@ -640,25 +637,22 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param JSMLText
-     *  String contains Java Speech Markup Language text to be spoken
-     * @param listener
-     *  receives notification of events as synthesis output proceeds
-     * @throws JSMLException
-     *  if any syntax errors are encountered in JSMLtext
+     * @param JSMLText String contains Java Speech Markup Language text to be spoken
+     * @param listener receives notification of events as synthesis output proceeds
+     * @throws JSMLException                 if any syntax errors are encountered in JSMLtext
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#speak(javax.speech.synthesis.Speakable, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speak(java.net.URL, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speakPlainText(java.lang.String, SpeakableListener)
      */
-   void speak(String JSMLText, SpeakableListener listener) throws JSMLException, EngineStateError;
+    void speak(String JSMLText, SpeakableListener listener) throws JSMLException, EngineStateError;
 
     /**
      * Speak text from a URL formatted with the
      * <p>
      * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSML/index.html">
-     *  Java Speech Markup Language</A>
+     * Java Speech Markup Language</A>
      * .  The text is obtained from the
      * URL, checked for legal JSML formatting, and placed at the end of
      * the speaking queue.  It is spoken once it reaches the top
@@ -687,28 +681,25 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param JSMLurl
-     *  URL containing Java Speech Markup Language text to be spoken
-     * @throws  JSMLException
-     *  if any syntax errors are encountered in JSMLtext
-     * @param listener
-     *  receives notification of events as synthesis output proceeds
+     * @param JSMLurl  URL containing Java Speech Markup Language text to be spoken
+     * @param listener receives notification of events as synthesis output proceeds
+     * @throws JSMLException                 if any syntax errors are encountered in JSMLtext
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#speak(javax.speech.synthesis.Speakable, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speak(java.lang.String, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speakPlainText(java.lang.String, SpeakableListener)
      * @see javax.speech.synthesis.SpeakableEvent
      * @see javax.speech.synthesis.Synthesizer#addSpeakableListener(javax.speech.synthesis.SpeakableListener)
      */
-   void speak(URL JSMLurl, SpeakableListener listener) throws JSMLException, MalformedURLException, IOException, EngineStateError;
+    void speak(URL JSMLurl, SpeakableListener listener) throws JSMLException, MalformedURLException, IOException, EngineStateError;
 
     /**
      * Speak an object that implements the Speakable interface
      * and provides text marked with the
      * <p>
      * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSML/index.html">
-     *  Java Speech Markup Language</A>
+     * Java Speech Markup Language</A>
      * .
      * The Speakable object is added to the end of
      * the speaking queue and will be spoken once it reaches the top
@@ -757,21 +748,19 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param JSMLText
-     *  object implementing the Speakable interface that provides
-     *    Java Speech Markup Language text to be spoken
-     * @param listener
-     *  receives notification of events as synthesis output proceeds
+     * @param JSMLText object implementing the Speakable interface that provides
+     *                 Java Speech Markup Language text to be spoken
+     * @param listener receives notification of events as synthesis output proceeds
      * @throws javax.speech.synthesis.JSMLException if any syntax errors are encountered in JSMLtext
-     * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws javax.speech.EngineStateError        if called for a synthesizer in the DEALLOCATED or
+     *                                              DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#speak(java.lang.String, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speak(java.net.URL, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speakPlainText(java.lang.String, SpeakableListener)
      * @see javax.speech.synthesis.SpeakableEvent
      * @see javax.speech.synthesis.Synthesizer#addSpeakableListener(javax.speech.synthesis.SpeakableListener)
      */
-   void speak(Speakable JSMLText, SpeakableListener listener) throws JSMLException, EngineStateError;
+    void speak(Speakable JSMLText, SpeakableListener listener) throws JSMLException, EngineStateError;
 
     /**
      * Speak a plain text string.  The text is not interpreted as
@@ -793,15 +782,13 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param JSMLText
-     *  String contains plaing text to be spoken
-     * @param listener
-     *  receives notification of events as synthesis output proceeds
+     * @param JSMLText String contains plaing text to be spoken
+     * @param listener receives notification of events as synthesis output proceeds
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.synthesis.Synthesizer#speak(javax.speech.synthesis.Speakable, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speak(java.net.URL, SpeakableListener)
      * @see javax.speech.synthesis.Synthesizer#speak(java.lang.String, SpeakableListener)
      */
-   void speakPlainText(String JSMLText, SpeakableListener listener) throws EngineStateError;
+    void speakPlainText(String JSMLText, SpeakableListener listener) throws EngineStateError;
 }

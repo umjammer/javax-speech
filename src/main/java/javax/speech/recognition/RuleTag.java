@@ -29,37 +29,35 @@ public class RuleTag extends Rule {
      *
      * @see javax.speech.recognition.RuleTag#getRule()
      */
-   protected Rule rule;
+    protected Rule rule;
 
     /**
      * The tag string for the rule.
      *
      * @see javax.speech.recognition.RuleTag#getTag()
      */
-   protected String tag;
+    protected String tag;
 
     /**
      * Empty constructor sets the rule and tag to null.
      */
-   public RuleTag() {
-      this.setRule((Rule)null);
-      this.setTag((String)null);
-   }
+    public RuleTag() {
+        this.setRule((Rule) null);
+        this.setTag((String) null);
+    }
 
     /**
      * Construct a RuleTag with for Rule object with a tag string.
      * The method assumes that pre-processing of JSGF tags is complete (the leading
      * and trailing curly braces are removed, escape characters are removed).
      *
-     * @param rule
-     *  the rule being tagged
-     * @param tag
-     *  the tag string
+     * @param rule the rule being tagged
+     * @param tag  the tag string
      */
-   public RuleTag(Rule rule, String tag) {
-      this.setRule(rule);
-      this.setTag(tag);
-   }
+    public RuleTag(Rule rule, String tag) {
+        this.setRule(rule);
+        this.setTag(tag);
+    }
 
     /**
      * Return a deep copy of this rule.
@@ -67,57 +65,57 @@ public class RuleTag extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
-   public Rule copy() {
-      return new RuleTag(this.rule.copy(), this.tag);
-   }
+    public Rule copy() {
+        return new RuleTag(this.rule.copy(), this.tag);
+    }
 
-   private String escapeTag(String var1) {
-      StringBuffer sb = new StringBuffer(var1);
-      if (var1.indexOf(125) >= 0 || var1.indexOf(92) >= 0) {
-         for(int i = sb.length() - 1; i >= 0; --i) {
-            char c = sb.charAt(i);
-            if (c == '}' || c == '\\') {
-               sb.insert(i, '\\');
+    private String escapeTag(String tag) {
+        StringBuffer sb = new StringBuffer(tag);
+        if (tag.indexOf('}') >= 0 || tag.indexOf('\\') >= 0) {
+            for (int i = sb.length() - 1; i >= 0; --i) {
+                char c = sb.charAt(i);
+                if (c == '}' || c == '\\') {
+                    sb.insert(i, '\\');
+                }
             }
-         }
-      }
+        }
 
-      return sb.toString();
-   }
+        return sb.toString();
+    }
 
     /**
      * Returns the Rule object being tagged.
      */
-   public Rule getRule() {
-      return this.rule;
-   }
+    public Rule getRule() {
+        return this.rule;
+    }
 
     /**
      * Returns the tag string.
      */
-   public String getTag() {
-      return this.tag;
-   }
+    public String getTag() {
+        return this.tag;
+    }
 
     /**
      * Set the Rule object to be tagged.
      */
-   public void setRule(Rule var1) {
-      this.rule = var1;
-   }
+    public void setRule(Rule rule) {
+        this.rule = rule;
+    }
 
     /**
      * Set the tag string for the Rule.
      * A zero-length string is legal.
      * A null tag is converted to "".
      */
-   public void setTag(String tag) {
-      if (tag == null) {
-         this.tag = "";
-      } else {
-         this.tag = tag;
-      }
-   }
+    public void setTag(String tag) {
+        if (tag == null) {
+            this.tag = "";
+        } else {
+            this.tag = tag;
+        }
+    }
 
     /**
      * Return a String representing the RuleTag object in
@@ -127,8 +125,8 @@ public class RuleTag extends Rule {
      * properly escaped by a backslash.  If required, the rule contained
      * within the RuleTag will enclosed by parentheses.
      */
-   public String toString() {
-      String s = " {" + this.escapeTag(this.tag) + "}";
-      return !(this.rule instanceof RuleToken) && !(this.rule instanceof RuleName) ? "(" + this.rule.toString() + ")" + s : this.rule.toString() + s;
-   }
+    public String toString() {
+        String s = " {" + this.escapeTag(this.tag) + "}";
+        return !(this.rule instanceof RuleToken) && !(this.rule instanceof RuleName) ? "(" + this.rule.toString() + ")" + s : this.rule.toString() + s;
+    }
 }

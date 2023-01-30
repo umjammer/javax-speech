@@ -17,14 +17,12 @@ public class AudioEvent extends SpeechEvent {
     /**
      * Constructs an AudioEvent with a specified id.
      *
-     * @param source
-     *  Engine that produced the event
-     * @param id
-     *  type of audio event
+     * @param source Engine that produced the event
+     * @param id     type of audio event
      */
-   public AudioEvent(Engine source, int id) {
-      super(source, id);
-   }
+    public AudioEvent(Engine source, int id) {
+        super(source, id);
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -32,10 +30,10 @@ public class AudioEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         default:
+    public String paramString() {
+        switch (super.id) {
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

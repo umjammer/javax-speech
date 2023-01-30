@@ -2,6 +2,7 @@ package javax.speech;
 
 import java.util.EventListener;
 
+
 /**
  * Interface defining methods to be called when state-change events
  * for a speech engine occur.  To receive engine events an
@@ -36,28 +37,28 @@ public interface EngineListener extends EventListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_ALLOCATED
      */
-   void engineAllocated(EngineEvent e);
+    void engineAllocated(EngineEvent e);
 
     /**
      * The Engine is being allocated.
      *
      * @see javax.speech.EngineEvent#ENGINE_ALLOCATING_RESOURCES
      */
-   void engineAllocatingResources(EngineEvent e);
+    void engineAllocatingResources(EngineEvent e);
 
     /**
      * The Engine has been deallocated.
      *
      * @see javax.speech.EngineEvent#ENGINE_DEALLOCATED
      */
-   void engineDeallocated(EngineEvent e);
+    void engineDeallocated(EngineEvent e);
 
     /**
      * The Engine is being deallocated.
      *
      * @see javax.speech.EngineEvent#ENGINE_DEALLOCATING_RESOURCES
      */
-   void engineDeallocatingResources(EngineEvent e);
+    void engineDeallocatingResources(EngineEvent e);
 
     /**
      * An EngineErrorEvent has occurred and the
@@ -65,19 +66,19 @@ public interface EngineListener extends EventListener {
      *
      * @see javax.speech.EngineErrorEvent
      */
-   void engineError(EngineErrorEvent e);
+    void engineError(EngineErrorEvent e);
 
     /**
      * The Engine has been paused.
      *
      * @see javax.speech.EngineEvent#ENGINE_PAUSED
      */
-   void enginePaused(EngineEvent e);
+    void enginePaused(EngineEvent e);
 
     /**
      * The Engine has been resumed.
      *
      * @see javax.speech.EngineEvent#ENGINE_RESUMED
      */
-   void engineResumed(EngineEvent e);
+    void engineResumed(EngineEvent e);
 }

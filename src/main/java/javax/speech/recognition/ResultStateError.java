@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.SpeechError;
 
+
 /**
  * Signals an error caused by an illegal call to a method
  * of FinalResult, FinalRuleResult
@@ -24,13 +25,13 @@ public class ResultStateError extends SpeechError {
     /**
      * Empty constructor for ResultStateError.
      */
-   public ResultStateError() {
-   }
+    public ResultStateError() {
+    }
 
     /**
      * Construct a ResultStateError with a message string.
      */
-   public ResultStateError(String s) {
-      super(s);
-   }
+    public ResultStateError(String s) {
+        super(s);
+    }
 }

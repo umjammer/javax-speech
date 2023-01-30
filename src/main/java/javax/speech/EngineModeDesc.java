@@ -2,6 +2,7 @@ package javax.speech;
 
 import java.util.Locale;
 
+
 /**
  * EngineModeDesc provides information about a
  * specific operating mode of a speech engine.
@@ -36,22 +37,20 @@ import java.util.Locale;
  * are:
  *
  * @engine name
- *     A string that uniquely identifies a speech engine.
- *        e.g. "Acme Recognizer"
+ * A string that uniquely identifies a speech engine.
+ * e.g. "Acme Recognizer"
  * @mode name
- *     A string that uniquely identifies a mode of operation of the speech engine.
- *        e.g. "Spanish Dictator"
- * @Locale
- *     A java.util.Locale object representing the
- *        language supported by the engine mode.  The country code
- *        may be optionally defined for an engine.  The Locale
- *        variant is typically ignored.
- *        e.g. Locale("fr", "CA") represent French spoken in Canada.
- *        ("fr" and "CA" are standard ISO codes).
- * @Running
- *     A Boolean value indicating whether a speech engine
- *        is already running.  This allows for the selection of engines that
- *        already running so that system resources are conserved.
+ * A string that uniquely identifies a mode of operation of the speech engine.
+ * e.g. "Spanish Dictator"
+ * @Locale A java.util.Locale object representing the
+ * language supported by the engine mode.  The country code
+ * may be optionally defined for an engine.  The Locale
+ * variant is typically ignored.
+ * e.g. Locale("fr", "CA") represent French spoken in Canada.
+ * ("fr" and "CA" are standard ISO codes).
+ * @Running A Boolean value indicating whether a speech engine
+ * is already running.  This allows for the selection of engines that
+ * already running so that system resources are conserved.
  * <p>
  * Selection
  * <p>
@@ -97,103 +96,102 @@ import java.util.Locale;
  * EngineList and EngineModeDesc and its sub-classes,
  * Pass the selected descriptor to the createRecognizer or
  * createSynthesizer method of Central.
- *
  * @see javax.speech.recognition.RecognizerModeDesc
  * @see javax.speech.synthesis.SynthesizerModeDesc
  * @see javax.speech.Central
  */
 public class EngineModeDesc {
 
-   private String engineName;
+    private String engineName;
 
-   private String modeName;
+    private String modeName;
 
-   private Locale locale;
+    private Locale locale;
 
-   private Boolean running;
+    private Boolean running;
 
     /**
      * Empty constructor sets engine name, mode name, Locale and
      * running all to null.
      */
-   public EngineModeDesc() {
-      this.engineName = null;
-      this.modeName = null;
-      this.locale = null;
-      this.running = null;
-   }
+    public EngineModeDesc() {
+        this.engineName = null;
+        this.modeName = null;
+        this.locale = null;
+        this.running = null;
+    }
 
     /**
      * Constructor provided with engine name, mode name, locale and running.
      * Any parameter may be null.
      */
-   public EngineModeDesc(String engineName, String modeName, Locale locale, Boolean running) {
-      this.engineName = engineName;
-      this.modeName = modeName;
-      this.locale = locale;
-      this.running = running;
-   }
+    public EngineModeDesc(String engineName, String modeName, Locale locale, Boolean running) {
+        this.engineName = engineName;
+        this.modeName = modeName;
+        this.locale = locale;
+        this.running = running;
+    }
 
     /**
      * Construct an EngineModeDesc for a locale.
      * The engine name, mode name and running are set to null.
      */
-   public EngineModeDesc(Locale locale) {
-      this.engineName = null;
-      this.modeName = null;
-      this.locale = locale;
-      this.running = null;
-   }
+    public EngineModeDesc(Locale locale) {
+        this.engineName = null;
+        this.modeName = null;
+        this.locale = locale;
+        this.running = null;
+    }
 
     /**
      * True if and only if the parameter is not null
      * and is a EngineModeDesc with equal values of
      * Locale, engineName and modeName.
      */
-   public boolean equals(Object anObject) {
-      if (anObject != null && anObject instanceof EngineModeDesc) {
-         EngineModeDesc engineModeDesc = (EngineModeDesc)anObject;
-         if (this.engineName == null) {
-            if (engineModeDesc.engineName != null) {
-               return false;
+    public boolean equals(Object anObject) {
+        if (anObject != null && anObject instanceof EngineModeDesc) {
+            EngineModeDesc engineModeDesc = (EngineModeDesc) anObject;
+            if (this.engineName == null) {
+                if (engineModeDesc.engineName != null) {
+                    return false;
+                }
+            } else if (!this.engineName.equals(engineModeDesc.engineName)) {
+                return false;
             }
-         } else if (!this.engineName.equals(engineModeDesc.engineName)) {
-            return false;
-         }
 
-         if (this.modeName == null) {
-            if (engineModeDesc.modeName != null) {
-               return false;
+            if (this.modeName == null) {
+                if (engineModeDesc.modeName != null) {
+                    return false;
+                }
+            } else if (!this.modeName.equals(engineModeDesc.modeName)) {
+                return false;
             }
-         } else if (!this.modeName.equals(engineModeDesc.modeName)) {
-            return false;
-         }
 
-         if (this.locale == null) {
-            if (engineModeDesc.locale != null) {
-               return false;
+            if (this.locale == null) {
+                if (engineModeDesc.locale != null) {
+                    return false;
+                }
+            } else if (!this.locale.equals(engineModeDesc.locale)) {
+                return false;
             }
-         } else if (!this.locale.equals(engineModeDesc.locale)) {
-            return false;
-         }
 
-         if (this.running == null != (engineModeDesc.running == null)) {
+            if (this.running == null != (engineModeDesc.running == null)) {
+                return false;
+            } else {
+                return this.running == null || this.running.equals(engineModeDesc.running);
+            }
+        } else {
             return false;
-         } else {
-            return this.running == null || this.running.equals(engineModeDesc.running);
-         }
-      } else {
-         return false;
-      }
-   }
+        }
+    }
 
     /**
      * Get the engine name. The engine name should be a unique string
      * across the provider company and across companies.
      */
-   public String getEngineName() {
-      return this.engineName;
-   }
+    public String getEngineName() {
+        return this.engineName;
+    }
 
     /**
      * Get the Locale.  The locale for an engine mode must have
@@ -202,26 +200,26 @@ public class EngineModeDesc {
      * language spoken in any country).  The locale variant is
      * typically ignored.
      */
-   public Locale getLocale() {
-      return this.locale;
-   }
+    public Locale getLocale() {
+        return this.locale;
+    }
 
     /**
      * Get the mode name. The mode name that should uniquely identify a
      * single mode of operation of a speech engine (per-engine unique).
      */
-   public String getModeName() {
-      return this.modeName;
-   }
+    public String getModeName() {
+        return this.modeName;
+    }
 
     /**
      * Get the running feature.
      * Values may be TRUE, FALSE or
      * null (null means "don't care").
      */
-   public Boolean getRunning() {
-      return this.running;
-   }
+    public Boolean getRunning() {
+        return this.running;
+    }
 
     /**
      * Determine whether an EngineModeDesc has all the features
@@ -230,74 +228,74 @@ public class EngineModeDesc {
      * zero-length ("") are not tested, including those in the
      * Locale.  All string comparisons are exact (case-sensitive).
      */
-   public boolean match(EngineModeDesc require) {
-      if (require.locale != null) {
-         if (this.locale == null) {
-            return false;
-         }
+    public boolean match(EngineModeDesc require) {
+        if (require.locale != null) {
+            if (this.locale == null) {
+                return false;
+            }
 
-         if (require.locale.getLanguage() != null && !require.locale.getLanguage().equals("") && !require.locale.getLanguage().equals(this.locale.getLanguage())) {
-            return false;
-         }
+            if (require.locale.getLanguage() != null && !require.locale.getLanguage().equals("") && !require.locale.getLanguage().equals(this.locale.getLanguage())) {
+                return false;
+            }
 
-         if (require.locale.getCountry() != null && !require.locale.getCountry().equals("") && !require.locale.getCountry().equals(this.locale.getCountry())) {
-            return false;
-         }
-      }
+            if (require.locale.getCountry() != null && !require.locale.getCountry().equals("") && !require.locale.getCountry().equals(this.locale.getCountry())) {
+                return false;
+            }
+        }
 
-      if (require.modeName != null && !require.modeName.equals("")) {
-         if (this.modeName == null) {
-            return false;
-         }
+        if (require.modeName != null && !require.modeName.equals("")) {
+            if (this.modeName == null) {
+                return false;
+            }
 
-         if (!this.modeName.equals(require.modeName)) {
-            return false;
-         }
-      }
+            if (!this.modeName.equals(require.modeName)) {
+                return false;
+            }
+        }
 
-      if (require.engineName != null && !require.engineName.equals("")) {
-         if (this.engineName == null) {
-            return false;
-         }
+        if (require.engineName != null && !require.engineName.equals("")) {
+            if (this.engineName == null) {
+                return false;
+            }
 
-         if (!this.engineName.equals(require.engineName)) {
-            return false;
-         }
-      }
+            if (!this.engineName.equals(require.engineName)) {
+                return false;
+            }
+        }
 
-      return require.running == null || require.running.equals(this.running);
-   }
+        return require.running == null || require.running.equals(this.running);
+    }
 
     /**
      * Set the engine name.
      * May be null.
      */
-   public void setEngineName(String engineName) {
-      this.engineName = engineName;
-   }
+    public void setEngineName(String engineName) {
+        this.engineName = engineName;
+    }
 
     /**
      * Set the Locale.
      * May be null.
      */
-   public void setLocale(Locale locale) {
-      this.locale = locale;
-   }
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
 
     /**
      * Set the mode name.
      * May be null.
      */
-   public void setModeName(String modeName) {
-      this.modeName = modeName;
-   }
+    public void setModeName(String modeName) {
+        this.modeName = modeName;
+    }
 
     /**
      * Set the running feature.
      * Values may be TRUE, FALSE or
      * null (null means "don't care").
      */
-   public void setRunning(Boolean running) {
-      this.running = running;
-   }
+    public void setRunning(Boolean running) {
+        this.running = running;
+    }
 }

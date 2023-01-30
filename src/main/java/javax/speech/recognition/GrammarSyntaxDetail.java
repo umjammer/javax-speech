@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.net.URL;
 
+
 /**
  * Description of a problem found in a grammar usually bundled
  * with a GrammarException.  The grammar
@@ -68,60 +69,61 @@ public class GrammarSyntaxDetail {
      * Name of grammar in which problem is encountered.
      * May be null.
      */
-   public String grammarName = null;
+    public String grammarName = null;
 
     /**
      * URL location of grammar in which problem is encountered.
      * May be null.
      */
-   public URL grammarLocation = null;
+    public URL grammarLocation = null;
 
     /**
      * Name of rule within grammar in which problem is encountered.
      * May be null.
      */
-   public String ruleName = null;
+    public String ruleName = null;
 
     /**
      * Name in grammar import declaration in which problem is encountered.
      * May be null.
      */
-   public RuleName importName = null;
+    public RuleName importName = null;
 
     /**
      * Line number in JSGF file for problem.
      * Negative values indicate that the line number unknown.
      */
-   public int lineNumber = -1;
+    public int lineNumber = -1;
 
     /**
      * Character number in line in JSGF file for problem.
      * Negative values indicate that the line number unknown.
      */
-   public int charNumber = -1;
+    public int charNumber = -1;
 
     /**
      * Printable string describing problem.
      * May be null.
      */
-   public String message = null;
+    public String message = null;
 
     /**
      * Empty constructor.
      */
-   public GrammarSyntaxDetail() {
-   }
+    public GrammarSyntaxDetail() {
+    }
 
     /**
      * Complete constructor describing a syntax problem.
      */
-   public GrammarSyntaxDetail(String var1, URL var2, String var3, RuleName var4, int var5, int var6, String var7) {
-      this.grammarName = var1;
-      this.grammarLocation = var2;
-      this.ruleName = var3;
-      this.importName = var4;
-      this.lineNumber = var5;
-      this.charNumber = var6;
-      this.message = var7;
-   }
+    public GrammarSyntaxDetail(String grammarName, URL grammarLocation, String ruleName, RuleName importName,
+                               int lineNumber, int charNumber, String message) {
+        this.grammarName = grammarName;
+        this.grammarLocation = grammarLocation;
+        this.ruleName = ruleName;
+        this.importName = importName;
+        this.lineNumber = lineNumber;
+        this.charNumber = charNumber;
+        this.message = message;
+    }
 }

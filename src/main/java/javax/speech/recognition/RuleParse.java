@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.util.Vector;
 
+
 /**
  * Represents the output of a parse of a Result
  * or a string against a RuleGrammar.  The RuleParse
@@ -173,23 +174,23 @@ public class RuleParse extends Rule {
      *
      * @see javax.speech.recognition.RuleParse#getRuleName()
      */
-   protected RuleName ruleName;
+    protected RuleName ruleName;
 
     /**
      * The Rule structure matching the RuleName.
      *
      * @see javax.speech.recognition.RuleParse#getRule()
      */
-   protected Rule rule;
+    protected Rule rule;
 
     /**
      * Empty constructor for RuleParse object with
      * rulename and rule set to null.
      */
-   public RuleParse() {
-      this.setRuleName((RuleName)null);
-      this.setRule((Rule)null);
-   }
+    public RuleParse() {
+        this.setRuleName((RuleName) null);
+        this.setRule((Rule) null);
+    }
 
     /**
      * Construct a RuleParse object for a named rule and
@@ -197,10 +198,10 @@ public class RuleParse extends Rule {
      * The structure of the rule object is described above.
      * The rulename should be a fully-qualified name.
      */
-   public RuleParse(RuleName var1, Rule var2) {
-      this.setRuleName(var1);
-      this.setRule(var2);
-   }
+    public RuleParse(RuleName ruleName, Rule rule) {
+        this.setRuleName(ruleName);
+        this.setRule(rule);
+    }
 
     /**
      * Return a deep copy of this rule.
@@ -208,29 +209,29 @@ public class RuleParse extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
-   public Rule copy() {
-      RuleName name = null;
-      if (this.ruleName != null) {
-         name = (RuleName)this.ruleName.copy();
-      }
+    public Rule copy() {
+        RuleName name = null;
+        if (this.ruleName != null) {
+            name = (RuleName) this.ruleName.copy();
+        }
 
-      return new RuleParse(name, this.rule.copy());
-   }
+        return new RuleParse(name, this.rule.copy());
+    }
 
     /**
      * Return the Rule matched by the RuleName.
      */
-   public Rule getRule() {
-      return this.rule;
-   }
+    public Rule getRule() {
+        return this.rule;
+    }
 
     /**
      * Return the matched RuleName.
      * Should be a fully-qualified rulename.
      */
-   public RuleName getRuleName() {
-      return this.ruleName;
-   }
+    public RuleName getRuleName() {
+        return this.ruleName;
+    }
 
     /**
      * List the tags matched in this parse structure.
@@ -240,59 +241,59 @@ public class RuleParse extends Rule {
      *
      * @see javax.speech.recognition.FinalRuleResult#getTags()
      */
-   public String[] getTags() {
-      Vector tags = new Vector();
-      this.getTags(this.rule, tags);
-      return this.vectorToStringArray(tags);
-   }
+    public String[] getTags() {
+        Vector tags = new Vector();
+        this.getTags(this.rule, tags);
+        return this.vectorToStringArray(tags);
+    }
 
-   private void getTags(Rule rule, Vector tags) {
-      if (!(rule instanceof RuleToken)) {
-         if (rule instanceof RuleParse) {
-            this.getTags(((RuleParse)rule).getRule(), tags);
-         } else if (rule instanceof RuleTag) {
-            RuleTag tag = (RuleTag)rule;
-            this.getTags(tag.getRule(), tags);
-            tags.addElement(tag.tag);
-         } else {
-            int i;
-            if (rule instanceof RuleSequence) {
-               RuleSequence sequence = (RuleSequence)rule;
-
-               for(i = 0; i < sequence.rules.length; ++i) {
-                  this.getTags(sequence.rules[i], tags);
-               }
-
-            } else if (!(rule instanceof RuleAlternatives)) {
-               if (!(rule instanceof RuleName)) {
-                  throw new IllegalArgumentException(rule.getClass().getName() + " is not a legal object in a RuleParse");
-               }
+    private void getTags(Rule rule, Vector tags) {
+        if (!(rule instanceof RuleToken)) {
+            if (rule instanceof RuleParse) {
+                this.getTags(((RuleParse) rule).getRule(), tags);
+            } else if (rule instanceof RuleTag) {
+                RuleTag tag = (RuleTag) rule;
+                this.getTags(tag.getRule(), tags);
+                tags.addElement(tag.tag);
             } else {
-               RuleAlternatives alternatives = (RuleAlternatives)rule;
+                int i;
+                if (rule instanceof RuleSequence) {
+                    RuleSequence sequence = (RuleSequence) rule;
 
-               for(i = 0; i < alternatives.rules.length; ++i) {
-                  this.getTags(alternatives.rules[i], tags);
-               }
+                    for (i = 0; i < sequence.rules.length; ++i) {
+                        this.getTags(sequence.rules[i], tags);
+                    }
 
+                } else if (!(rule instanceof RuleAlternatives)) {
+                    if (!(rule instanceof RuleName)) {
+                        throw new IllegalArgumentException(rule.getClass().getName() + " is not a legal object in a RuleParse");
+                    }
+                } else {
+                    RuleAlternatives alternatives = (RuleAlternatives) rule;
+
+                    for (i = 0; i < alternatives.rules.length; ++i) {
+                        this.getTags(alternatives.rules[i], tags);
+                    }
+
+                }
             }
-         }
-      }
-   }
+        }
+    }
 
     /**
      * Set the Rule object matched to the RuleName.
      */
-   public void setRule(Rule rule) {
-      this.rule = rule;
-   }
+    public void setRule(Rule rule) {
+        this.rule = rule;
+    }
 
     /**
      * Set the matched RuleName.
      * Should be a fully-qualified rulename.
      */
-   public void setRuleName(RuleName ruleName) {
-      this.ruleName = ruleName;
-   }
+    public void setRuleName(RuleName ruleName) {
+        this.ruleName = ruleName;
+    }
 
     /**
      * Convert a RuleParse to a string with a similar style
@@ -319,29 +320,29 @@ public class RuleParse extends Rule {
      * containing only one entry.  There is no explicit representation of this
      * form in JSGF so RuleAlternatives structure is lost when printed.
      */
-   public String toString() {
-      StringBuffer sb = new StringBuffer("(");
-      if (this.ruleName == null) {
-         sb.append("<???>");
-      } else {
-         sb.append(this.ruleName.toString());
-      }
+    public String toString() {
+        StringBuffer sb = new StringBuffer("(");
+        if (this.ruleName == null) {
+            sb.append("<???>");
+        } else {
+            sb.append(this.ruleName.toString());
+        }
 
-      sb.append(" = " + this.rule.toString() + ')');
-      return sb.toString();
-   }
+        sb.append(" = " + this.rule.toString() + ')');
+        return sb.toString();
+    }
 
-   private String[] vectorToStringArray(Vector list) {
-      if (list != null && list.size() != 0) {
-         String[] array = new String[list.size()];
+    private String[] vectorToStringArray(Vector list) {
+        if (list != null && list.size() != 0) {
+            String[] array = new String[list.size()];
 
-         for(int i = 0; i < list.size(); ++i) {
-            array[i] = (String)list.elementAt(i);
-         }
+            for (int i = 0; i < list.size(); ++i) {
+                array[i] = (String) list.elementAt(i);
+            }
 
-         return array;
-      } else {
-         return null;
-      }
-   }
+            return array;
+        } else {
+            return null;
+        }
+    }
 }

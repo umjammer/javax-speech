@@ -122,7 +122,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#removeImport(javax.speech.recognition.RuleName)
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void addImport(RuleName var1);
+    void addImport(RuleName importName);
 
     /**
      * Delete a rule from the grammar.  The deletion only takes effect when
@@ -135,12 +135,11 @@ public interface RuleGrammar extends Grammar {
      * ruleName
      * "), then the brackets are ignored.
      *
-     * @param ruleName
-     *  name of the defined rule to be deleted
+     * @param ruleName name of the defined rule to be deleted
      * @throws java.lang.IllegalArgumentException if ruleName is unknown
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void deleteRule(String ruleName) throws IllegalArgumentException;
+    void deleteRule(String ruleName) throws IllegalArgumentException;
 
     /**
      * Returns a Rule object for a specified rulename.
@@ -165,14 +164,13 @@ public interface RuleGrammar extends Grammar {
      * If fast, read-only access to the rule object is required (e.g. in
      * parsing), then the application may use getRuleInternal.
      *
-     * @param ruleName
-     *  the rulename to be returned
+     * @param ruleName the rulename to be returned
      * @return the definition of ruleName or null
      * @see javax.speech.recognition.RuleGrammar#setRule(java.lang.String, Rule, boolean)
      * @see javax.speech.recognition.RuleGrammar#getRuleInternal(java.lang.String)
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   Rule getRule(String ruleName);
+    Rule getRule(String ruleName);
 
     /**
      * Returns a reference to a recognizer's internal rule object identified
@@ -199,14 +197,14 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#getRule(java.lang.String)
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   Rule getRuleInternal(String var1);
+    Rule getRuleInternal(String ruleName);
 
     /**
      * Returns true if any public rule of a RuleGrammar is enabled.
      *
      * @return true if RuleGrammar is enabled, otherwise false
      */
-   boolean isEnabled();
+    boolean isEnabled();
 
     /**
      * Test whether recognition of a specified rule of this
@@ -219,12 +217,11 @@ public interface RuleGrammar extends Grammar {
      * ruleName
      * "), then the brackets are ignored.
      *
-     * @param ruleName
-     *  name of the rule being tested
+     * @param ruleName name of the rule being tested
      * @return true if ruleName is enabled, otherwise false
      * @throws java.lang.IllegalArgumentException if ruleName is unknown or if it is a non-public rule
      */
-   boolean isEnabled(String ruleName) throws IllegalArgumentException;
+    boolean isEnabled(String ruleName) throws IllegalArgumentException;
 
     /**
      * Test whether a rule is public.  Public rules may be enabled to be
@@ -236,12 +233,11 @@ public interface RuleGrammar extends Grammar {
      * ruleName
      * "), then the brackets are ignored.
      *
-     * @param ruleName
-     *  the rulename being tested
+     * @param ruleName the rulename being tested
      * @return true if ruleName is public
      * @throws java.lang.IllegalArgumentException if ruleName is unknown
      */
-   boolean isRulePublic(String ruleName) throws IllegalArgumentException;
+    boolean isRulePublic(String ruleName) throws IllegalArgumentException;
 
     /**
      * Return a list of the current imports.
@@ -250,7 +246,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#addImport(javax.speech.recognition.RuleName)
      * @see javax.speech.recognition.RuleGrammar#removeImport(javax.speech.recognition.RuleName)
      */
-   RuleName[] listImports();
+    RuleName[] listImports();
 
     /**
      * List the names of all rules defined in this RuleGrammar.
@@ -261,7 +257,7 @@ public interface RuleGrammar extends Grammar {
      * The returned names do not include the
      * symbols.
      */
-   String[] listRuleNames();
+    String[] listRuleNames();
 
     /**
      * Parse a sequence of tokens against a RuleGrammar.
@@ -273,7 +269,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#parse(java.lang.String, java.lang.String)
      * @see javax.speech.recognition.RuleGrammar#parse(FinalRuleResult, int, java.lang.String)
      */
-   RuleParse parse(String var1, String var2) throws GrammarException;
+    RuleParse parse(String text, String ruleName) throws GrammarException;
 
     /**
      * Parse the nth best result of a FinalRuleResult against
@@ -289,9 +285,9 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#parse(java.lang.String, java.lang.String)
      * @see javax.speech.recognition.RuleGrammar#parse(java.lang.String[], java.lang.String)
      */
-   RuleParse parse(FinalRuleResult var1, int var2, String var3) throws GrammarException;
+    RuleParse parse(FinalRuleResult finalRuleResult, int nBest, String ruleName) throws GrammarException;
 
-   RuleParse parse(String[] var1, String var2) throws GrammarException;
+    RuleParse parse(String[] tokens, String ruleName) throws GrammarException;
 
     /**
      * Remove an import.  The name follows the format of addImport.
@@ -305,7 +301,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#addImport(javax.speech.recognition.RuleName)
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void removeImport(RuleName var1) throws IllegalArgumentException;
+    void removeImport(RuleName importName) throws IllegalArgumentException;
 
     /**
      * Resolve a rulename reference within a RuleGrammar to a
@@ -332,13 +328,12 @@ public interface RuleGrammar extends Grammar {
      * the retun value is the same as the input value, otherwise the
      * method returns null.
      *
-     * @param ruleName
-     *  reference to rulename to be resolved
+     * @param ruleName reference to rulename to be resolved
      * @return fully-qualified reference to a rulename
      * @throws javax.speech.recognition.GrammarException if an error is found in the definition of the RuleGrammar
-     *    or if rulename is an ambiguous reference
+     *                                                   or if rulename is an ambiguous reference
      */
-   RuleName resolve(RuleName ruleName) throws GrammarException;
+    RuleName resolve(RuleName ruleName) throws GrammarException;
 
     /**
      * Convert a String in partial Java Speech Grammar Format (JSGF)
@@ -354,7 +349,7 @@ public interface RuleGrammar extends Grammar {
      * @throws javax.speech.recognition.GrammarException if the JSGF text contains any errors
      * @see "http://java.sun.com/products/java-media/speech/"
      */
-   Rule ruleForJSGF(String var1) throws GrammarException;
+    Rule ruleForJSGF(String JSGFText) throws GrammarException;
 
     /**
      * Set the enabled property for a set of public rules of a
@@ -383,14 +378,12 @@ public interface RuleGrammar extends Grammar {
      * ruleName
      * "), then the brackets are ignored.
      *
-     * @param ruleNames
-     *  the set of rulenames to be enabled or disabled
-     * @param enabled
-     *  true to enabled rulenames, false to disable
+     * @param ruleNames the set of rulenames to be enabled or disabled
+     * @param enabled   true to enabled rulenames, false to disable
      * @throws java.lang.IllegalArgumentException if one or more ruleNames is unknown or if any is a non-public rule
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void setEnabled(String ruleNames, boolean enabled) throws IllegalArgumentException;
+    void setEnabled(String ruleNames, boolean enabled) throws IllegalArgumentException;
 
     /**
      * Set the enabled property for a RuleGrammar.
@@ -433,9 +426,9 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#isEnabled()
      * @see javax.speech.recognition.Grammar#setActivationMode(int)
      */
-   void setEnabled(boolean var1);
+    void setEnabled(boolean enabled);
 
-   void setEnabled(String[] var1, boolean var2) throws IllegalArgumentException;
+    void setEnabled(String[] ruleNames, boolean enabled) throws IllegalArgumentException;
 
     /**
      * Set a rule in the grammar either by creating a new rule or
@@ -493,14 +486,11 @@ public interface RuleGrammar extends Grammar {
      * getRule and getRuleInternal methods
      * (although it will contain the same information).
      *
-     * @param ruleName
-     *  unique name of rule being defined (unique for this RuleGrammar)
-     * @param rule
-     *  logical expansion for the rulename
-     * @param isPublic
-     *  true if this rule can be imported into other RuleGrammars or enabled
+     * @param ruleName unique name of rule being defined (unique for this RuleGrammar)
+     * @param rule     logical expansion for the rulename
+     * @param isPublic true if this rule can be imported into other RuleGrammars or enabled
      * @throws java.lang.IllegalArgumentException if rule is not a legal instance of Rule
-     * @throws java.lang.NullPointerException if ruleName or rule are null
+     * @throws java.lang.NullPointerException     if ruleName or rule are null
      * @see javax.speech.recognition.RuleGrammar#ruleForJSGF(java.lang.String)
      * @see javax.speech.recognition.RuleGrammar#getRule(java.lang.String)
      * @see javax.speech.recognition.RuleGrammar#getRuleInternal(java.lang.String)
@@ -512,7 +502,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleTag
      * @see javax.speech.recognition.RuleToken
      */
-   void setRule(String ruleName, Rule rule, boolean isPublic) throws NullPointerException, IllegalArgumentException;
+    void setRule(String ruleName, Rule rule, boolean isPublic) throws NullPointerException, IllegalArgumentException;
 
     /**
      * Return a string containing a specification for this RuleGrammar
@@ -525,5 +515,5 @@ public interface RuleGrammar extends Grammar {
      *
      * @see "http://java.sun.com/products/java-media/speech/"
      */
-   String toString();
+    String toString();
 }

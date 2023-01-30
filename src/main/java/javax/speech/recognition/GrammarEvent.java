@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.SpeechEvent;
 
+
 /**
  * A GrammarEvent is issued to each
  * GrammarListener attached to a Grammar
@@ -16,7 +17,7 @@ public class GrammarEvent extends SpeechEvent {
      * A GRAMMAR_CHANGES_COMMITTED event is issued when a
      * Recognizer completes
      * <A href="Grammar.html#commit">
-     *  committing changes</A>
+     * committing changes</A>
      * to a Grammar.  The event
      * is issued immediately following the CHANGES_COMMITTED
      * event that is issued to RecognizerListeners.  That
@@ -44,7 +45,7 @@ public class GrammarEvent extends SpeechEvent {
      * @see javax.speech.recognition.GrammarEvent#getEnabledChanged()
      * @see javax.speech.recognition.GrammarEvent#getGrammarException()
      */
-   public static final int GRAMMAR_CHANGES_COMMITTED = 200;
+    public static final int GRAMMAR_CHANGES_COMMITTED = 200;
 
     /**
      * A GRAMMAR_ACTIVATED event is issued when a
@@ -66,7 +67,7 @@ public class GrammarEvent extends SpeechEvent {
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_GAINED
      */
-   public static final int GRAMMAR_ACTIVATED = 201;
+    public static final int GRAMMAR_ACTIVATED = 201;
 
     /**
      * A GRAMMAR_DEACTIVATED event is issued when a
@@ -88,7 +89,7 @@ public class GrammarEvent extends SpeechEvent {
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      */
-   public static final int GRAMMAR_DEACTIVATED = 202;
+    public static final int GRAMMAR_DEACTIVATED = 202;
 
     /**
      * True if the grammar's enabled property has changed with a
@@ -97,7 +98,7 @@ public class GrammarEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.GrammarEvent#getEnabledChanged()
      */
-   protected boolean enabledChanged;
+    protected boolean enabledChanged;
 
     /**
      * True if the grammar's definition has changed with a
@@ -106,7 +107,7 @@ public class GrammarEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.GrammarEvent#getDefinitionChanged()
      */
-   protected boolean definitionChanged;
+    protected boolean definitionChanged;
 
     /**
      * Non-null if any error is detected in a grammar's definition while
@@ -115,7 +116,7 @@ public class GrammarEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.GrammarEvent#getGrammarException()
      */
-   protected GrammarException grammarException;
+    protected GrammarException grammarException;
 
     /**
      * Constructs a GrammarEvent event with a specified
@@ -123,17 +124,15 @@ public class GrammarEvent extends SpeechEvent {
      * definitionChanged fields are set to false.
      * The grammarException field is set to null.
      *
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
+     * @param source the object that issued the event
+     * @param id     the identifier for the event type
      */
-   public GrammarEvent(Grammar source, int id) {
-      super(source, id);
-      this.enabledChanged = false;
-      this.definitionChanged = false;
-      this.grammarException = null;
-   }
+    public GrammarEvent(Grammar source, int id) {
+        super(source, id);
+        this.enabledChanged = false;
+        this.definitionChanged = false;
+        this.grammarException = null;
+    }
 
     /**
      * Constructs a GrammarEvent event with a specified
@@ -146,48 +145,43 @@ public class GrammarEvent extends SpeechEvent {
      * grammarException parameter should be non-null
      * only if an error is encountered in the grammar definition.
      *
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param enabledChanged
-     *  true if the grammar's enabled property changed
-     * @param definitionChanged
-     *  true if the grammar's definition has changed
-     * @param grammarException
-     *  non-null if an error is detected in a grammar's definition
+     * @param source            the object that issued the event
+     * @param id                the identifier for the event type
+     * @param enabledChanged    true if the grammar's enabled property changed
+     * @param definitionChanged true if the grammar's definition has changed
+     * @param grammarException  non-null if an error is detected in a grammar's definition
      */
-   public GrammarEvent(Grammar source, int id, boolean enabledChanged, boolean definitionChanged, GrammarException grammarException) {
-      super(source, id);
-      this.enabledChanged = enabledChanged;
-      this.definitionChanged = definitionChanged;
-      this.grammarException = grammarException;
-   }
+    public GrammarEvent(Grammar source, int id, boolean enabledChanged, boolean definitionChanged, GrammarException grammarException) {
+        super(source, id);
+        this.enabledChanged = enabledChanged;
+        this.definitionChanged = definitionChanged;
+        this.grammarException = grammarException;
+    }
 
     /**
      * Returns true for a GRAMMAR_CHANGES_COMMITTED
      * event if the definition of the source Grammar
      * has changed.
      */
-   public boolean getDefinitionChanged() {
-      return this.definitionChanged;
-   }
+    public boolean getDefinitionChanged() {
+        return this.definitionChanged;
+    }
 
     /**
      * Returns true for a GRAMMAR_CHANGES_COMMITTED
      * event if the enabled property of the Grammar changed.
      */
-   public boolean getEnabledChanged() {
-      return this.enabledChanged;
-   }
+    public boolean getEnabledChanged() {
+        return this.enabledChanged;
+    }
 
     /**
      * Returns non-null for a GRAMMAR_CHANGES_COMMITTED
      * event if an error is found in the grammar definition.
      */
-   public GrammarException getGrammarException() {
-      return this.grammarException;
-   }
+    public GrammarException getGrammarException() {
+        return this.grammarException;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -195,30 +189,30 @@ public class GrammarEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 200:
+    public String paramString() {
+        switch (super.id) {
+        case 200:
             StringBuffer sb = new StringBuffer();
             sb.append("GRAMMAR_CHANGES_COMMITTED");
             if (this.enabledChanged) {
-               sb.append(": enabledChanged");
+                sb.append(": enabledChanged");
             }
 
             if (this.definitionChanged) {
-               sb.append(": definitionChanged");
+                sb.append(": definitionChanged");
             }
 
             if (this.grammarException != null) {
-               sb.append(": " + this.grammarException.getMessage());
+                sb.append(": " + this.grammarException.getMessage());
             }
 
             return sb.toString();
-         case 201:
+        case 201:
             return "GRAMMAR_ACTIVATED";
-         case 202:
+        case 202:
             return "GRAMMAR_DEACTIVATED";
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

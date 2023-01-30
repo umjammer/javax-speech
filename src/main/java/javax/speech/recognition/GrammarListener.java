@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.util.EventListener;
 
+
 /**
  * A GrammarListener receives notifications
  * of status change events for a Grammar.
@@ -32,13 +33,13 @@ public interface GrammarListener extends EventListener {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      * @see javax.speech.recognition.Grammar
      */
-   void grammarActivated(GrammarEvent var1);
+    void grammarActivated(GrammarEvent e);
 
     /**
      * A GRAMMAR_CHANGES_COMMITTED event is issued when a
      * Recognizer has
      * <A href="Grammar.html#commit">
-     *  committed changes</A>
+     * committed changes</A>
      * to a Grammar.
      * <p>
      * The GRAMMAR_CHANGES_COMMITTED immediately follows
@@ -53,7 +54,7 @@ public interface GrammarListener extends EventListener {
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.Grammar
      */
-   void grammarChangesCommitted(GrammarEvent var1);
+    void grammarChangesCommitted(GrammarEvent e);
 
     /**
      * A GRAMMAR_DEACTIVATED event is issued when a
@@ -62,5 +63,5 @@ public interface GrammarListener extends EventListener {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      * @see javax.speech.recognition.Grammar
      */
-   void grammarDeactivated(GrammarEvent var1);
+    void grammarDeactivated(GrammarEvent e);
 }

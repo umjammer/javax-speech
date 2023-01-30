@@ -16,6 +16,7 @@ import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 import javax.speech.synthesis.Voice;
 
+
 /**
  * The Central class is the initial access point to all
  * speech input and output capabilities.
@@ -197,13 +198,13 @@ import javax.speech.synthesis.Voice;
  */
 public class Central {
 
-   private static boolean loadedProperties = false;
+    private static boolean loadedProperties = false;
 
-   private static Hashtable centralList = new Hashtable();
+    private static Hashtable centralList = new Hashtable();
 
-   private static Recognizer lastRecognizer = null;
+    private static Recognizer lastRecognizer = null;
 
-   private static Synthesizer lastSynthesizer = null;
+    private static Synthesizer lastSynthesizer = null;
 
     /**
      * List EngineModeDesc objects for available recognition
@@ -222,41 +223,40 @@ public class Central {
      * useful modes first, for example, a mode that is already loaded
      * and running on a desktop.
      *
-     * @param require
-     *  an EngineModeDesc or RecognizerModeDesc
-     *    defining the required features of the mode descriptors in the returned list
+     * @param require an EngineModeDesc or RecognizerModeDesc
+     *                defining the required features of the mode descriptors in the returned list
      * @return list of mode descriptors with the required properties
      * @throws java.lang.SecurityException if the caller does not have permission to use speech recognition
      */
-   public static final synchronized EngineList availableRecognizers(EngineModeDesc require) throws SecurityException {
-      if (require == null) {
-         require = new RecognizerModeDesc();
-      } else if (!(require instanceof RecognizerModeDesc)) {
-         require = new RecognizerModeDesc(((EngineModeDesc)require).getEngineName(), ((EngineModeDesc)require).getModeName(), ((EngineModeDesc)require).getLocale(), ((EngineModeDesc)require).getRunning(), (Boolean)null, (SpeakerProfile[])null);
-      }
+    public static final synchronized EngineList availableRecognizers(EngineModeDesc require) throws SecurityException {
+        if (require == null) {
+            require = new RecognizerModeDesc();
+        } else if (!(require instanceof RecognizerModeDesc)) {
+            require = new RecognizerModeDesc(((EngineModeDesc) require).getEngineName(), ((EngineModeDesc) require).getModeName(), ((EngineModeDesc) require).getLocale(), ((EngineModeDesc) require).getRunning(), (Boolean) null, (SpeakerProfile[]) null);
+        }
 
-      loadProps();
-      EngineList engineList = new EngineList();
-      Enumeration e = centralList.elements();
+        loadProps();
+        EngineList engineList = new EngineList();
+        Enumeration e = centralList.elements();
 
-      while(true) {
-         EngineList el;
-         do {
-            if (!e.hasMoreElements()) {
-               return engineList;
+        while (true) {
+            EngineList el;
+            do {
+                if (!e.hasMoreElements()) {
+                    return engineList;
+                }
+
+                EngineCentral engineCentral = (EngineCentral) e.nextElement();
+                el = engineCentral.createEngineList((EngineModeDesc) require);
+            } while (el == null);
+
+            for (int i = 0; i < el.size(); ++i) {
+                if (el.elementAt(i) instanceof RecognizerModeDesc && el.elementAt(i) instanceof EngineCreate) {
+                    engineList.addElement(el.elementAt(i));
+                }
             }
-
-            EngineCentral engineCentral = (EngineCentral)e.nextElement();
-            el = engineCentral.createEngineList((EngineModeDesc)require);
-         } while(el == null);
-
-         for(int i = 0; i < el.size(); ++i) {
-            if (el.elementAt(i) instanceof RecognizerModeDesc && el.elementAt(i) instanceof EngineCreate) {
-               engineList.addElement(el.elementAt(i));
-            }
-         }
-      }
-   }
+        }
+    }
 
     /**
      * List EngineModeDesc objects for available synthesis
@@ -277,35 +277,35 @@ public class Central {
      *
      * @throws java.lang.SecurityException if the caller does not have permission to use speech engines
      */
-   public static final synchronized EngineList availableSynthesizers(EngineModeDesc require) throws SecurityException {
-      if (require == null) {
-         require = new SynthesizerModeDesc();
-      } else if (!(require instanceof SynthesizerModeDesc)) {
-         require = new SynthesizerModeDesc(((EngineModeDesc)require).getEngineName(), ((EngineModeDesc)require).getModeName(), ((EngineModeDesc)require).getLocale(), ((EngineModeDesc)require).getRunning(), (Voice[])null);
-      }
+    public static final synchronized EngineList availableSynthesizers(EngineModeDesc require) throws SecurityException {
+        if (require == null) {
+            require = new SynthesizerModeDesc();
+        } else if (!(require instanceof SynthesizerModeDesc)) {
+            require = new SynthesizerModeDesc(((EngineModeDesc) require).getEngineName(), ((EngineModeDesc) require).getModeName(), ((EngineModeDesc) require).getLocale(), ((EngineModeDesc) require).getRunning(), (Voice[]) null);
+        }
 
-      loadProps();
-      EngineList engineList = new EngineList();
-      Enumeration e = centralList.elements();
+        loadProps();
+        EngineList engineList = new EngineList();
+        Enumeration e = centralList.elements();
 
-      while(true) {
-         EngineList el;
-         do {
-            if (!e.hasMoreElements()) {
-               return engineList;
+        while (true) {
+            EngineList el;
+            do {
+                if (!e.hasMoreElements()) {
+                    return engineList;
+                }
+
+                EngineCentral central = (EngineCentral) e.nextElement();
+                el = central.createEngineList((EngineModeDesc) require);
+            } while (el == null);
+
+            for (int i = 0; i < el.size(); ++i) {
+                if (el.elementAt(i) instanceof SynthesizerModeDesc && el.elementAt(i) instanceof EngineCreate) {
+                    engineList.addElement(el.elementAt(i));
+                }
             }
-
-            EngineCentral central = (EngineCentral)e.nextElement();
-            el = central.createEngineList((EngineModeDesc)require);
-         } while(el == null);
-
-         for(int i = 0; i < el.size(); ++i) {
-            if (el.elementAt(i) instanceof SynthesizerModeDesc && el.elementAt(i) instanceof EngineCreate) {
-               engineList.addElement(el.elementAt(i));
-            }
-         }
-      }
-   }
+        }
+    }
 
     /**
      * Create a Recognizer with specified required properties.
@@ -325,76 +325,75 @@ public class Central {
      * <A href="#creatingEngines">creating a Recognizer</A>
      * are described above in detail.
      *
-     * @param require
-     *  required engine properties or null for
-     *    default engine selection
+     * @param require required engine properties or null for
+     *                default engine selection
      * @return a recognizer matching the required properties or null
-     *    if none is available
+     * if none is available
      * @throws java.lang.IllegalArgumentException if the properties of the EngineModeDesc do not refer to a known
-     *    engine or engine mode.
-     * @throws javax.speech.EngineException if the engine defined by this RecognizerModeDesc could not be properly created.
-     * @throws java.lang.SecurityException if the caller does not have createRecognizer permission
+     *                                            engine or engine mode.
+     * @throws javax.speech.EngineException       if the engine defined by this RecognizerModeDesc could not be properly created.
+     * @throws java.lang.SecurityException        if the caller does not have createRecognizer permission
      * @see javax.speech.Central#availableRecognizers(javax.speech.EngineModeDesc)
      * @see javax.speech.recognition.RecognizerModeDesc
      */
-   public static final synchronized Recognizer createRecognizer(EngineModeDesc require) throws IllegalArgumentException, EngineException, SecurityException {
-      if (require == null) {
-         require = new RecognizerModeDesc();
-      }
+    public static final synchronized Recognizer createRecognizer(EngineModeDesc require) throws IllegalArgumentException, EngineException, SecurityException {
+        if (require == null) {
+            require = new RecognizerModeDesc();
+        }
 
-      if (require instanceof EngineCreate) {
-         EngineCreate engineCreate = (EngineCreate)require;
-         return (Recognizer)engineCreate.createEngine();
-      } else {
-         boolean useDefault = false;
-         String language = Locale.getDefault().getLanguage();
-         String country = Locale.getDefault().getCountry();
-         if (((EngineModeDesc)require).getLocale() == null) {
-            ((EngineModeDesc)require).setLocale(new Locale(language, ""));
-            useDefault = true;
-         }
-
-         if (lastRecognizer != null && lastRecognizer.getEngineModeDesc().match((EngineModeDesc)require)) {
-            if (useDefault) {
-               ((EngineModeDesc)require).setLocale((Locale)null);
+        if (require instanceof EngineCreate) {
+            EngineCreate engineCreate = (EngineCreate) require;
+            return (Recognizer) engineCreate.createEngine();
+        } else {
+            boolean useDefault = false;
+            String language = Locale.getDefault().getLanguage();
+            String country = Locale.getDefault().getCountry();
+            if (((EngineModeDesc) require).getLocale() == null) {
+                ((EngineModeDesc) require).setLocale(new Locale(language, ""));
+                useDefault = true;
             }
 
-            return lastRecognizer;
-         } else {
-            EngineList engineList = availableRecognizers((EngineModeDesc)require);
-            if (engineList.isEmpty()) {
-               return null;
+            if (lastRecognizer != null && lastRecognizer.getEngineModeDesc().match((EngineModeDesc) require)) {
+                if (useDefault) {
+                    ((EngineModeDesc) require).setLocale((Locale) null);
+                }
+
+                return lastRecognizer;
             } else {
-               if (useDefault) {
-                  ((EngineModeDesc)require).setLocale((Locale)null);
-               }
+                EngineList engineList = availableRecognizers((EngineModeDesc) require);
+                if (engineList.isEmpty()) {
+                    return null;
+                } else {
+                    if (useDefault) {
+                        ((EngineModeDesc) require).setLocale((Locale) null);
+                    }
 
-               if (useDefault) {
-                  engineList.orderByMatch(new EngineModeDesc(new Locale(language, country)));
-               }
+                    if (useDefault) {
+                        engineList.orderByMatch(new EngineModeDesc(new Locale(language, country)));
+                    }
 
-               if (((EngineModeDesc)require).getRunning() == null) {
-                  EngineModeDesc engineModeDesc = new EngineModeDesc();
-                  engineModeDesc.setRunning(Boolean.TRUE);
-                  engineList.orderByMatch(engineModeDesc);
-               }
+                    if (((EngineModeDesc) require).getRunning() == null) {
+                        EngineModeDesc engineModeDesc = new EngineModeDesc();
+                        engineModeDesc.setRunning(Boolean.TRUE);
+                        engineList.orderByMatch(engineModeDesc);
+                    }
 
-               for(int i = 0; i < engineList.size(); ++i) {
-                  try {
-                     EngineCreate engineCreate = (EngineCreate)engineList.elementAt(i);
-                     Recognizer recognizer = (Recognizer)engineCreate.createEngine();
-                     lastRecognizer = recognizer;
-                     return recognizer;
-                  } catch (IllegalArgumentException e) {
-                  } catch (EngineException e) {
-                  }
-               }
+                    for (int i = 0; i < engineList.size(); ++i) {
+                        try {
+                            EngineCreate engineCreate = (EngineCreate) engineList.elementAt(i);
+                            Recognizer recognizer = (Recognizer) engineCreate.createEngine();
+                            lastRecognizer = recognizer;
+                            return recognizer;
+                        } catch (IllegalArgumentException e) {
+                        } catch (EngineException e) {
+                        }
+                    }
 
-               return null;
+                    return null;
+                }
             }
-         }
-      }
-   }
+        }
+    }
 
     /**
      * Create a Synthesizer with specified required properties.
@@ -414,112 +413,111 @@ public class Central {
      * <A href="#creatingEngines">creating a Synthesizer</A>
      * are described above in detail.
      *
-     * @param require
-     *  required engine properties or null for
-     *    default engine selection
+     * @param require required engine properties or null for
+     *                default engine selection
      * @return a Synthesizer matching the required properties or null
-     *    if none is available
+     * if none is available
      * @throws java.lang.IllegalArgumentException if the properties of the EngineModeDesc do not refer to a known
-     *    engine or engine mode.
-     * @throws javax.speech.EngineException if the engine defined by this SynthesizerModeDesc could not be properly created.
+     *                                            engine or engine mode.
+     * @throws javax.speech.EngineException       if the engine defined by this SynthesizerModeDesc could not be properly created.
      * @see javax.speech.Central#availableSynthesizers(javax.speech.EngineModeDesc)
      * @see javax.speech.synthesis.SynthesizerModeDesc
      */
-   public static final synchronized Synthesizer createSynthesizer(EngineModeDesc require) throws IllegalArgumentException, EngineException {
-      if (require == null) {
-         require = new SynthesizerModeDesc();
-      }
+    public static final synchronized Synthesizer createSynthesizer(EngineModeDesc require) throws IllegalArgumentException, EngineException {
+        if (require == null) {
+            require = new SynthesizerModeDesc();
+        }
 
-      if (require instanceof EngineCreate) {
-         EngineCreate engineCreate = (EngineCreate)require;
-         return (Synthesizer)engineCreate.createEngine();
-      } else {
-         boolean useDefault = false;
-         String language = Locale.getDefault().getLanguage();
-         String country = Locale.getDefault().getCountry();
-         if (((EngineModeDesc)require).getLocale() == null) {
-            ((EngineModeDesc)require).setLocale(new Locale(language, ""));
-            useDefault = true;
-         }
-
-         if (lastSynthesizer != null && lastSynthesizer.getEngineModeDesc().match((EngineModeDesc)require)) {
-            if (useDefault) {
-               ((EngineModeDesc)require).setLocale((Locale)null);
+        if (require instanceof EngineCreate) {
+            EngineCreate engineCreate = (EngineCreate) require;
+            return (Synthesizer) engineCreate.createEngine();
+        } else {
+            boolean useDefault = false;
+            String language = Locale.getDefault().getLanguage();
+            String country = Locale.getDefault().getCountry();
+            if (((EngineModeDesc) require).getLocale() == null) {
+                ((EngineModeDesc) require).setLocale(new Locale(language, ""));
+                useDefault = true;
             }
 
-            return lastSynthesizer;
-         } else {
-            EngineList engineList = availableSynthesizers((EngineModeDesc)require);
-            if (engineList.isEmpty()) {
-               return null;
+            if (lastSynthesizer != null && lastSynthesizer.getEngineModeDesc().match((EngineModeDesc) require)) {
+                if (useDefault) {
+                    ((EngineModeDesc) require).setLocale((Locale) null);
+                }
+
+                return lastSynthesizer;
             } else {
-               if (useDefault) {
-                  ((EngineModeDesc)require).setLocale((Locale)null);
-               }
+                EngineList engineList = availableSynthesizers((EngineModeDesc) require);
+                if (engineList.isEmpty()) {
+                    return null;
+                } else {
+                    if (useDefault) {
+                        ((EngineModeDesc) require).setLocale((Locale) null);
+                    }
 
-               if (useDefault) {
-                  engineList.orderByMatch(new EngineModeDesc(new Locale(language, country)));
-               }
+                    if (useDefault) {
+                        engineList.orderByMatch(new EngineModeDesc(new Locale(language, country)));
+                    }
 
-               if (((EngineModeDesc)require).getRunning() == null) {
-                  EngineModeDesc engineModeDesc = new EngineModeDesc();
-                  engineModeDesc.setRunning(Boolean.TRUE);
-                  engineList.orderByMatch(engineModeDesc);
-               }
+                    if (((EngineModeDesc) require).getRunning() == null) {
+                        EngineModeDesc engineModeDesc = new EngineModeDesc();
+                        engineModeDesc.setRunning(Boolean.TRUE);
+                        engineList.orderByMatch(engineModeDesc);
+                    }
 
-               for(int i = 0; i < engineList.size(); ++i) {
-                  try {
-                     EngineCreate engineCreate = (EngineCreate)engineList.elementAt(i);
-                     Synthesizer synthesizer = (Synthesizer)engineCreate.createEngine();
-                     lastSynthesizer = synthesizer;
-                     return synthesizer;
-                  } catch (IllegalArgumentException e) {
-                  } catch (EngineException e) {
-                  }
-               }
+                    for (int i = 0; i < engineList.size(); ++i) {
+                        try {
+                            EngineCreate engineCreate = (EngineCreate) engineList.elementAt(i);
+                            Synthesizer synthesizer = (Synthesizer) engineCreate.createEngine();
+                            lastSynthesizer = synthesizer;
+                            return synthesizer;
+                        } catch (IllegalArgumentException e) {
+                        } catch (EngineException e) {
+                        }
+                    }
 
-               return null;
+                    return null;
+                }
             }
-         }
-      }
-   }
+        }
+    }
 
-   private static final synchronized void loadProps() {
-      if (!loadedProperties) {
-         loadedProperties = true;
-         String FS = File.separator;
-         String[] paths = new String[]{System.getProperty("user.home") + FS + "speech.properties", System.getProperty("java.home") + FS + "lib" + FS + "speech.properties"};
+    private static final synchronized void loadProps() {
+        if (!loadedProperties) {
+            loadedProperties = true;
+            String FS = File.separator;
+            String[] paths = new String[] {System.getProperty("user.home") + FS + "speech.properties", System.getProperty("java.home") + FS + "lib" + FS + "speech.properties"};
 
-         for(int i = 0; i < paths.length; ++i) {
-            String path = paths[i];
-            Properties props = new Properties();
-            File file = new File(path);
+            for (int i = 0; i < paths.length; ++i) {
+                String path = paths[i];
+                Properties props = new Properties();
+                File file = new File(path);
 
-            try {
-               FileInputStream dis = new FileInputStream(file);
-               props.load(new BufferedInputStream(dis));
-               dis.close();
-            } catch (FileNotFoundException e) {
-            } catch (IOException e) {
+                try {
+                    FileInputStream dis = new FileInputStream(file);
+                    props.load(new BufferedInputStream(dis));
+                    dis.close();
+                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
+                }
+
+                Enumeration names = props.propertyNames();
+
+                while (names.hasMoreElements()) {
+                    String name = (String) names.nextElement();
+                    if (name.endsWith("EngineCentral")) {
+                        String value = props.getProperty(name);
+
+                        try {
+                            registerEngineCentral(value);
+                        } catch (EngineException e) {
+                        }
+                    }
+                }
             }
 
-            Enumeration names = props.propertyNames();
-
-            while(names.hasMoreElements()) {
-               String name = (String)names.nextElement();
-               if (name.endsWith("EngineCentral")) {
-                  String value = props.getProperty(name);
-
-                  try {
-                     registerEngineCentral(value);
-                  } catch (EngineException e) {
-                  }
-               }
-            }
-         }
-
-      }
-   }
+        }
+    }
 
     /**
      * Register a speech engine with the Central class
@@ -532,27 +530,26 @@ public class Central {
      * The class identified by className must have an
      * empty constructor.
      *
-     * @param className
-     *  name of a class that implements the EngineCentral
-     *    interface and provides access to an engine implementation
+     * @param className name of a class that implements the EngineCentral
+     *                  interface and provides access to an engine implementation
      * @throws javax.speech.EngineException if className is not a legal class or it does not
-     *    implement the EngineCentral interface
+     *                                      implement the EngineCentral interface
      */
-   public static final synchronized void registerEngineCentral(String className) throws EngineException {
-      if (!centralList.containsKey(className)) {
-         Class clazz;
-         try {
-            clazz = Class.forName(className);
-         } catch (ClassNotFoundException var4) {
-            throw new EngineException("javax.speech.Central: no class found for " + className);
-         }
+    public static final synchronized void registerEngineCentral(String className) throws EngineException {
+        if (!centralList.containsKey(className)) {
+            Class clazz;
+            try {
+                clazz = Class.forName(className);
+            } catch (ClassNotFoundException e) {
+                throw new EngineException("javax.speech.Central: no class found for " + className);
+            }
 
-         try {
-            EngineCentral engineCentral = (EngineCentral)clazz.newInstance();
-            centralList.put(className, engineCentral);
-         } catch (Exception e) {
-            throw new EngineException("javax.speech.Central: error creating EngineCentral from " + className);
-         }
-      }
-   }
+            try {
+                EngineCentral engineCentral = (EngineCentral) clazz.newInstance();
+                centralList.put(className, engineCentral);
+            } catch (Exception e) {
+                throw new EngineException("javax.speech.Central: error creating EngineCentral from " + className);
+            }
+        }
+    }
 }

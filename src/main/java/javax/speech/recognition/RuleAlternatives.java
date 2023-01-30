@@ -23,7 +23,7 @@ public class RuleAlternatives extends Rule {
     /**
      * Set of alternative Rule objects.
      */
-   protected Rule[] rules;
+    protected Rule[] rules;
 
     /**
      * Array of weights for each alternative Rule
@@ -31,7 +31,7 @@ public class RuleAlternatives extends Rule {
      * If non-null, the weights array must have an
      * identical length to the rules array.
      */
-   protected float[] weights;
+    protected float[] weights;
 
     /**
      * Empty constructor creates zero-length list of alternatives.
@@ -43,16 +43,16 @@ public class RuleAlternatives extends Rule {
      * VOID
      * (i.e. unspeakable).
      */
-   public RuleAlternatives() {
-      this.setRules((Rule[])null);
-      this.weights = null;
-   }
+    public RuleAlternatives() {
+        this.setRules((Rule[]) null);
+        this.weights = null;
+    }
 
-   public RuleAlternatives(Rule rule) {
-      Rule[] rules = new Rule[]{rule};
-      this.setRules(rules);
-      this.weights = null;
-   }
+    public RuleAlternatives(Rule rule) {
+        Rule[] rules = new Rule[] {rule};
+        this.setRules(rules);
+        this.weights = null;
+    }
 
     /**
      * Constructor for RuleAlternatives that produces a
@@ -68,67 +68,65 @@ public class RuleAlternatives extends Rule {
      * VOID
      * (i.e. unspeakable).
      *
-     * @param tokens
-     *  a set of alternative tokens
+     * @param tokens a set of alternative tokens
      * @see javax.speech.recognition.RuleName#VOID
      */
-   public RuleAlternatives(String[] tokens) {
-      if (tokens == null) {
-         tokens = new String[0];
-         this.weights = null;
-      } else {
-         this.rules = new Rule[tokens.length];
+    public RuleAlternatives(String[] tokens) {
+        if (tokens == null) {
+            tokens = new String[0];
+            this.weights = null;
+        } else {
+            this.rules = new Rule[tokens.length];
 
-         for(int i = 0; i < tokens.length; ++i) {
-            this.rules[i] = new RuleToken(tokens[i]);
-         }
+            for (int i = 0; i < tokens.length; ++i) {
+                this.rules[i] = new RuleToken(tokens[i]);
+            }
 
-         this.weights = null;
-      }
-   }
+            this.weights = null;
+        }
+    }
 
     /**
      * Construct a RuleAlternatives object containing a single sub-rule.
      * The weights array is set to null.
      */
-   public RuleAlternatives(Rule[] var1) {
-      this.setRules(var1);
-      this.weights = null;
-   }
+    public RuleAlternatives(Rule[] rules) {
+        this.setRules(rules);
+        this.weights = null;
+    }
 
     /**
      * Construct a RuleAlternatives object with an array of
      * sub-rules and an array of weights.  The rules array and weights
      * array may be null.  If the weights array is non-null,
      * it must have identical length to the rules array.
-     * @param rules
-     *  the set of alternative sub-rules
-     * @param set
-     *  of weights for each rule or null
+     *
+     * @param rules the set of alternative sub-rules
+     * @param set   of weights for each rule or null
      * @throws java.lang.IllegalArgumentException Error in length of array, or the weight values (see setWeights).
      * @see javax.speech.recognition.RuleAlternatives#setWeights(float[])
      */
-   public RuleAlternatives(Rule[] rules, float[] set) throws IllegalArgumentException {
-      this.setRules(rules);
-      this.setWeights(set);
-   }
+    public RuleAlternatives(Rule[] rules, float[] set) throws IllegalArgumentException {
+        this.setRules(rules);
+        this.setWeights(set);
+    }
 
     /**
      * Append a single rule to the set of alternatives.
      * The weights are set to null.
      */
-   public void append(Rule rule) {
-      if (rule == null) {
-         throw new NullPointerException("null rule to append");
-      } else {
-         int length = this.rules.length;
-         Rule[] nextRule = new Rule[length + 1];
-         System.arraycopy(this.rules, 0, nextRule, 0, length);
-         nextRule[length] = rule;
-         this.rules = nextRule;
-         this.weights = null;
-      }
-   }
+    public void append(Rule rule) {
+        if (rule == null) {
+            throw new NullPointerException("null rule to append");
+        } else {
+            int length = this.rules.length;
+            Rule[] nextRule = new Rule[length + 1];
+            System.arraycopy(this.rules, 0, nextRule, 0, length);
+            nextRule[length] = rule;
+            this.rules = nextRule;
+            this.weights = null;
+        }
+    }
 
     /**
      * Return a deep copy of this rule.
@@ -136,40 +134,40 @@ public class RuleAlternatives extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
-   public Rule copy() {
-      float[] weights = null;
-      if (this.weights != null) {
-         weights = new float[this.weights.length];
-         System.arraycopy(this.weights, 0, weights, 0, this.weights.length);
-      }
+    public Rule copy() {
+        float[] weights = null;
+        if (this.weights != null) {
+            weights = new float[this.weights.length];
+            System.arraycopy(this.weights, 0, weights, 0, this.weights.length);
+        }
 
-      Rule[] rules = null;
-      if (this.rules != null) {
-         rules = new Rule[this.rules.length];
+        Rule[] rules = null;
+        if (this.rules != null) {
+            rules = new Rule[this.rules.length];
 
-         for(int i = 0; i < this.rules.length; ++i) {
-            rules[i] = this.rules[i].copy();
-         }
-      }
+            for (int i = 0; i < this.rules.length; ++i) {
+                rules[i] = this.rules[i].copy();
+            }
+        }
 
-      return new RuleAlternatives(rules, weights);
-   }
+        return new RuleAlternatives(rules, weights);
+    }
 
     /**
      * Return the array of alternative sub-rules.
      */
-   public Rule[] getRules() {
-      return this.rules;
-   }
+    public Rule[] getRules() {
+        return this.rules;
+    }
 
     /**
      * Return the array of weights.  May return null.
      * If non-null, the length of the weights array is guaranteed to be
      * the same length as the array of rules.
      */
-   public float[] getWeights() {
-      return this.weights;
-   }
+    public float[] getWeights() {
+        return this.weights;
+    }
 
     /**
      * Set the array of alternative sub-rules.
@@ -178,19 +176,20 @@ public class RuleAlternatives extends Rule {
      * not equal to the number of weights, the weights are set to null.
      * To change the number of rules and weights, call setRules before
      * setWeights.
+     *
      * @see javax.speech.recognition.RuleAlternatives#setWeights(float[])
      */
-   public void setRules(Rule[] rules) {
-      if (rules == null) {
-         rules = new Rule[0];
-      }
+    public void setRules(Rule[] rules) {
+        if (rules == null) {
+            rules = new Rule[0];
+        }
 
-      if (this.weights != null && rules.length != this.weights.length) {
-         this.weights = null;
-      }
+        if (this.weights != null && rules.length != this.weights.length) {
+            this.weights = null;
+        }
 
-      this.rules = rules;
-   }
+        this.rules = rules;
+    }
 
     /**
      * Set the array of weights for the rules.
@@ -208,68 +207,68 @@ public class RuleAlternatives extends Rule {
      * @throws java.lang.IllegalArgumentException Error in length of array or value of weights
      * @see javax.speech.recognition.RuleAlternatives#setRules(javax.speech.recognition.Rule[])
      */
-   public void setWeights(float[] weights) throws IllegalArgumentException {
-      if (weights != null && weights.length != 0) {
-         if (weights.length != this.rules.length) {
-            throw new IllegalArgumentException("weights/rules array length mismatch");
-         } else {
-            float weight = 0.0F;
-
-            for(int i = 0; i < weights.length; ++i) {
-               if (Float.isNaN(weights[i])) {
-                  throw new IllegalArgumentException("illegal weight value: NaN");
-               }
-
-               if (Float.isInfinite(weights[i])) {
-                  throw new IllegalArgumentException("illegal weight value: infinite");
-               }
-
-               if ((double)weights[i] < 0.0) {
-                  throw new IllegalArgumentException("illegal weight value: negative");
-               }
-
-               weight += weights[i];
-            }
-
-            if ((double)weight <= 0.0) {
-               throw new IllegalArgumentException("illegal weight values: all zero");
+    public void setWeights(float[] weights) throws IllegalArgumentException {
+        if (weights != null && weights.length != 0) {
+            if (weights.length != this.rules.length) {
+                throw new IllegalArgumentException("weights/rules array length mismatch");
             } else {
-               this.weights = weights;
+                float weight = 0.0F;
+
+                for (int i = 0; i < weights.length; ++i) {
+                    if (Float.isNaN(weights[i])) {
+                        throw new IllegalArgumentException("illegal weight value: NaN");
+                    }
+
+                    if (Float.isInfinite(weights[i])) {
+                        throw new IllegalArgumentException("illegal weight value: infinite");
+                    }
+
+                    if ((double) weights[i] < 0.0) {
+                        throw new IllegalArgumentException("illegal weight value: negative");
+                    }
+
+                    weight += weights[i];
+                }
+
+                if ((double) weight <= 0.0) {
+                    throw new IllegalArgumentException("illegal weight values: all zero");
+                } else {
+                    this.weights = weights;
+                }
             }
-         }
-      } else {
-         this.weights = null;
-      }
-   }
+        } else {
+            this.weights = null;
+        }
+    }
 
     /**
      * Return a String representing this object as partial
      * Java Speech Grammar Format.  The string is a legal right hand side
      * of a rule definition.
      */
-   public String toString() {
-      if (this.rules != null && this.rules.length != 0) {
-         StringBuffer sb = new StringBuffer();
+    public String toString() {
+        if (this.rules != null && this.rules.length != 0) {
+            StringBuffer sb = new StringBuffer();
 
-         for(int i = 0; i < this.rules.length; ++i) {
-            if (i > 0) {
-               sb.append(" | ");
+            for (int i = 0; i < this.rules.length; ++i) {
+                if (i > 0) {
+                    sb.append(" | ");
+                }
+
+                if (this.weights != null) {
+                    sb.append("/" + this.weights[i] + "/ ");
+                }
+
+                if (this.rules[i] instanceof RuleAlternatives) {
+                    sb.append("( " + this.rules[i].toString() + " )");
+                } else {
+                    sb.append(this.rules[i].toString());
+                }
             }
 
-            if (this.weights != null) {
-               sb.append("/" + this.weights[i] + "/ ");
-            }
-
-            if (this.rules[i] instanceof RuleAlternatives) {
-               sb.append("( " + this.rules[i].toString() + " )");
-            } else {
-               sb.append(this.rules[i].toString());
-            }
-         }
-
-         return sb.toString();
-      } else {
-         return "<VOID>";
-      }
-   }
+            return sb.toString();
+        } else {
+            return "<VOID>";
+        }
+    }
 }

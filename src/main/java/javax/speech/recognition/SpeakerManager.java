@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.speech.VendorDataException;
 
+
 /**
  * Provides control of SpeakerProfiles for a Recognizer.
  * The SpeakerManager for a Recognizer
@@ -76,7 +77,7 @@ public interface SpeakerManager {
      *
      * @throws java.lang.IllegalArgumentException if the speaker is not known
      */
-   void deleteSpeaker(SpeakerProfile var1) throws IllegalArgumentException;
+    void deleteSpeaker(SpeakerProfile speaker) throws IllegalArgumentException;
 
     /**
      * Obtain a component that provides the engine's user interface
@@ -89,19 +90,19 @@ public interface SpeakerManager {
      * may allow the management of properties that are not otherwise
      * accessible through the standard API.
      */
-   Component getControlComponent();
+    Component getControlComponent();
 
     /**
      * Get the current SpeakerProfile.
      * Returns null if there is no current speaker.
      */
-   SpeakerProfile getCurrentSpeaker();
+    SpeakerProfile getCurrentSpeaker();
 
     /**
      * List the SpeakerProfiles known to this Recognizer.
      * Returns null if there is no known speaker.
      */
-   SpeakerProfile[] listKnownSpeakers();
+    SpeakerProfile[] listKnownSpeakers();
 
     /**
      * Create a new SpeakerProfile for this Recognizer.
@@ -124,7 +125,7 @@ public interface SpeakerManager {
      *
      * @throws java.lang.IllegalArgumentException if the speaker id is already being used
      */
-   SpeakerProfile newSpeakerProfile(SpeakerProfile var1) throws IllegalArgumentException;
+    SpeakerProfile newSpeakerProfile(SpeakerProfile profile) throws IllegalArgumentException;
 
     /**
      * Read a SpeakerProfile from a stream and return a
@@ -144,10 +145,10 @@ public interface SpeakerManager {
      * Note: The speaker profile is potentially large (up to several MByte).
      *
      * @throws javax.speech.VendorDataException if the data format is not known to the recognizer
-     * @throws java.io.IOException if an I/O error occurs
+     * @throws java.io.IOException              if an I/O error occurs
      * @see SpeakerManager#writeVendorSpeakerProfile(java.io.OutputStream, SpeakerProfile)
      */
-   SpeakerProfile readVendorSpeakerProfile(InputStream var1) throws IOException, VendorDataException;
+    SpeakerProfile readVendorSpeakerProfile(InputStream in) throws IOException, VendorDataException;
 
     /**
      * Restore the speaker profile for the current speaker to the last
@@ -161,7 +162,7 @@ public interface SpeakerManager {
      * @see javax.speech.recognition.SpeakerManager#saveCurrentSpeakerProfile()
      * @see javax.speech.recognition.SpeakerManager#readVendorSpeakerProfile(java.io.InputStream)
      */
-   void revertCurrentSpeaker();
+    void revertCurrentSpeaker();
 
     /**
      * Save the speaker profile for the current speaker.
@@ -174,7 +175,7 @@ public interface SpeakerManager {
      * @see javax.speech.recognition.SpeakerManager#revertCurrentSpeaker()
      * @see SpeakerManager#writeVendorSpeakerProfile(java.io.OutputStream, SpeakerProfile)
      */
-   void saveCurrentSpeakerProfile();
+    void saveCurrentSpeakerProfile();
 
     /**
      * Set the current SpeakerProfile.  The SpeakerProfile
@@ -184,9 +185,10 @@ public interface SpeakerManager {
      * Because a SpeakerProfile may store preferred user
      * settings for the RecognizerProperties, those properties
      * may change as a result of this call.
+     *
      * @throws java.lang.IllegalArgumentException if the speaker is not known
      */
-   void setCurrentSpeaker(SpeakerProfile var1) throws IllegalArgumentException;
+    void setCurrentSpeaker(SpeakerProfile speaker) throws IllegalArgumentException;
 
     /**
      * Write the speaker profile of the named speaker to a stream.
@@ -204,5 +206,5 @@ public interface SpeakerManager {
      * @throws java.io.IOException if an I/O error occurs
      * @see javax.speech.recognition.SpeakerManager#readVendorSpeakerProfile(java.io.InputStream)
      */
-   void writeVendorSpeakerProfile(OutputStream var1, SpeakerProfile var2) throws IOException;
+    void writeVendorSpeakerProfile(OutputStream out, SpeakerProfile speaker) throws IOException;
 }

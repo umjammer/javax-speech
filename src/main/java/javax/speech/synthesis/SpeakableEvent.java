@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import javax.speech.SpeechEvent;
 
+
 /**
  * Event issued during spoken output of text.
  * <p>
@@ -63,7 +64,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      * @see javax.speech.Engine#PAUSED
      */
-   public static final int TOP_OF_QUEUE = 601;
+    public static final int TOP_OF_QUEUE = 601;
 
     /**
      * Issued at the start of audio output of an item on the speech output queue.
@@ -73,7 +74,7 @@ public class SpeakableEvent extends SpeechEvent {
      *
      * @see javax.speech.synthesis.SpeakableListener#speakableStarted(javax.speech.synthesis.SpeakableEvent)
      */
-   public static final int SPEAKABLE_STARTED = 602;
+    public static final int SPEAKABLE_STARTED = 602;
 
     /**
      * Issued with the completion of audio output of an object on
@@ -89,7 +90,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      */
-   public static final int SPEAKABLE_ENDED = 603;
+    public static final int SPEAKABLE_ENDED = 603;
 
     /**
      * Issued when audio output of the item at the top of a
@@ -101,7 +102,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableListener#speakablePaused(javax.speech.synthesis.SpeakableEvent)
      * @see javax.speech.EngineEvent#ENGINE_PAUSED
      */
-   public static final int SPEAKABLE_PAUSED = 604;
+    public static final int SPEAKABLE_PAUSED = 604;
 
     /**
      * Issued when audio output of the item at the top of a
@@ -113,7 +114,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableListener#speakableResumed(javax.speech.synthesis.SpeakableEvent)
      * @see javax.speech.EngineEvent#ENGINE_RESUMED
      */
-   public static final int SPEAKABLE_RESUMED = 605;
+    public static final int SPEAKABLE_RESUMED = 605;
 
     /**
      * Issued when an item on the synthesizer's speech output queue is
@@ -137,7 +138,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      */
-   public static final int SPEAKABLE_CANCELLED = 606;
+    public static final int SPEAKABLE_CANCELLED = 606;
 
     /**
      * Issued when a synthesis engine starts the audio output of
@@ -150,7 +151,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#getWordStart()
      * @see javax.speech.synthesis.SpeakableEvent#getWordEnd()
      */
-   public static final int WORD_STARTED = 607;
+    public static final int WORD_STARTED = 607;
 
     /**
      * Issued when audio output reaches a marker
@@ -167,7 +168,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_CLOSE
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_EMPTY
      */
-   public static final int MARKER_REACHED = 608;
+    public static final int MARKER_REACHED = 608;
 
     /**
      * The type of MARKER_REACHED event issued at the openning
@@ -189,7 +190,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      * @see javax.speech.synthesis.SpeakableEvent#getMarkerType()
      */
-   public static final int ELEMENT_OPEN = 620;
+    public static final int ELEMENT_OPEN = 620;
 
     /**
      * The type of MARKER_REACHED event issued at the close
@@ -211,7 +212,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      * @see javax.speech.synthesis.SpeakableEvent#getMarkerType()
      */
-   public static final int ELEMENT_CLOSE = 621;
+    public static final int ELEMENT_CLOSE = 621;
 
     /**
      * The type of MARKER_REACHED event issued when an empty
@@ -233,12 +234,12 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      * @see javax.speech.synthesis.SpeakableEvent#getMarkerType()
      */
-   public static final int ELEMENT_EMPTY = 622;
+    public static final int ELEMENT_EMPTY = 622;
 
     /**
      * The text associated with the SpeakableEvent.
      */
-   protected String text;
+    protected String text;
 
     /**
      * Marker type for a MARKER_REACHED event.
@@ -248,7 +249,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_CLOSE
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_EMPTY
      */
-   protected int markerType;
+    protected int markerType;
 
     /**
      * Index of first character of of word in JSML text for a WORD_STARTED event.
@@ -256,7 +257,7 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#WORD_STARTED
      * @see javax.speech.synthesis.SpeakableEvent#getWordStart()
      */
-   protected int wordStart;
+    protected int wordStart;
 
     /**
      * Index of last character of of word in JSML text for a WORD_STARTED event.
@@ -264,42 +265,42 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#WORD_STARTED
      * @see javax.speech.synthesis.SpeakableEvent#getWordEnd()
      */
-   protected int wordEnd;
+    protected int wordEnd;
 
     /**
      * Constructs an SpeakableEvent with a specified source and identifier.
      */
-   public SpeakableEvent(Object var1, int var2) {
-      super(var1, var2);
-      this.text = null;
-      this.markerType = -1;
-      this.wordStart = -1;
-      this.wordEnd = -1;
-   }
+    public SpeakableEvent(Object source, int id) {
+        super(source, id);
+        this.text = null;
+        this.markerType = -1;
+        this.wordStart = -1;
+        this.wordEnd = -1;
+    }
 
     /**
      * Constructs an SpeakableEvent with a specified source, identifier,
      * text and marker type (used for a MARKER_REACHED event).
      */
-   public SpeakableEvent(Object var1, int var2, String var3, int var4) {
-      super(var1, var2);
-      this.text = var3;
-      this.markerType = var4;
-      this.wordStart = -1;
-      this.wordEnd = -1;
-   }
+    public SpeakableEvent(Object source, int id, String text, int markerType) {
+        super(source, id);
+        this.text = text;
+        this.markerType = markerType;
+        this.wordStart = -1;
+        this.wordEnd = -1;
+    }
 
     /**
      * Constructor for a specified source, identifier,
      * text, wordStart and wordEnd (called for a WORD_STARTED event).
      */
-   public SpeakableEvent(Object var1, int var2, String var3, int var4, int var5) {
-      super(var1, var2);
-      this.text = var3;
-      this.markerType = -1;
-      this.wordStart = var4;
-      this.wordEnd = var5;
-   }
+    public SpeakableEvent(Object source, int id, String text, int wordStart, int wordEnd) {
+        super(source, id);
+        this.text = text;
+        this.markerType = -1;
+        this.wordStart = wordStart;
+        this.wordEnd = wordEnd;
+    }
 
     /**
      * Return the type of a MARKER_REACHED event.
@@ -309,9 +310,9 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_CLOSE
      * @see javax.speech.synthesis.SpeakableEvent#ELEMENT_EMPTY
      */
-   public int getMarkerType() {
-      return this.markerType;
-   }
+    public int getMarkerType() {
+        return this.markerType;
+    }
 
     /**
      * Get the text associated with the event.
@@ -326,25 +327,25 @@ public class SpeakableEvent extends SpeechEvent {
      * @see javax.speech.synthesis.SpeakableEvent#WORD_STARTED
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      */
-   public String getText() {
-      return this.text;
-   }
+    public String getText() {
+        return this.text;
+    }
 
     /**
      * For a WORD_STARTED event, return the index
      * of the last character of the word in the JSML text.
      */
-   public int getWordEnd() {
-      return this.wordEnd;
-   }
+    public int getWordEnd() {
+        return this.wordEnd;
+    }
 
     /**
      * For a WORD_STARTED event, return the index
      * of the first character of the word in the JSML text.
      */
-   public int getWordStart() {
-      return this.wordStart;
-   }
+    public int getWordStart() {
+        return this.wordStart;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -352,42 +353,42 @@ public class SpeakableEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 601:
+    public String paramString() {
+        switch (super.id) {
+        case 601:
             return "TOP_OF_QUEUE";
-         case 602:
+        case 602:
             return "SPEAKABLE_STARTED";
-         case 603:
+        case 603:
             return "SPEAKABLE_ENDED";
-         case 604:
+        case 604:
             return "SPEAKABLE_PAUSED";
-         case 605:
+        case 605:
             return "SPEAKABLE_RESUMED";
-         case 606:
+        case 606:
             return "SPEAKABLE_CANCELLED";
-         case 607:
+        case 607:
             return "WORD_STARTED \"" + this.text + "\" from: " + this.wordStart + " to: " + this.wordEnd;
-         case 608:
+        case 608:
             StringBuffer sb = new StringBuffer("MARKER_REACHED: ");
             sb.append("\"" + this.text + "\" at ");
             switch (this.markerType) {
-               case 620:
-                  sb.append("ELEMENT_OPEN");
-                  break;
-               case 621:
-                  sb.append("ELEMENT_CLOSE");
-                  break;
-               case 622:
-                  sb.append("ELEMENT_EMPTY");
-                  break;
-               default:
-                  sb.append("unknown type");
+            case 620:
+                sb.append("ELEMENT_OPEN");
+                break;
+            case 621:
+                sb.append("ELEMENT_CLOSE");
+                break;
+            case 622:
+                sb.append("ELEMENT_EMPTY");
+                break;
+            default:
+                sb.append("unknown type");
             }
 
             return sb.toString();
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

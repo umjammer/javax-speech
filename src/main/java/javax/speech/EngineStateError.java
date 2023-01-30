@@ -13,14 +13,14 @@ public class EngineStateError extends SpeechError {
     /**
      * Construct an EngineStateError with no detail message.
      */
-   public EngineStateError() {
-   }
+    public EngineStateError() {
+    }
 
     /**
      * Construct an EngineStateError with a detail message.
      * A detail message is a String that describes this particular exception.
      */
-   public EngineStateError(String var1) {
-      super(var1);
-   }
+    public EngineStateError(String s) {
+        super(s);
+    }
 }

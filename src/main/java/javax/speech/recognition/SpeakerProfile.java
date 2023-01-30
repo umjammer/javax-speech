@@ -73,22 +73,25 @@ public class SpeakerProfile {
     /**
      * Unique identifier for a SpeakerProfile.
      * (Unique for a Recognizer.)
+     *
      * @see javax.speech.recognition.SpeakerProfile#getId()
      */
-   protected String id;
+    protected String id;
 
     /**
      * Name of user identified by the profile.
+     *
      * @see javax.speech.recognition.SpeakerProfile#getName()
      */
-   protected String name;
+    protected String name;
 
     /**
      * Name of variant enrollment of a user.
      * Should be unique for a user.
+     *
      * @see javax.speech.recognition.SpeakerProfile#getName()
      */
-   protected String variant;
+    protected String variant;
 
     /**
      * Null constructor sets all properties too null.
@@ -99,79 +102,79 @@ public class SpeakerProfile {
      * created by an application using a SpeakerProfile
      * constructor does not reference a recognizer's profile.
      */
-   public SpeakerProfile() {
-      this.id = null;
-      this.name = null;
-      this.variant = null;
-   }
+    public SpeakerProfile() {
+        this.id = null;
+        this.name = null;
+        this.variant = null;
+    }
 
     /**
      * Constructor a profile object with all properties specified.
      */
-   public SpeakerProfile(String var1, String var2, String var3) {
-      this.id = var1;
-      this.name = var2;
-      this.variant = var3;
-   }
+    public SpeakerProfile(String id, String name, String variant) {
+        this.id = id;
+        this.name = name;
+        this.variant = variant;
+    }
 
     /**
      * True if and only if the input parameter is not null
      * and is a SpeakerProfile with equal values of
      * all properties.
      */
-   public boolean equals(Object anObject) {
-      if (anObject != null && anObject instanceof SpeakerProfile) {
-         SpeakerProfile speakerProfile = (SpeakerProfile)anObject;
-         if (this.id == null) {
-            if (speakerProfile.id != null) {
-               return false;
+    public boolean equals(Object anObject) {
+        if (anObject != null && anObject instanceof SpeakerProfile) {
+            SpeakerProfile speakerProfile = (SpeakerProfile) anObject;
+            if (this.id == null) {
+                if (speakerProfile.id != null) {
+                    return false;
+                }
+            } else if (!this.id.equals(speakerProfile.id)) {
+                return false;
             }
-         } else if (!this.id.equals(speakerProfile.id)) {
-            return false;
-         }
 
-         if (this.name == null) {
-            if (speakerProfile.name != null) {
-               return false;
+            if (this.name == null) {
+                if (speakerProfile.name != null) {
+                    return false;
+                }
+            } else if (!this.name.equals(speakerProfile.name)) {
+                return false;
             }
-         } else if (!this.name.equals(speakerProfile.name)) {
-            return false;
-         }
 
-         if (this.variant == null) {
-            if (speakerProfile.variant != null) {
-               return false;
+            if (this.variant == null) {
+                if (speakerProfile.variant != null) {
+                    return false;
+                }
+            } else if (!this.variant.equals(speakerProfile.variant)) {
+                return false;
             }
-         } else if (!this.variant.equals(speakerProfile.variant)) {
-            return false;
-         }
 
-         return true;
-      } else {
-         return false;
-      }
-   }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Return the SpeakerProfile identifier.
      */
-   public String getId() {
-      return this.id;
-   }
+    public String getId() {
+        return this.id;
+    }
 
     /**
      * Return the speaker name.
      */
-   public String getName() {
-      return this.name;
-   }
+    public String getName() {
+        return this.name;
+    }
 
     /**
      * Get the variant description.
      */
-   public String getVariant() {
-      return this.variant;
-   }
+    public String getVariant() {
+        return this.variant;
+    }
 
     /**
      * Returns true if this object matches the
@@ -179,15 +182,15 @@ public class SpeakerProfile {
      * or non-zero-length string property of the required object
      * be an exact string match to the properties of this object.
      */
-   public boolean match(SpeakerProfile var1) {
-      if (var1.id != null && !var1.id.equals(this.id)) {
-         return false;
-      } else if (var1.name != null && !var1.name.equals(this.name)) {
-         return false;
-      } else {
-         return var1.variant == null || var1.variant.equals(this.variant);
-      }
-   }
+    public boolean match(SpeakerProfile require) {
+        if (require.id != null && !require.id.equals(this.id)) {
+            return false;
+        } else if (require.name != null && !require.name.equals(this.name)) {
+            return false;
+        } else {
+            return require.variant == null || require.variant.equals(this.variant);
+        }
+    }
 
     /**
      * Set the SpeakerProfile identifier.
@@ -203,9 +206,9 @@ public class SpeakerProfile {
      *
      * @throws java.lang.IllegalArgumentException if the speaker id is already being used by this recognizer
      */
-   public void setId(String var1) throws IllegalArgumentException {
-      this.id = this.id;
-   }
+    public void setId(String identifier) throws IllegalArgumentException {
+        this.id = this.id;
+    }
 
     /**
      * Set the speaker name.  The speaker name should be a human-readable string.
@@ -218,9 +221,9 @@ public class SpeakerProfile {
      * the name changes the persistent speaker data of
      * the recognizer.
      */
-   public void setName(String var1) {
-      this.name = var1;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Get the variant description.
@@ -235,7 +238,7 @@ public class SpeakerProfile {
      * the variant changes the persistent speaker data of
      * the recognizer.
      */
-   public void setVariant(String var1) {
-      this.variant = var1;
-   }
+    public void setVariant(String variant) {
+        this.variant = variant;
+    }
 }

@@ -10,15 +10,15 @@ public class SpeechError extends Error {
     /**
      * Empty constructor for SpeechException with no detail message.
      */
-   public SpeechError() {
-   }
+    public SpeechError() {
+    }
 
     /**
      * Constructs a SpeechException with a detail message.
-     * @param s
-     *  the detail message
+     *
+     * @param s the detail message
      */
-   public SpeechError(String s) {
-      super(s);
-   }
+    public SpeechError(String s) {
+        super(s);
+    }
 }

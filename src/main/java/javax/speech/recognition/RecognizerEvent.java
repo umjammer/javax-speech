@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.EngineEvent;
 
+
 /**
  * Event issued by Recognizer through RecognizerListener.
  * Inherits the following event types from EngineEvent:
@@ -35,7 +36,7 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.SpeechEvent#getId()
      */
-   public static final int RECOGNIZER_PROCESSING = 1200;
+    public static final int RECOGNIZER_PROCESSING = 1200;
 
     /**
      * RECOGNIZER_SUSPENDED event is issued when a
@@ -65,7 +66,7 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.recognition.ResultEvent#RESULT_ACCEPTED
      * @see javax.speech.recognition.ResultEvent#RESULT_REJECTED
      */
-   public static final int RECOGNIZER_SUSPENDED = 1202;
+    public static final int RECOGNIZER_SUSPENDED = 1202;
 
     /**
      * CHANGES_COMMITTED event is issued when a
@@ -92,11 +93,11 @@ public class RecognizerEvent extends EngineEvent {
      * The causes and timing of the CHANGES_COMMITTED event
      * are described with the
      * <A href="Recognizer.html#normalEvents">
-     *  state transition documentation</A>
+     * state transition documentation</A>
      * for a Recognizer
      * with the the
      * <A href="Grammar.html#commit">committing changes
-     *  documentation</A>
+     * documentation</A>
      * for a Grammar.
      *
      * @see javax.speech.recognition.RecognizerListener#changesCommitted(javax.speech.recognition.RecognizerEvent)
@@ -107,7 +108,7 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.SpeechEvent#getId()
      */
-   public static final int CHANGES_COMMITTED = 1203;
+    public static final int CHANGES_COMMITTED = 1203;
 
     /**
      * FOCUS_GAINED event is issued when a
@@ -134,7 +135,7 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      * @see javax.speech.recognition.Grammar
      */
-   public static final int FOCUS_GAINED = 1204;
+    public static final int FOCUS_GAINED = 1204;
 
     /**
      * FOCUS_LOST event is issued when a
@@ -162,7 +163,7 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      * @see javax.speech.recognition.Grammar
      */
-   public static final int FOCUS_LOST = 1205;
+    public static final int FOCUS_LOST = 1205;
 
     /**
      * Non-null if any error is detected in a grammar's definition while
@@ -175,28 +176,23 @@ public class RecognizerEvent extends EngineEvent {
      * @see javax.speech.recognition.RecognizerEvent#getGrammarException()
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   protected GrammarException grammarException;
+    protected GrammarException grammarException;
 
     /**
      * Construct a RecognizerEvent with a specified event source,
      * event identifier, old and new states, and optionally a
      * GrammarException for a CHANGES_COMMITTED event.
      *
-     * @param source
-     *  the Recognizer that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param oldEngineState
-     *  engine state prior to this event
-     * @param newEngineState
-     *  engine state following this event
-     * @param grammarException
-     *  non-null if an error is detected during CHANGES_COMMITTED
+     * @param source           the Recognizer that issued the event
+     * @param id               the identifier for the event type
+     * @param oldEngineState   engine state prior to this event
+     * @param newEngineState   engine state following this event
+     * @param grammarException non-null if an error is detected during CHANGES_COMMITTED
      */
-   public RecognizerEvent(Recognizer source, int id, long oldEngineState, long newEngineState, GrammarException grammarException) {
-      super(source, id, oldEngineState, newEngineState);
-      this.grammarException = grammarException;
-   }
+    public RecognizerEvent(Recognizer source, int id, long oldEngineState, long newEngineState, GrammarException grammarException) {
+        super(source, id, oldEngineState, newEngineState);
+        this.grammarException = grammarException;
+    }
 
     /**
      * Returns non-null for a CHANGES_COMMITTED
@@ -207,9 +203,9 @@ public class RecognizerEvent extends EngineEvent {
      *
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   public GrammarException getGrammarException() {
-      return this.grammarException;
-   }
+    public GrammarException getGrammarException() {
+        return this.grammarException;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -217,25 +213,25 @@ public class RecognizerEvent extends EngineEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 1200:
+    public String paramString() {
+        switch (super.id) {
+        case 1200:
             return "RECOGNIZER_PROCESSING";
-         case 1201:
-         default:
+        case 1201:
+        default:
             return super.paramString();
-         case 1202:
+        case 1202:
             return "RECOGNIZER_SUSPENDED";
-         case 1203:
+        case 1203:
             if (this.grammarException != null) {
-               return "CHANGES_COMMITTED: " + this.grammarException.getMessage();
+                return "CHANGES_COMMITTED: " + this.grammarException.getMessage();
             }
 
             return "CHANGES_COMMITTED";
-         case 1204:
+        case 1204:
             return "FOCUS_GAINED";
-         case 1205:
+        case 1205:
             return "FOCUS_LOST";
-      }
-   }
+        }
+    }
 }

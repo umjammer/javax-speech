@@ -112,7 +112,7 @@ public interface FinalRuleResult extends FinalResult {
      * @see javax.speech.recognition.FinalRuleResult#getRuleGrammar(int)
      * @see javax.speech.recognition.FinalRuleResult#getRuleName(int)
      */
-   ResultToken[] getAlternativeTokens(int var1) throws ResultStateError;
+    ResultToken[] getAlternativeTokens(int nBest) throws ResultStateError;
 
     /**
      * Return the number of guesses for this result.  The guesses
@@ -137,7 +137,7 @@ public interface FinalRuleResult extends FinalResult {
      * @see javax.speech.recognition.FinalRuleResult#getRuleGrammar(int)
      * @see javax.speech.recognition.FinalRuleResult#getRuleName(int)
      */
-   int getNumberGuesses() throws ResultStateError;
+    int getNumberGuesses() throws ResultStateError;
 
     /**
      * Return the RuleGrammar matched by the nth guess.
@@ -163,7 +163,7 @@ public interface FinalRuleResult extends FinalResult {
      * @see javax.speech.recognition.FinalRuleResult#getAlternativeTokens(int)
      * @see javax.speech.recognition.FinalRuleResult#getRuleName(int)
      */
-   RuleGrammar getRuleGrammar(int var1) throws ResultStateError;
+    RuleGrammar getRuleGrammar(int nBest) throws ResultStateError;
 
     /**
      * Return the RuleName matched by the nth guess.
@@ -180,7 +180,7 @@ public interface FinalRuleResult extends FinalResult {
      * @see javax.speech.recognition.FinalRuleResult#getAlternativeTokens(int)
      * @see javax.speech.recognition.FinalRuleResult#getRuleGrammar(int)
      */
-   String getRuleName(int var1) throws ResultStateError;
+    String getRuleName(int nBest) throws ResultStateError;
 
     /**
      * Return the list of tags matched by the best-guess token sequence.
@@ -213,5 +213,5 @@ public interface FinalRuleResult extends FinalResult {
      * @see javax.speech.recognition.RuleGrammar#parse(java.lang.String, java.lang.String)
      * @see javax.speech.recognition.RuleParse#getTags()
      */
-   String[] getTags() throws ResultStateError;
+    String[] getTags() throws ResultStateError;
 }

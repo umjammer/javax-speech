@@ -3,6 +3,7 @@ package javax.speech.synthesis;
 import java.util.Locale;
 import javax.speech.EngineModeDesc;
 
+
 /**
  * SynthesizerModeDesc extends the EngineModeDesc
  * with properties that are specific to speech synthesizers.
@@ -39,93 +40,93 @@ import javax.speech.EngineModeDesc;
  */
 public class SynthesizerModeDesc extends EngineModeDesc {
 
-   private Voice[] voices;
+    private Voice[] voices;
 
     /**
      * Construct a descriptor with all features set to null.
      */
-   public SynthesizerModeDesc() {
-      this.voices = null;
-   }
+    public SynthesizerModeDesc() {
+        this.voices = null;
+    }
 
     /**
      * Create a fully-specified descriptor.
      * Any of the features may be null.
      */
-   public SynthesizerModeDesc(String var1, String var2, Locale var3, Boolean var4, Voice[] var5) {
-      super(var1, var2, var3, var4);
-      this.voices = var5;
-   }
+    public SynthesizerModeDesc(String engineName, String modeName, Locale locale, Boolean running, Voice[] voices) {
+        super(engineName, modeName, locale, running);
+        this.voices = voices;
+    }
 
     /**
      * Create a SynthesizerModeDesc with a given Locale
      * and other features set to null.
      */
-   public SynthesizerModeDesc(Locale var1) {
-      super(var1);
-      this.voices = null;
-   }
+    public SynthesizerModeDesc(Locale locale) {
+        super(locale);
+        this.voices = null;
+    }
 
     /**
      * Append a voice to the list of voices.
      */
-   public void addVoice(Voice v) {
-      int index = 0;
-      if (this.voices != null) {
-         index = this.voices.length;
-      }
+    public void addVoice(Voice v) {
+        int index = 0;
+        if (this.voices != null) {
+            index = this.voices.length;
+        }
 
-      Voice[] voices = new Voice[index + 1];
-      if (index > 0) {
-         System.arraycopy(this.voices, 0, voices, 0, index);
-      }
+        Voice[] voices = new Voice[index + 1];
+        if (index > 0) {
+            System.arraycopy(this.voices, 0, voices, 0, index);
+        }
 
-      voices[index] = v;
-      this.voices = voices;
-   }
+        voices[index] = v;
+        this.voices = voices;
+    }
 
     /**
      * Returns true if and only if the parameter is not null
      * and is a SynthesizerModeDesc with equal values of
      * engine name, mode name, locale, running, and all voices.
      */
-   public boolean equals(Object anObject) {
-      if (anObject != null && anObject instanceof SynthesizerModeDesc) {
-         SynthesizerModeDesc synthesizerModeDesc = (SynthesizerModeDesc)anObject;
-         if (!super.equals(anObject)) {
-            return false;
-         } else if (this.voices == null != (synthesizerModeDesc.voices == null)) {
-            return false;
-         } else {
-            if (this.voices != null) {
-               if (this.voices.length != synthesizerModeDesc.voices.length) {
-                  return false;
-               }
-
-               for(int i = 0; i < this.voices.length; ++i) {
-                  if (this.voices[i] == null) {
-                     if (synthesizerModeDesc.voices[i] != null) {
+    public boolean equals(Object anObject) {
+        if (anObject != null && anObject instanceof SynthesizerModeDesc) {
+            SynthesizerModeDesc synthesizerModeDesc = (SynthesizerModeDesc) anObject;
+            if (!super.equals(anObject)) {
+                return false;
+            } else if (this.voices == null != (synthesizerModeDesc.voices == null)) {
+                return false;
+            } else {
+                if (this.voices != null) {
+                    if (this.voices.length != synthesizerModeDesc.voices.length) {
                         return false;
-                     }
-                  } else if (!this.voices[i].equals(synthesizerModeDesc.voices[i])) {
-                     return false;
-                  }
-               }
-            }
+                    }
 
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
+                    for (int i = 0; i < this.voices.length; ++i) {
+                        if (this.voices[i] == null) {
+                            if (synthesizerModeDesc.voices[i] != null) {
+                                return false;
+                            }
+                        } else if (!this.voices[i].equals(synthesizerModeDesc.voices[i])) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Returns the list of voices available in this synthesizer mode.
      */
-   public Voice[] getVoices() {
-      return this.voices;
-   }
+    public Voice[] getVoices() {
+        return this.voices;
+    }
 
     /**
      * Determine whether a SynthesizerModeDesc has all the features
@@ -146,49 +147,50 @@ public class SynthesizerModeDesc extends EngineModeDesc {
      * <p>
      * Note: if is possible to compare an EngineModeDesc
      * against a SynthesizerModeDesc and vice versa.
+     *
      * @see javax.speech.EngineModeDesc#match(javax.speech.EngineModeDesc)
      * @see javax.speech.synthesis.Voice#match(javax.speech.synthesis.Voice)
      */
-   public boolean match(EngineModeDesc require) {
-      if (!super.match(require)) {
-         return false;
-      } else if (!(require instanceof SynthesizerModeDesc)) {
-         return true;
-      } else {
-         SynthesizerModeDesc synthesizerModeDesc = (SynthesizerModeDesc)require;
-         if (!super.match(synthesizerModeDesc)) {
+    public boolean match(EngineModeDesc require) {
+        if (!super.match(require)) {
             return false;
-         } else {
-            if (synthesizerModeDesc.voices != null) {
-               if (this.voices == null) {
-                  return false;
-               }
-
-               for(int i = 0; i < synthesizerModeDesc.voices.length; ++i) {
-                  boolean matched = false;
-                  if (synthesizerModeDesc.voices[i] != null) {
-                     for(int j = 0; !matched && j < this.voices.length; ++j) {
-                        if (this.voices[j].match(synthesizerModeDesc.voices[i])) {
-                           matched = true;
-                        }
-                     }
-
-                     if (!matched) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
+        } else if (!(require instanceof SynthesizerModeDesc)) {
             return true;
-         }
-      }
-   }
+        } else {
+            SynthesizerModeDesc synthesizerModeDesc = (SynthesizerModeDesc) require;
+            if (!super.match(synthesizerModeDesc)) {
+                return false;
+            } else {
+                if (synthesizerModeDesc.voices != null) {
+                    if (this.voices == null) {
+                        return false;
+                    }
+
+                    for (int i = 0; i < synthesizerModeDesc.voices.length; ++i) {
+                        boolean matched = false;
+                        if (synthesizerModeDesc.voices[i] != null) {
+                            for (int j = 0; !matched && j < this.voices.length; ++j) {
+                                if (this.voices[j].match(synthesizerModeDesc.voices[i])) {
+                                    matched = true;
+                                }
+                            }
+
+                            if (!matched) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+        }
+    }
 
     /**
      * Set the list of synthesizer voices.
      */
-   public void setVoices(Voice[] v) {
-      this.voices = v;
-   }
+    public void setVoices(Voice[] v) {
+        this.voices = v;
+    }
 }

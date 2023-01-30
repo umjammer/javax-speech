@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import javax.speech.EngineAdapter;
 
+
 /**
  * Adapter that receives events associated with a Synthesizer.
  * The methods in this class are empty;  this class is provided as a
@@ -15,14 +16,14 @@ public class SynthesizerAdapter extends EngineAdapter implements SynthesizerList
      *
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      */
-   public void queueEmptied(SynthesizerEvent var1) {
-   }
+    public void queueEmptied(SynthesizerEvent e) {
+    }
 
     /**
      * The speaking queue has changed.
      *
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      */
-   public void queueUpdated(SynthesizerEvent var1) {
-   }
+    public void queueUpdated(SynthesizerEvent e) {
+    }
 }

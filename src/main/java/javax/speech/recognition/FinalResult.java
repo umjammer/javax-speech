@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.applet.AudioClip;
 
+
 /**
  * FinalResult is an extension to the Result
  * interface that provides information about a result that has been
@@ -111,7 +112,7 @@ public interface FinalResult extends Result {
      *
      * @see FinalResult#tokenCorrection(java.lang.String[], ResultToken, ResultToken, int)
      */
-   int MISRECOGNITION = 400;
+    int MISRECOGNITION = 400;
 
     /**
      * The USER_CHANGE flag is used in a call to
@@ -121,7 +122,7 @@ public interface FinalResult extends Result {
      *
      * @see FinalResult#tokenCorrection(java.lang.String[], ResultToken, ResultToken, int)
      */
-   int USER_CHANGE = 401;
+    int USER_CHANGE = 401;
 
     /**
      * The DONT_KNOW flag is used in a call to tokenCorrection
@@ -131,7 +132,7 @@ public interface FinalResult extends Result {
      *
      * @see FinalResult#tokenCorrection(java.lang.String[], ResultToken, ResultToken, int)
      */
-   int DONT_KNOW = 402;
+    int DONT_KNOW = 402;
 
     /**
      * Get the result audio for the complete utterance of a FinalResult.
@@ -141,7 +142,7 @@ public interface FinalResult extends Result {
      * @see javax.speech.recognition.FinalResult#isAudioAvailable()
      * @see javax.speech.recognition.FinalResult#getAudio(ResultToken, ResultToken)
      */
-   AudioClip getAudio() throws ResultStateError;
+    AudioClip getAudio() throws ResultStateError;
 
     /**
      * Get the audio for a token or sequence of tokens.  Recognizers
@@ -162,11 +163,11 @@ public interface FinalResult extends Result {
      * Not all recognizers can provide per-token audio, even if they
      * can provide audio for a complete utterance.
      *
-     * @throws java.lang.IllegalArgumentException one of the token parameters is not from this result
+     * @throws java.lang.IllegalArgumentException        one of the token parameters is not from this result
      * @throws javax.speech.recognition.ResultStateError if called before a result is finalized
      * @see javax.speech.recognition.FinalResult#getAudio()
      */
-   AudioClip getAudio(ResultToken var1, ResultToken var2) throws IllegalArgumentException, ResultStateError;
+    AudioClip getAudio(ResultToken fromToken, ResultToken toToken) throws IllegalArgumentException, ResultStateError;
 
     /**
      * Test whether result audio data is available for this result.
@@ -190,7 +191,7 @@ public interface FinalResult extends Result {
      * @see javax.speech.recognition.FinalResult#getAudio()
      * @see javax.speech.recognition.RecognizerProperties#setResultAudioProvided(boolean)
      */
-   boolean isAudioAvailable() throws ResultStateError;
+    boolean isAudioAvailable() throws ResultStateError;
 
     /**
      * Returns true if the Recognizer
@@ -210,7 +211,7 @@ public interface FinalResult extends Result {
      * @see javax.speech.recognition.RecognizerProperties#setTrainingProvided(boolean)
      * @see javax.speech.recognition.FinalResult#releaseTrainingInfo()
      */
-   boolean isTrainingInfoAvailable() throws ResultStateError;
+    boolean isTrainingInfoAvailable() throws ResultStateError;
 
     /**
      * Release the result audio for the result.  After audio is
@@ -229,7 +230,7 @@ public interface FinalResult extends Result {
      * @see javax.speech.recognition.ResultEvent#AUDIO_RELEASED
      * @see javax.speech.recognition.ResultListener#audioReleased(javax.speech.recognition.ResultEvent)
      */
-   void releaseAudio() throws ResultStateError;
+    void releaseAudio() throws ResultStateError;
 
     /**
      * Release training information for this FinalResult.
@@ -250,7 +251,7 @@ public interface FinalResult extends Result {
      * @throws javax.speech.recognition.ResultStateError if called before a result is finalized
      * @see javax.speech.recognition.ResultEvent#TRAINING_INFO_RELEASED
      */
-   void releaseTrainingInfo() throws ResultStateError;
+    void releaseTrainingInfo() throws ResultStateError;
 
     /**
      * Inform the recognizer of a correction to one of more tokens in
@@ -277,21 +278,17 @@ public interface FinalResult extends Result {
      * and getAlternativeTokens method return exactly the same values as
      * before the call to tokenCorrection.
      *
-     * @param correctTokens
-     *  sequence of correct tokens to replace fromToken to toToken
-     * @param fromToken
-     *  first token in the sequence being corrected
-     * @param toToken
-     *  last token in the sequence being corrected
-     * @param correctionType
-     *  type of correction: MISRECOGNITION, USER_CHANGE,
-     *     DONT_KNOW
-     * @throws java.lang.IllegalArgumentException either token is not from this FinalResult
+     * @param correctTokens  sequence of correct tokens to replace fromToken to toToken
+     * @param fromToken      first token in the sequence being corrected
+     * @param toToken        last token in the sequence being corrected
+     * @param correctionType type of correction: MISRECOGNITION, USER_CHANGE,
+     *                       DONT_KNOW
+     * @throws java.lang.IllegalArgumentException        either token is not from this FinalResult
      * @throws javax.speech.recognition.ResultStateError if called before a result is finalized
      * @see javax.speech.recognition.FinalResult#MISRECOGNITION
      * @see javax.speech.recognition.FinalResult#USER_CHANGE
      * @see javax.speech.recognition.FinalResult#DONT_KNOW
      */
-   void tokenCorrection(String[] correctTokens, ResultToken fromToken, ResultToken toToken, int correctionType)
-           throws ResultStateError, IllegalArgumentException;
+    void tokenCorrection(String[] correctTokens, ResultToken fromToken, ResultToken toToken, int correctionType)
+            throws ResultStateError, IllegalArgumentException;
 }

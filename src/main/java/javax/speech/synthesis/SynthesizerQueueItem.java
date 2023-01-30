@@ -30,21 +30,21 @@ public class SynthesizerQueueItem {
      *
      * @see javax.speech.synthesis.SynthesizerQueueItem#getSource()
      */
-   protected Object source;
+    protected Object source;
 
     /**
      * The speakable text for an item on the speech output queue.
      *
      * @see javax.speech.synthesis.SynthesizerQueueItem#getText()
      */
-   protected String text;
+    protected String text;
 
     /**
      * True if the text object is plain text (not Java Speech Markup Language).
      *
      * @see javax.speech.synthesis.SynthesizerQueueItem#isPlainText()
      */
-   protected boolean plainText;
+    protected boolean plainText;
 
     /**
      * The listener for this object passed to the speak method
@@ -52,18 +52,18 @@ public class SynthesizerQueueItem {
      *
      * @see javax.speech.synthesis.SynthesizerQueueItem#getSpeakableListener()
      */
-   protected SpeakableListener listener;
+    protected SpeakableListener listener;
 
     /**
      * Construct a SynthesizerQueueItem with the
      * source object and speakable text.
      */
-   public SynthesizerQueueItem(Object var1, String var2, boolean var3, SpeakableListener var4) {
-      this.source = var1;
-      this.text = var2;
-      this.plainText = var3;
-      this.listener = var4;
-   }
+    public SynthesizerQueueItem(Object source, String text, boolean plainText, SpeakableListener listener) {
+        this.source = source;
+        this.text = text;
+        this.plainText = plainText;
+        this.listener = listener;
+    }
 
     /**
      * Return the source object for an item on the speech output
@@ -73,18 +73,18 @@ public class SynthesizerQueueItem {
      * a Speakable objects, a URL, or
      * a String.
      */
-   public Object getSource() {
-      return this.source;
-   }
+    public Object getSource() {
+        return this.source;
+    }
 
     /**
      * Return the SpeakableListener object for this
      * speech output queue item, or null if none
      * was provided to the speak method.
      */
-   public SpeakableListener getSpeakableListener() {
-      return this.listener;
-   }
+    public SpeakableListener getSpeakableListener() {
+        return this.listener;
+    }
 
     /**
      * Return the speakable text for an item on the speech output
@@ -92,15 +92,15 @@ public class SynthesizerQueueItem {
      * Java Speech Markup Language string or a plain text string that
      * was obtained from source object.
      */
-   public String getText() {
-      return this.text;
-   }
+    public String getText() {
+        return this.text;
+    }
 
     /**
      * Return true if the item contains plain text
      * (not Java Speech Markup Language text).
      */
-   public boolean isPlainText() {
-      return this.plainText;
-   }
+    public boolean isPlainText() {
+        return this.plainText;
+    }
 }

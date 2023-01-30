@@ -13,7 +13,7 @@ public class EngineErrorEvent extends EngineEvent {
      *
      * @see javax.speech.EngineListener#engineError(javax.speech.EngineErrorEvent)
      */
-   public static final int ENGINE_ERROR = 550;
+    public static final int ENGINE_ERROR = 550;
 
     /**
      * Throwable object (Exception or
@@ -21,37 +21,32 @@ public class EngineErrorEvent extends EngineEvent {
      *
      * @see javax.speech.EngineErrorEvent#getEngineError()
      */
-   protected Throwable problem;
+    protected Throwable problem;
 
     /**
      * Constructs an EngineErrorEvent with an event identifier,
      * throwable, old engine state and new engine state.  The old and
      * new states are zero if the engine states are unknown or undefined.
      *
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param throwable
-     *  description of the detected error
-     * @param oldEngineState
-     *  engine state prior to this event
-     * @param newEngineState
-     *  engine state following this event
+     * @param source         the object that issued the event
+     * @param id             the identifier for the event type
+     * @param throwable      description of the detected error
+     * @param oldEngineState engine state prior to this event
+     * @param newEngineState engine state following this event
      * @see javax.speech.Engine#getEngineState()
      */
-   public EngineErrorEvent(Engine source, int id, Throwable throwable, long oldEngineState, long newEngineState) {
-      super(source, id, oldEngineState, newEngineState);
-   }
+    public EngineErrorEvent(Engine source, int id, Throwable throwable, long oldEngineState, long newEngineState) {
+        super(source, id, oldEngineState, newEngineState);
+    }
 
     /**
      * Return the Throwable object
      * (Exception or Error)
      * that describes the engine problem.
      */
-   public Throwable getEngineError() {
-      return this.problem;
-   }
+    public Throwable getEngineError() {
+        return this.problem;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -59,12 +54,12 @@ public class EngineErrorEvent extends EngineEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 550:
+    public String paramString() {
+        switch (super.id) {
+        case 550:
             return "ENGINE_ERROR: " + this.problem.getMessage();
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

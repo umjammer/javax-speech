@@ -3,6 +3,7 @@ package javax.speech.synthesis;
 import java.beans.PropertyVetoException;
 import javax.speech.EngineProperties;
 
+
 /**
  * Provides control of the run-time properties of a Synthesizer.
  * The SynthesizerProperties object is obtained by
@@ -69,21 +70,21 @@ public interface SynthesizerProperties extends EngineProperties {
      *
      * @see javax.speech.synthesis.SynthesizerProperties#setPitch(float)
      */
-   float getPitch();
+    float getPitch();
 
     /**
      * Get the pitch range for synthesis.
      *
      * @see javax.speech.synthesis.SynthesizerProperties#setPitchRange(float)
      */
-   float getPitchRange();
+    float getPitchRange();
 
     /**
      * Get the current target speaking rate.
      *
      * @see javax.speech.synthesis.SynthesizerProperties#setSpeakingRate(float)
      */
-   float getSpeakingRate();
+    float getSpeakingRate();
 
     /**
      * Get the current synthesizer voice.  Modifications to the returned
@@ -92,14 +93,14 @@ public interface SynthesizerProperties extends EngineProperties {
      *
      * @see javax.speech.synthesis.SynthesizerProperties#setVoice(javax.speech.synthesis.Voice)
      */
-   Voice getVoice();
+    Voice getVoice();
 
     /**
      * Get the current volume.
      *
      * @see javax.speech.synthesis.SynthesizerProperties#setVolume(float)
      */
-   float getVolume();
+    float getVolume();
 
     /**
      * Set the baseline pitch for the current synthesis voice.  Out-of-range
@@ -111,7 +112,7 @@ public interface SynthesizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the synthesizer rejects or limits the new value
      * @see javax.speech.synthesis.SynthesizerProperties#getPitch()
      */
-   void setPitch(float var1) throws PropertyVetoException;
+    void setPitch(float hertz) throws PropertyVetoException;
 
     /**
      * Set the pitch range for the current synthesis voice.  A narrow pitch range provides
@@ -125,7 +126,7 @@ public interface SynthesizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the synthesizer rejects or limits the new value
      * @see javax.speech.synthesis.SynthesizerProperties#getPitchRange()
      */
-   void setPitchRange(float var1) throws PropertyVetoException;
+    void setPitchRange(float hertz) throws PropertyVetoException;
 
     /**
      * Set the target speaking rate for the synthesis voice
@@ -142,7 +143,7 @@ public interface SynthesizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the synthesizer rejects or limits the new value
      * @see javax.speech.synthesis.SynthesizerProperties#getSpeakingRate()
      */
-   void setSpeakingRate(float var1) throws PropertyVetoException;
+    void setSpeakingRate(float wpm) throws PropertyVetoException;
 
     /**
      * Set the current synthesizer voice.
@@ -169,7 +170,7 @@ public interface SynthesizerProperties extends EngineProperties {
      * @see javax.speech.synthesis.SynthesizerModeDesc
      * @see javax.speech.Engine#getEngineModeDesc()
      */
-   void setVoice(Voice var1) throws PropertyVetoException;
+    void setVoice(Voice voice) throws PropertyVetoException;
 
     /**
      * Set the volume for the synthesizer's speech output as
@@ -185,5 +186,5 @@ public interface SynthesizerProperties extends EngineProperties {
      * @throws java.beans.PropertyVetoException if the synthesizer rejects or limits the new value
      * @see javax.speech.synthesis.SynthesizerProperties#getVolume()
      */
-   void setVolume(float var1) throws PropertyVetoException;
+    void setVolume(float volume) throws PropertyVetoException;
 }

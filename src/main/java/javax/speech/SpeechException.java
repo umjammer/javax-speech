@@ -14,16 +14,16 @@ public class SpeechException extends Exception {
     /**
      * Constructs a SpeechException with no detail message.
      */
-   public SpeechException() {
-   }
+    public SpeechException() {
+    }
 
     /**
      * Constructs a SpeechException with the specified detail message.
      * A detail message is a String that describes this particular exception.
-     * @param s
-     *  the detail message
+     *
+     * @param s the detail message
      */
-   public SpeechException(String s) {
-      super(s);
-   }
+    public SpeechException(String s) {
+        super(s);
+    }
 }

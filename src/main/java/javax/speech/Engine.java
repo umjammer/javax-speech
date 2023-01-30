@@ -126,22 +126,21 @@ package javax.speech;
  * states:
  *
  * @Illegal Engine states:
- *       Engine.DEALLOCATED | Engine.RESUMED
+ * Engine.DEALLOCATED | Engine.RESUMED
  * @Illegal Engine states:
- *       Engine.ALLOCATED | Engine.DEALLOCATED
+ * Engine.ALLOCATED | Engine.DEALLOCATED
  * @Illegal Synthesizer states:
- *       Engine.DEALLOCATED | Engine.QUEUE_NOT_EMPTY
+ * Engine.DEALLOCATED | Engine.QUEUE_NOT_EMPTY
  * @Illegal Synthesizer states:
- *       Engine.QUEUE_EMPTY | Engine.QUEUE_NOT_EMPTY
+ * Engine.QUEUE_EMPTY | Engine.QUEUE_NOT_EMPTY
  * @Illegal Recognizer states:
- *       Engine.DEALLOCATED | Engine.PROCESSING
+ * Engine.DEALLOCATED | Engine.PROCESSING
  * @Illegal Recognizer states:
- *       Engine.PROCESSING | Engine.SUSPENDED
+ * Engine.PROCESSING | Engine.SUSPENDED
  * <p>
  * Calls to the testEngineState and waitEngineState
  * methods with illegal state values cause an exception to be
  * thrown.
- *
  * @see javax.speech.Central
  * @see javax.speech.synthesis.Synthesizer
  * @see javax.speech.recognition.Recognizer
@@ -172,7 +171,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long DEALLOCATED = 1L;
+    long DEALLOCATED = 1L;
 
     /**
      * Bit of state that is set when an Engine is
@@ -188,7 +187,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long ALLOCATING_RESOURCES = 2L;
+    long ALLOCATING_RESOURCES = 2L;
 
     /**
      * Bit of state that is set when an Engine is
@@ -211,7 +210,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long ALLOCATED = 4L;
+    long ALLOCATED = 4L;
 
     /**
      * Bit of state that is set when an Engine is
@@ -224,7 +223,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long DEALLOCATING_RESOURCES = 8L;
+    long DEALLOCATING_RESOURCES = 8L;
 
     /**
      * Bit of state that is set when an Engine is
@@ -242,7 +241,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long PAUSED = 256L;
+    long PAUSED = 256L;
 
     /**
      * Bit of state that is set when an Engine is
@@ -259,7 +258,7 @@ public interface Engine {
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#waitEngineState(long)
      */
-   long RESUMED = 512L;
+    long RESUMED = 512L;
 
     /**
      * Request notifications of events of related to the Engine.
@@ -274,14 +273,13 @@ public interface Engine {
      * An EngineListener can be attached or removed in any
      * state of an Engine.
      *
-     * @param listener
-     *  the listener that will receive EngineEvents
+     * @param listener the listener that will receive EngineEvents
      * @see javax.speech.recognition.Recognizer
      * @see javax.speech.recognition.RecognizerListener
      * @see javax.speech.synthesis.Synthesizer
      * @see javax.speech.synthesis.SynthesizerListener
      */
-   void addEngineListener(EngineListener listener);
+    void addEngineListener(EngineListener listener);
 
     /**
      * Allocate the resources required for the Engine and put it
@@ -360,14 +358,14 @@ public interface Engine {
      * engine.waitEngineState(Engine.ALLOCATED);
      * }
      *
-     * @throws javax.speech.EngineException if an allocation error occurred or the engine is not operational.
+     * @throws javax.speech.EngineException  if an allocation error occurred or the engine is not operational.
      * @throws javax.speech.EngineStateError if called for an engine in the DEALLOCATING_RESOURCES state
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.Engine#deallocate()
      * @see javax.speech.Engine#ALLOCATED
      * @see javax.speech.EngineEvent#ENGINE_ALLOCATED
      */
-   void allocate() throws EngineException, EngineStateError;
+    void allocate() throws EngineException, EngineStateError;
 
     /**
      * Free the resources of the engine that were acquired during
@@ -414,16 +412,16 @@ public interface Engine {
      * The documentation for the allocate method shows an
      * example of an
      * <A href="#inner">inner class implementation of
-     *  Runnable</A>
+     * Runnable</A>
      * that creates a separate thread.
      *
-     * @throws javax.speech.EngineException if a deallocation error occurs
+     * @throws javax.speech.EngineException  if a deallocation error occurs
      * @throws javax.speech.EngineStateError if called for an engine in the ALLOCATING_RESOURCES state
      * @see javax.speech.Engine#allocate()
      * @see javax.speech.EngineEvent#ENGINE_DEALLOCATED
      * @see javax.speech.synthesis.Synthesizer#QUEUE_EMPTY
      */
-   void deallocate() throws EngineException, EngineStateError;
+    void deallocate() throws EngineException, EngineStateError;
 
     /**
      * Return an object which provides management of the audio
@@ -434,7 +432,7 @@ public interface Engine {
      *
      * @return the AudioManager for the engine
      */
-   AudioManager getAudioManager();
+    AudioManager getAudioManager();
 
     /**
      * Return a mode descriptor that defines the operating properties
@@ -448,7 +446,7 @@ public interface Engine {
      * @return an EngineModeDesc for the engine.
      * @throws java.lang.SecurityException if the application does not have accessEngineModeDesc permission
      */
-   EngineModeDesc getEngineModeDesc() throws SecurityException;
+    EngineModeDesc getEngineModeDesc() throws SecurityException;
 
     /**
      * Return the EngineProperties object (a JavaBean).
@@ -475,7 +473,7 @@ public interface Engine {
      * @see javax.speech.synthesis.Synthesizer#getSynthesizerProperties()
      * @see javax.speech.synthesis.SynthesizerProperties
      */
-   EngineProperties getEngineProperties();
+    EngineProperties getEngineProperties();
 
     /**
      * Returns a or'ed set of flags indicating the current state of
@@ -495,7 +493,7 @@ public interface Engine {
      * @see javax.speech.EngineEvent#getNewEngineState()
      * @see javax.speech.EngineEvent#getOldEngineState()
      */
-   long getEngineState();
+    long getEngineState();
 
     /**
      * Return an object which provides management of the
@@ -512,12 +510,12 @@ public interface Engine {
      * or DEALLOCATING_RESOURCES states.
      *
      * @return the VocabManager for the engine or null
-     *    if it does not have a VocabManager
+     * if it does not have a VocabManager
      * @throws javax.speech.EngineStateError if called for an engine in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.Word
      */
-   VocabManager getVocabManager() throws EngineStateError;
+    VocabManager getVocabManager() throws EngineStateError;
 
     /**
      * Pause the audio stream for the engine and put the Engine
@@ -557,7 +555,7 @@ public interface Engine {
      * thread.  The documentation for the allocate
      * method includes an
      * <A href="#inner">example implementation
-     *  of Runnable with inner classes</A>
+     * of Runnable with inner classes</A>
      * that can perform
      * pause in a separate thread.
      * <p>
@@ -598,23 +596,22 @@ public interface Engine {
      * no audio is lost.
      *
      * @throws javax.speech.EngineStateError if called for an engine in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.Engine#resume()
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.EngineEvent#ENGINE_PAUSED
      * @see javax.speech.recognition.Recognizer#suspend()
      */
-   void pause() throws EngineStateError;
+    void pause() throws EngineStateError;
 
     /**
      * Remove a listener from this Engine.
      * An EngineListener can be attached or removed in any
      * state of an Engine.
      *
-     * @param listener
-     *  the listener to be removed
+     * @param listener the listener to be removed
      */
-   void removeEngineListener(EngineListener listener);
+    void removeEngineListener(EngineListener listener);
 
     /**
      * Put the Engine in the RESUMED state to
@@ -661,18 +658,18 @@ public interface Engine {
      * thread.  The documentation for the allocate
      * method includes an
      * <A href="#inner">example implementation
-     *  of Runnable with inner classes</A>
+     * of Runnable with inner classes</A>
      * that could
      * also perform resume in a separate thread.
      *
-     * @throws javax.speech.AudioException if unable to gain access to the audio channel
+     * @throws javax.speech.AudioException   if unable to gain access to the audio channel
      * @throws javax.speech.EngineStateError if called for an engine in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.Engine#pause()
      * @see javax.speech.Engine#getEngineState()
      * @see javax.speech.EngineEvent#ENGINE_RESUMED
      */
-   void resume() throws AudioException, EngineStateError;
+    void resume() throws AudioException, EngineStateError;
 
     /**
      * Returns true if the current engine state matches the
@@ -698,7 +695,7 @@ public interface Engine {
      *
      * @throws java.lang.IllegalArgumentException if the specified state is unreachable
      */
-   boolean testEngineState(long var1) throws IllegalArgumentException;
+    boolean testEngineState(long state) throws IllegalArgumentException;
 
     /**
      * Blocks the calling thread until the Engine
@@ -716,10 +713,10 @@ public interface Engine {
      * The waitEngineState method can be called successfully
      * in any Engine state.
      *
-     * @throws java.lang.InterruptedException if another thread has interrupted this thread.
+     * @throws java.lang.InterruptedException     if another thread has interrupted this thread.
      * @throws java.lang.IllegalArgumentException if the specified state is unreachable
      * @see javax.speech.Engine#testEngineState(long)
      * @see javax.speech.Engine#getEngineState()
      */
-   void waitEngineState(long var1) throws InterruptedException, IllegalArgumentException;
+    void waitEngineState(long state) throws InterruptedException, IllegalArgumentException;
 }

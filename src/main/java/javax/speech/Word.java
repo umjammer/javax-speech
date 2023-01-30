@@ -30,147 +30,147 @@ package javax.speech;
  */
 public class Word {
 
-   private long categories;
+    private long categories;
 
-   private String writtenForm;
+    private String writtenForm;
 
-   private String spokenForm;
+    private String spokenForm;
 
-   private String[] pronunciations;
+    private String[] pronunciations;
 
     /**
      * Grammatical category of word is unknown.
      * The value is zero - 0 - and implies
      * that no other category flag is set.
      */
-   public static final long UNKNOWN = 0L;
+    public static final long UNKNOWN = 0L;
 
     /**
      * Grammatical category of word doesn't matter.
      */
-   public static final long DONT_CARE = 1L;
+    public static final long DONT_CARE = 1L;
 
     /**
      * Other grammatical category of word not specified elsewhere in this class.
      */
-   public static final long OTHER = 2L;
+    public static final long OTHER = 2L;
 
     /**
      * Grammatical category of word is noun.
      * English examples: "car", "house", "elephant".
      */
-   public static final long NOUN = 4L;
+    public static final long NOUN = 4L;
 
     /**
      * Grammatical category of word is proper noun.
      * English examples: "Yellowstone", "Singapore".
      */
-   public static final long PROPER_NOUN = 8L;
+    public static final long PROPER_NOUN = 8L;
 
     /**
      * Grammatical category of word is pronoun.
      * English examples: "me", "I", "they".
      */
-   public static final long PRONOUN = 16L;
+    public static final long PRONOUN = 16L;
 
     /**
      * Grammatical category of word is verb.
      * English examples: "run", "debug", "integrate".
      */
-   public static final long VERB = 32L;
+    public static final long VERB = 32L;
 
     /**
      * Grammatical category of word is adverb.
      * English examples: "slowly", "loudly", "barely", "very", "never".
      */
-   public static final long ADVERB = 64L;
+    public static final long ADVERB = 64L;
 
     /**
      * Grammatical category of word is adjective.
      * English examples: "red", "mighty", "very", "first", "eighteenth".
      */
-   public static final long ADJECTIVE = 128L;
+    public static final long ADJECTIVE = 128L;
 
     /**
      * Grammatical category of word is proper adjective.
      * English examples: "British", "Brazilian".
      */
-   public static final long PROPER_ADJECTIVE = 256L;
+    public static final long PROPER_ADJECTIVE = 256L;
 
     /**
      * Grammatical category of word is auxiliary.
      * English examples: "have", "do", "is", "shall", "must", "cannot".
      */
-   public static final long AUXILIARY = 512L;
+    public static final long AUXILIARY = 512L;
 
     /**
      * Grammatical category of word is determiner.
      * English examples: "the", "a", "some", "many", "his", "her".
      */
-   public static final long DETERMINER = 1024L;
+    public static final long DETERMINER = 1024L;
 
     /**
      * Grammatical category of word is cardinal.
      * English examples: "one", "two", "million".
      */
-   public static final long CARDINAL = 2048L;
+    public static final long CARDINAL = 2048L;
 
     /**
      * Grammatical category of word is conjunction.
      * English examples: "and", "or", "since", "if".
      */
-   public static final long CONJUNCTION = 4096L;
+    public static final long CONJUNCTION = 4096L;
 
     /**
      * Grammatical category of word is preposition.
      * English examples: "of", "for".
      */
-   public static final long PREPOSITION = 8192L;
+    public static final long PREPOSITION = 8192L;
 
     /**
      * Grammatical category is contraction.
      * English examples: "don't", "can't".
      */
-   public static final long CONTRACTION = 16384L;
+    public static final long CONTRACTION = 16384L;
 
     /**
      * Word is an abbreviation or acronynm.
      * English examples: "Mr.", "USA".
      */
-   public static final long ABBREVIATION = 32768L;
+    public static final long ABBREVIATION = 32768L;
 
     /**
      * Get the categories of the Word.
      * Value may be UNKNOWN or an OR'ed set
      * of the categories defined by this class.
      */
-   public long getCategories() {
-      return this.categories;
-   }
+    public long getCategories() {
+        return this.categories;
+    }
 
     /**
      * Get the pronunciations of the Word.
      * The pronunciation string uses the Unicode IPA subset.
      * Returns null if no pronunciations are specified.
      */
-   public String[] getPronunciations() {
-      return this.pronunciations;
-   }
+    public String[] getPronunciations() {
+        return this.pronunciations;
+    }
 
     /**
      * Get the "spoken form" of the Word.
      * Returns null if the spoken form is not defined.
      */
-   public String getSpokenForm() {
-      return this.spokenForm;
-   }
+    public String getSpokenForm() {
+        return this.spokenForm;
+    }
 
     /**
      * Get the written form of the Word.
      */
-   public String getWrittenForm() {
-      return this.writtenForm;
-   }
+    public String getWrittenForm() {
+        return this.writtenForm;
+    }
 
     /**
      * Set the categories of the Word.
@@ -185,9 +185,9 @@ public class Word {
      * Speech synthesizers can use
      * this information to improve phrasing and accenting.
      */
-   public void setCategories(long var1) {
-      this.categories = var1;
-   }
+    public void setCategories(long cat) {
+        this.categories = cat;
+    }
 
     /**
      * Set the pronunciation of the Word as
@@ -204,9 +204,9 @@ public class Word {
      * recognition accuracy.  Synthesizers use the information to
      * accurately speak unusual words (e.g., foreign words).
      */
-   public void setPronunciations(String[] var1) {
-      this.pronunciations = var1;
-   }
+    public void setPronunciations(String[] pron) {
+        this.pronunciations = pron;
+    }
 
     /**
      * Set the "spoken form" of the Word.
@@ -217,16 +217,16 @@ public class Word {
      * synthesizer.  For example, "JavaSoft" to "java soft",
      * "toString" -> "to string", "IEEE" -> "I triple E".
      */
-   public void setSpokenForm(String var1) {
-      this.spokenForm = var1;
-   }
+    public void setSpokenForm(String text) {
+        this.spokenForm = text;
+    }
 
     /**
      * Set the "written form" of the Word.
      * The written form text should be a string that could be
      * used to present the Word visually.
      */
-   public void setWrittenForm(String var1) {
-      this.writtenForm = var1;
-   }
+    public void setWrittenForm(String text) {
+        this.writtenForm = text;
+    }
 }

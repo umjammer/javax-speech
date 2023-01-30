@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import javax.speech.SpeechException;
 
+
 /**
  * Thrown if a syntax problem is found with text in the marked up with the
  * <p>
@@ -14,16 +15,15 @@ public class JSMLException extends SpeechException {
     /**
      * Constructs a JSMLException with no detail message.
      */
-   public JSMLException() {
-   }
+    public JSMLException() {
+    }
 
     /**
      * Constructs a JSMLException with the specified detail message.
      *
-     * @param s
-     *  a printable detail message
+     * @param s a printable detail message
      */
-   public JSMLException(String s) {
-      super(s);
-   }
+    public JSMLException(String s) {
+        super(s);
+    }
 }

@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.SpeechEvent;
 
+
 /**
  * A ResultEvent is issued by a Result object
  * to indicate changes in the recognized tokens and changes in state.
@@ -53,7 +54,7 @@ import javax.speech.SpeechEvent;
  * <p>
  * The
  * <A href="Result.html#events">sequence of ResultEvents
- *  associated with a recognition result</A>
+ * associated with a recognition result</A>
  * are described in the documentation for the Result interface.
  * <p>
  * In brief, the events that occur depend upon the Result state:
@@ -101,7 +102,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.ResultEvent#isTokenFinalized()
      * @see javax.speech.recognition.ResultEvent#isUnfinalizedTokensChanged()
      */
-   public static final int RESULT_CREATED = 801;
+    public static final int RESULT_CREATED = 801;
 
     /**
      * RESULT_UPDATED is issued when one or more tokens of
@@ -117,7 +118,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#UNFINALIZED
      * @see javax.speech.recognition.ResultListener#resultUpdated(javax.speech.recognition.ResultEvent)
      */
-   public static final int RESULT_UPDATED = 802;
+    public static final int RESULT_UPDATED = 802;
 
     /**
      * GRAMMAR_FINALIZED is issued when the Grammar
@@ -138,7 +139,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#UNFINALIZED
      * @see javax.speech.recognition.ResultListener#grammarFinalized(javax.speech.recognition.ResultEvent)
      */
-   public static final int GRAMMAR_FINALIZED = 803;
+    public static final int GRAMMAR_FINALIZED = 803;
 
     /**
      * RESULT_ACCEPTED event is issued when a Result
@@ -182,7 +183,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Recognizer#SUSPENDED
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   public static final int RESULT_ACCEPTED = 804;
+    public static final int RESULT_ACCEPTED = 804;
 
     /**
      * RESULT_REJECTED event is issued when a Result
@@ -213,7 +214,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#getGrammar()
      * @see javax.speech.recognition.ResultListener#resultRejected(javax.speech.recognition.ResultEvent)
      */
-   public static final int RESULT_REJECTED = 805;
+    public static final int RESULT_REJECTED = 805;
 
     /**
      * AUDIO_RELEASED event is issued when the audio information
@@ -233,7 +234,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#getResultState()
      * @see javax.speech.recognition.ResultListener#audioReleased(javax.speech.recognition.ResultEvent)
      */
-   public static final int AUDIO_RELEASED = 806;
+    public static final int AUDIO_RELEASED = 806;
 
     /**
      * TRAINING_INFO_RELEASED event is issued when the
@@ -253,7 +254,7 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#getResultState()
      * @see javax.speech.recognition.ResultListener#trainingInfoReleased(javax.speech.recognition.ResultEvent)
      */
-   public static final int TRAINING_INFO_RELEASED = 807;
+    public static final int TRAINING_INFO_RELEASED = 807;
 
     /**
      * True if the ResultEvent indicates that one or more
@@ -264,7 +265,7 @@ public class ResultEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.ResultEvent#isTokenFinalized()
      */
-   protected boolean tokenFinalized = false;
+    protected boolean tokenFinalized = false;
 
     /**
      * True if the ResultEvent indicates that the
@@ -275,23 +276,21 @@ public class ResultEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.ResultEvent#isUnfinalizedTokensChanged()
      */
-   protected boolean unfinalizedTokensChanged = false;
+    protected boolean unfinalizedTokensChanged = false;
 
     /**
      * Constructs a ResultEvent with an event type identifier.
      * The isTokenFinalized and isUnfinalizedTokensChanged
      * flags are set to false.
      *
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
+     * @param source the object that issued the event
+     * @param id     the identifier for the event type
      */
-   public ResultEvent(Result source, int id) {
-      super(source, id);
-      this.tokenFinalized = false;
-      this.unfinalizedTokensChanged = false;
-   }
+    public ResultEvent(Result source, int id) {
+        super(source, id);
+        this.tokenFinalized = false;
+        this.unfinalizedTokensChanged = false;
+    }
 
     /**
      * Constructs a ResultEvent for a specified source
@@ -301,14 +300,10 @@ public class ResultEvent extends SpeechEvent {
      * RESULT_ACCEPTED and RESULT_REJECTED events.
      * (For other event types these flags should be false).
      *
-     * @param source
-     *  the Result object that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param isTokenFinalized
-     *  true if any token is finalized with this event
-     * @param isUnfinalizedTokensChanged
-     *  true if the unfinalized text is changed with this event
+     * @param source                     the Result object that issued the event
+     * @param id                         the identifier for the event type
+     * @param isTokenFinalized           true if any token is finalized with this event
+     * @param isUnfinalizedTokensChanged true if the unfinalized text is changed with this event
      * @see javax.speech.recognition.ResultEvent#RESULT_CREATED
      * @see javax.speech.recognition.ResultEvent#GRAMMAR_FINALIZED
      * @see javax.speech.recognition.ResultEvent#RESULT_UPDATED
@@ -317,11 +312,11 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.ResultEvent#AUDIO_RELEASED
      * @see javax.speech.recognition.ResultEvent#TRAINING_INFO_RELEASED
      */
-   public ResultEvent(Result source, int id, boolean isTokenFinalized, boolean isUnfinalizedTokensChanged) {
-      super(source, id);
-      this.tokenFinalized = isTokenFinalized;
-      this.unfinalizedTokensChanged = isUnfinalizedTokensChanged;
-   }
+    public ResultEvent(Result source, int id, boolean isTokenFinalized, boolean isUnfinalizedTokensChanged) {
+        super(source, id);
+        this.tokenFinalized = isTokenFinalized;
+        this.unfinalizedTokensChanged = isUnfinalizedTokensChanged;
+    }
 
     /**
      * For RESULT_CREATED, RESULT_UPDATED,
@@ -334,9 +329,9 @@ public class ResultEvent extends SpeechEvent {
      * @see javax.speech.recognition.Result#numTokens()
      * @see javax.speech.recognition.Result#getBestTokens()
      */
-   public boolean isTokenFinalized() {
-      return this.tokenFinalized;
-   }
+    public boolean isTokenFinalized() {
+        return this.tokenFinalized;
+    }
 
     /**
      * For RESULT_CREATED, RESULT_UPDATED,
@@ -353,9 +348,9 @@ public class ResultEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.Result#getUnfinalizedTokens()
      */
-   public boolean isUnfinalizedTokensChanged() {
-      return this.unfinalizedTokensChanged;
-   }
+    public boolean isUnfinalizedTokensChanged() {
+        return this.unfinalizedTokensChanged;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -363,49 +358,49 @@ public class ResultEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      StringBuffer sb = new StringBuffer();
-      switch (super.id) {
-         case 801:
+    public String paramString() {
+        StringBuffer sb = new StringBuffer();
+        switch (super.id) {
+        case 801:
             sb.append("RESULT_CREATED");
             break;
-         case 802:
+        case 802:
             sb.append("RESULT_UPDATED");
             break;
-         case 803:
+        case 803:
             sb.append("GRAMMAR_FINALIZED");
             break;
-         case 804:
+        case 804:
             sb.append("RESULT_ACCEPTED");
             break;
-         case 805:
+        case 805:
             sb.append("RESULT_REJECTED");
             break;
-         case 806:
+        case 806:
             sb.append("AUDIO_RELEASED");
             break;
-         case 807:
+        case 807:
             sb.append("TRAINING_INFO_RELEASED");
             break;
-         default:
+        default:
             return super.paramString();
-      }
+        }
 
-      switch (super.id) {
-         case 801:
-         case 802:
-         case 804:
-         case 805:
+        switch (super.id) {
+        case 801:
+        case 802:
+        case 804:
+        case 805:
             if (this.tokenFinalized) {
-               sb.append(": token finalized");
+                sb.append(": token finalized");
             }
 
             if (this.unfinalizedTokensChanged) {
-               sb.append(": unfinalized tokens changed");
+                sb.append(": unfinalized tokens changed");
             }
-         case 803:
-         default:
+        case 803:
+        default:
             return sb.toString();
-      }
-   }
+        }
+    }
 }

@@ -56,5 +56,5 @@ public interface EngineCentral {
      * @see javax.speech.recognition.RecognizerModeDesc
      * @see javax.speech.synthesis.SynthesizerModeDesc
      */
-   EngineList createEngineList(EngineModeDesc var1) throws SecurityException;
+    EngineList createEngineList(EngineModeDesc require) throws SecurityException;
 }

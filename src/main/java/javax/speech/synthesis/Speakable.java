@@ -16,7 +16,7 @@ package javax.speech.synthesis;
  * for the Java Speech Markup Language -- defined in the
  * <p>
  * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSML/index.html">
- *  Java Speech Markup Language specification</A>
+ * Java Speech Markup Language specification</A>
  * .
  * JSML allows structural information (paragraphs and sentences),
  * production information (pronunciations, emphasis, breaks,
@@ -62,5 +62,5 @@ public interface Speakable {
      * @see javax.speech.synthesis.Synthesizer#enumerateQueue()
      * @see javax.speech.synthesis.SynthesizerQueueItem
      */
-   String getJSMLText();
+    String getJSMLText();
 }

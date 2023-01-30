@@ -3,6 +3,7 @@ package javax.speech;
 import java.awt.Component;
 import java.beans.PropertyChangeListener;
 
+
 /**
  * An EngineProperties object defines the set of run-time
  * properties of an Engine.  This interface is extended for
@@ -149,10 +150,10 @@ public interface EngineProperties {
      * <p>
      * A PropertyChangeEvent is fired in response to setting
      * any bound property.
-     * @param listener
-     *  - The PropertyChangeListener to be added
+     *
+     * @param listener - The PropertyChangeListener to be added
      */
-   void addPropertyChangeListener(PropertyChangeListener listener);
+    void addPropertyChangeListener(PropertyChangeListener listener);
 
     /**
      * Obtain the AWT Component that provides the default user interface
@@ -160,19 +161,19 @@ public interface EngineProperties {
      * If this Engine has no default control panel,
      * the return is null
      */
-   Component getControlComponent();
+    Component getControlComponent();
 
     /**
      * Remove a PropertyChangeListener from the listener list.
-     * @param listener
-     *  - The PropertyChangeListener to be removed
+     *
+     * @param listener - The PropertyChangeListener to be removed
      */
-   void removePropertyChangeListener(PropertyChangeListener listener);
+    void removePropertyChangeListener(PropertyChangeListener listener);
 
     /**
      * The reset method returns all properties to reasonable defaults
      * for the Engine.  A property change event is issued
      * for each engine property that changes as the reset takes effect.
      */
-   void reset();
+    void reset();
 }

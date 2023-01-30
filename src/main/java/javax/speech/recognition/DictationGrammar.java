@@ -1,3 +1,9 @@
+/*
+ * JavaTM Speech API
+ *
+ * Copyright 1997-1998 Sun Microsystems, Inc. All rights reserved
+ */
+
 package javax.speech.recognition;
 
 /**
@@ -120,17 +126,17 @@ public interface DictationGrammar extends Grammar {
      *
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void addWord(String var1);
+    void addWord(String word);
 
     /**
      * List the words that have been added to the DictationGrammar.
      */
-   String[] listAddedWords();
+    String[] listAddedWords();
 
     /**
      * List the words that have been removed from the DictationGrammar.
      */
-   String[] listRemovedWords();
+    String[] listRemovedWords();
 
     /**
      * Remove a word from the DictationGrammar.
@@ -145,7 +151,7 @@ public interface DictationGrammar extends Grammar {
      *
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void removeWord(String var1);
+    void removeWord(String word);
 
     /**
      * Provide the recognition engine with the current textual context
@@ -166,7 +172,7 @@ public interface DictationGrammar extends Grammar {
      *
      * @see javax.speech.recognition.DictationGrammar#setContext(java.lang.String, java.lang.String)
      */
-   void setContext(String var1, String var2);
+    void setContext(String preceding, String following);
 
-   void setContext(String[] var1, String[] var2);
+    void setContext(String[] preceding, String[] following);
 }

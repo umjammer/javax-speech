@@ -9,16 +9,16 @@ public class VendorDataException extends SpeechException {
     /**
      * Construct a VendorDataException with no detail message.
      */
-   public VendorDataException() {
-   }
+    public VendorDataException() {
+    }
 
     /**
      * Construct a VendorDataException with the specified detail message.
      * A detail message is a String that describes this particular exception.
-     * @param s
-     *  the detail message
+     *
+     * @param s the detail message
      */
-   public VendorDataException(String s) {
-      super(s);
-   }
+    public VendorDataException(String s) {
+        super(s);
+    }
 }

@@ -2,6 +2,7 @@ package javax.speech.synthesis;
 
 import javax.speech.EngineListener;
 
+
 /**
  * An extension to the EngineListener interface for receiving
  * notification of events associated with a Synthesizer.
@@ -32,7 +33,7 @@ public interface SynthesizerListener extends EngineListener {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.synthesis.Synthesizer#QUEUE_EMPTY
      */
-   void queueEmptied(SynthesizerEvent var1);
+    void queueEmptied(SynthesizerEvent e);
 
     /**
      * An QUEUE_UPDATED event has occurred indicating that
@@ -42,5 +43,5 @@ public interface SynthesizerListener extends EngineListener {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      * @see javax.speech.synthesis.Synthesizer#QUEUE_NOT_EMPTY
      */
-   void queueUpdated(SynthesizerEvent var1);
+    void queueUpdated(SynthesizerEvent e);
 }

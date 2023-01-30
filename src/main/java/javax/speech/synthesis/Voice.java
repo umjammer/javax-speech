@@ -21,7 +21,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getGender()
      * @see javax.speech.synthesis.Voice#setGender(int)
      */
-   public static final int GENDER_DONT_CARE = 65535;
+    public static final int GENDER_DONT_CARE = 65535;
 
     /**
      * Female voice.
@@ -29,7 +29,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getGender()
      * @see javax.speech.synthesis.Voice#setGender(int)
      */
-   public static final int GENDER_FEMALE = 1;
+    public static final int GENDER_FEMALE = 1;
 
     /**
      * Male voice.
@@ -37,7 +37,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getGender()
      * @see javax.speech.synthesis.Voice#setGender(int)
      */
-   public static final int GENDER_MALE = 2;
+    public static final int GENDER_MALE = 2;
 
     /**
      * Neutral voice that is neither male or female
@@ -46,7 +46,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getGender()
      * @see javax.speech.synthesis.Voice#setGender(int)
      */
-   public static final int GENDER_NEUTRAL = 4;
+    public static final int GENDER_NEUTRAL = 4;
 
     /**
      * Ignore age when performing a match.
@@ -55,7 +55,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_DONT_CARE = 65535;
+    public static final int AGE_DONT_CARE = 65535;
 
     /**
      * Age roughly up to 12 years.
@@ -63,7 +63,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_CHILD = 1;
+    public static final int AGE_CHILD = 1;
 
     /**
      * Age roughly 13 to 19 years.
@@ -71,7 +71,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_TEENAGER = 2;
+    public static final int AGE_TEENAGER = 2;
 
     /**
      * Age roughly 20 to 40 years.
@@ -79,7 +79,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_YOUNGER_ADULT = 4;
+    public static final int AGE_YOUNGER_ADULT = 4;
 
     /**
      * Age roughly 40 to 60 years.
@@ -87,7 +87,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_MIDDLE_ADULT = 8;
+    public static final int AGE_MIDDLE_ADULT = 8;
 
     /**
      * Age roughly 60 years and up.
@@ -95,7 +95,7 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_OLDER_ADULT = 16;
+    public static final int AGE_OLDER_ADULT = 16;
 
     /**
      * Voice with age that is indeterminate.
@@ -104,78 +104,79 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#getAge()
      * @see javax.speech.synthesis.Voice#setAge(int)
      */
-   public static final int AGE_NEUTRAL = 32;
+    public static final int AGE_NEUTRAL = 32;
 
-   private String name;
+    private String name;
 
-   private int gender;
+    private int gender;
 
-   private int age;
+    private int age;
 
-   private String style;
+    private String style;
 
     /**
      * Empty constructor sets voice name and style to null, and
      * age and gender to "don't care" values.
      */
-   public Voice() {
-      this.name = null;
-      this.gender = 65535;
-      this.age = 65535;
-      this.style = null;
-   }
+    public Voice() {
+        this.name = null;
+        this.gender = 65535;
+        this.age = 65535;
+        this.style = null;
+    }
 
     /**
      * Constructor provided with voice name, gender, age and style.
      */
-   public Voice(String var1, int var2, int var3, String var4) {
-      this.name = var1;
-      this.gender = var2;
-      this.age = var3;
-      this.style = var4;
-   }
+    public Voice(String name, int gender, int age, String style) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.style = style;
+    }
 
     /**
      * Create a copy of this Voice.
+     *
      * @return A copy of this
      */
-   public Object clone() {
-      try {
-         return super.clone();
-      } catch (CloneNotSupportedException var1) {
-         throw new InternalError();
-      }
-   }
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError();
+        }
+    }
 
     /**
      * Returns true if and only if the parameter is not null
      * and is a Voice with equal values of name, age, gender,
      * and style.
      */
-   public boolean equals(Object anObject) {
-      if (anObject != null && anObject instanceof Voice) {
-         Voice voice = (Voice)anObject;
-         if (this.name == null) {
-            if (voice.name != null) {
-               return false;
+    public boolean equals(Object anObject) {
+        if (anObject != null && anObject instanceof Voice) {
+            Voice voice = (Voice) anObject;
+            if (this.name == null) {
+                if (voice.name != null) {
+                    return false;
+                }
+            } else if (!this.name.equals(voice.name)) {
+                return false;
             }
-         } else if (!this.name.equals(voice.name)) {
-            return false;
-         }
 
-         if (this.style == null) {
-            if (voice.style != null) {
-               return false;
+            if (this.style == null) {
+                if (voice.style != null) {
+                    return false;
+                }
+            } else if (!this.style.equals(voice.style)) {
+                return false;
             }
-         } else if (!this.style.equals(voice.style)) {
-            return false;
-         }
 
-         return this.gender == voice.gender && this.age == voice.age;
-      } else {
-         return false;
-      }
-   }
+            return this.gender == voice.gender && this.age == voice.age;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Get the voice age.  Age values are OR'able.  For example,
@@ -194,9 +195,9 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#AGE_NEUTRAL
      * @see javax.speech.synthesis.Voice#AGE_DONT_CARE
      */
-   public int getAge() {
-      return this.age;
-   }
+    public int getAge() {
+        return this.age;
+    }
 
     /**
      * Get the voice gender.  Gender values are OR'able.  For example,
@@ -212,25 +213,25 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#GENDER_NEUTRAL
      * @see javax.speech.synthesis.Voice#GENDER_DONT_CARE
      */
-   public int getGender() {
-      return this.gender;
-   }
+    public int getGender() {
+        return this.gender;
+    }
 
     /**
      * Get the voice name.  May return null.
      */
-   public String getName() {
-      return this.name;
-   }
+    public String getName() {
+        return this.name;
+    }
 
     /**
      * Set the voice style.  This parameter is designed for human
      * interpretation.  Values might include "business", "casual",
      * "robotic", "breathy".
      */
-   public String getStyle() {
-      return this.style;
-   }
+    public String getStyle() {
+        return this.style;
+    }
 
     /**
      * Determine whether a Voice has all the features
@@ -244,33 +245,33 @@ public class Voice implements Cloneable {
      * The age and gender parameters are OR'ed: e.g. the required age
      * can be AGE_TEENAGER | AGE_CHILD.
      */
-   public boolean match(Voice var1) {
-      if (var1.name != null && !var1.name.equals("")) {
-         if (this.name == null) {
-            return false;
-         }
+    public boolean match(Voice require) {
+        if (require.name != null && !require.name.equals("")) {
+            if (this.name == null) {
+                return false;
+            }
 
-         if (!this.name.equals(var1.name)) {
-            return false;
-         }
-      }
+            if (!this.name.equals(require.name)) {
+                return false;
+            }
+        }
 
-      if (var1.style != null && !var1.style.equals("")) {
-         if (this.style == null) {
-            return false;
-         }
+        if (require.style != null && !require.style.equals("")) {
+            if (this.style == null) {
+                return false;
+            }
 
-         if (!this.style.equals(var1.style)) {
-            return false;
-         }
-      }
+            if (!this.style.equals(require.style)) {
+                return false;
+            }
+        }
 
-      if ((var1.gender & this.gender) == 0) {
-         return false;
-      } else {
-         return (var1.age & this.age) != 0;
-      }
-   }
+        if ((require.gender & this.gender) == 0) {
+            return false;
+        } else {
+            return (require.age & this.age) != 0;
+        }
+    }
 
     /**
      * Set the voice age.
@@ -283,9 +284,9 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#AGE_NEUTRAL
      * @see javax.speech.synthesis.Voice#AGE_DONT_CARE
      */
-   public void setAge(int var1) {
-      this.age = var1;
-   }
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     /**
      * Set the voice gender.
@@ -295,22 +296,22 @@ public class Voice implements Cloneable {
      * @see javax.speech.synthesis.Voice#GENDER_NEUTRAL
      * @see javax.speech.synthesis.Voice#GENDER_DONT_CARE
      */
-   public void setGender(int var1) {
-      this.gender = var1;
-   }
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 
     /**
      * Set the voice name.
      * A null or "" string in voice match means don't care.
      */
-   public void setName(String var1) {
-      this.name = var1;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Set the voice style.
      */
-   public void setStyle(String var1) {
-      this.style = var1;
-   }
+    public void setStyle(String style) {
+        this.style = style;
+    }
 }

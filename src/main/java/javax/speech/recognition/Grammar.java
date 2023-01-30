@@ -252,7 +252,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Grammar#RECOGNIZER_MODAL
      * @see javax.speech.recognition.Grammar#GLOBAL
      */
-   int RECOGNIZER_FOCUS = 900;
+    int RECOGNIZER_FOCUS = 900;
 
     /**
      * Value of activation mode that requires the Recognizer
@@ -266,7 +266,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Grammar#RECOGNIZER_FOCUS
      * @see javax.speech.recognition.Grammar#GLOBAL
      */
-   int RECOGNIZER_MODAL = 901;
+    int RECOGNIZER_MODAL = 901;
 
     /**
      * Value of activation mode in which the Grammar
@@ -281,7 +281,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Grammar#RECOGNIZER_FOCUS
      * @see javax.speech.recognition.Grammar#RECOGNIZER_MODAL
      */
-   int GLOBAL = 902;
+    int GLOBAL = 902;
 
     /**
      * Request notifications of events of related to this Grammar.
@@ -289,7 +289,7 @@ public interface Grammar {
      *
      * @see javax.speech.recognition.Grammar#removeGrammarListener(javax.speech.recognition.GrammarListener)
      */
-   void addGrammarListener(GrammarListener var1);
+    void addGrammarListener(GrammarListener listener);
 
     /**
      * Request notifications of events from any Result
@@ -325,7 +325,7 @@ public interface Grammar {
      * @see javax.speech.recognition.ResultEvent#RESULT_ACCEPTED
      * @see javax.speech.recognition.ResultEvent#RESULT_REJECTED
      */
-   void addResultListener(ResultListener var1);
+    void addResultListener(ResultListener listener);
 
     /**
      * Return the current activation mode for a Grammar.
@@ -335,7 +335,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Grammar#setEnabled(boolean)
      * @see javax.speech.recognition.Grammar#isActive()
      */
-   int getActivationMode();
+    int getActivationMode();
 
     /**
      * Get the name of a grammar.  A grammar's name must be unique for
@@ -358,13 +358,13 @@ public interface Grammar {
      * @see javax.speech.recognition.DictationGrammar
      * @see javax.speech.recognition.RuleGrammar
      */
-   String getName();
+    String getName();
 
     /**
      * Returns a reference to the Recognizer that
      * owns this grammar.
      */
-   Recognizer getRecognizer();
+    Recognizer getRecognizer();
 
     /**
      * Test whether a Grammar is currently active for recognition.
@@ -404,7 +404,7 @@ public interface Grammar {
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_GAINED
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      */
-   boolean isActive();
+    boolean isActive();
 
     /**
      * Return the enabled property of a Grammar.
@@ -415,14 +415,14 @@ public interface Grammar {
      * @see javax.speech.recognition.RuleGrammar#isEnabled()
      * @see javax.speech.recognition.RuleGrammar#isEnabled(java.lang.String)
      */
-   boolean isEnabled();
+    boolean isEnabled();
 
     /**
      * Remove a listener from this Grammar.
      *
      * @see javax.speech.recognition.Grammar#addGrammarListener(javax.speech.recognition.GrammarListener)
      */
-   void removeGrammarListener(GrammarListener var1);
+    void removeGrammarListener(GrammarListener listener);
 
     /**
      * Remove a ResultListener from this Grammar.
@@ -431,7 +431,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Recognizer#removeResultListener(javax.speech.recognition.ResultListener)
      * @see javax.speech.recognition.Grammar#removeResultListener(javax.speech.recognition.ResultListener)
      */
-   void removeResultListener(ResultListener var1);
+    void removeResultListener(ResultListener listener);
 
     /**
      * Set the activation mode of a Grammar as
@@ -472,7 +472,7 @@ public interface Grammar {
      * @see javax.speech.recognition.Grammar#isActive()
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
-   void setActivationMode(int var1) throws IllegalArgumentException;
+    void setActivationMode(int mode) throws IllegalArgumentException;
 
     /**
      * Set the enabled property of a Grammar.  A change
@@ -501,5 +501,5 @@ public interface Grammar {
      * @see javax.speech.recognition.RuleGrammar#setEnabled(java.lang.String[], boolean)
      * @see javax.speech.recognition.RuleGrammar#isEnabled()
      */
-   void setEnabled(boolean var1);
+    void setEnabled(boolean enabled);
 }

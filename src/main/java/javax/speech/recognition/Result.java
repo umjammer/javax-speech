@@ -191,7 +191,7 @@ package javax.speech.recognition;
  * state of recognition of the current result.  The Recognizer
  * interface documents the
  * <A href="Recognizer.html#normalEvents">normal
- *  event cycle</A>
+ * event cycle</A>
  * for a Recognizer and for Results.
  * The following is an overview of the ways in which the two state
  * systems are linked:
@@ -258,7 +258,7 @@ package javax.speech.recognition;
  * event to the
  * <p>
  * <A href="RecognizerAudioListener.html#speechStarted(javax.speech.recognition.RecognizerEvent)">
- *  speechStarted</A>
+ * speechStarted</A>
  * method of
  * <p>
  * <A href="RecognizerAudioListener.html">RecognizerAudioListener</A>
@@ -394,7 +394,7 @@ public interface Result {
      * @see javax.speech.recognition.Result#getResultState()
      * @see javax.speech.recognition.ResultEvent#RESULT_CREATED
      */
-   int UNFINALIZED = 300;
+    int UNFINALIZED = 300;
 
     /**
      * getResultState returns ACCEPTED once
@@ -409,7 +409,7 @@ public interface Result {
      * @see javax.speech.recognition.Result#getResultState()
      * @see javax.speech.recognition.ResultEvent#RESULT_ACCEPTED
      */
-   int ACCEPTED = 301;
+    int ACCEPTED = 301;
 
     /**
      * getResultState returns REJECTED once
@@ -424,7 +424,7 @@ public interface Result {
      * @see javax.speech.recognition.Result#getResultState()
      * @see javax.speech.recognition.ResultEvent#RESULT_REJECTED
      */
-   int REJECTED = 302;
+    int REJECTED = 302;
 
     /**
      * Request notifications of events of related to this Result.
@@ -452,7 +452,7 @@ public interface Result {
      * @see javax.speech.recognition.Recognizer#addResultListener(javax.speech.recognition.ResultListener)
      * @see javax.speech.recognition.Grammar#addResultListener(javax.speech.recognition.ResultListener)
      */
-   void addResultListener(ResultListener var1);
+    void addResultListener(ResultListener listener);
 
     /**
      * Returns the best guess for the tokNumth token.
@@ -479,13 +479,13 @@ public interface Result {
      * @see javax.speech.recognition.FinalRuleResult#getAlternativeTokens(int)
      * @see javax.speech.recognition.FinalDictationResult#getAlternativeTokens(ResultToken, ResultToken, int)
      */
-   ResultToken getBestToken(int var1) throws IllegalArgumentException;
+    ResultToken getBestToken(int tokNum) throws IllegalArgumentException;
 
     /**
      * Returns all the best guess tokens for this result.
      * If the result has zero tokens, the return value is null.
      */
-   ResultToken[] getBestTokens();
+    ResultToken[] getBestTokens();
 
     /**
      * Return the Grammar matched by the best-guess finalized
@@ -519,7 +519,7 @@ public interface Result {
      *
      * @see javax.speech.recognition.Result#getResultState()
      */
-   Grammar getGrammar();
+    Grammar getGrammar();
 
     /**
      * Returns the current state of the Result object: UNFINALIZED,
@@ -532,7 +532,7 @@ public interface Result {
      * @see javax.speech.recognition.Result#ACCEPTED
      * @see javax.speech.recognition.Result#REJECTED
      */
-   int getResultState();
+    int getResultState();
 
     /**
      * In the UNFINALIZED state, return the current guess of
@@ -564,7 +564,7 @@ public interface Result {
      * @see javax.speech.recognition.ResultEvent#RESULT_ACCEPTED
      * @see javax.speech.recognition.ResultEvent#RESULT_REJECTED
      */
-   ResultToken[] getUnfinalizedTokens();
+    ResultToken[] getUnfinalizedTokens();
 
     /**
      * Returns the number of finalized tokens in a Result.
@@ -598,7 +598,7 @@ public interface Result {
      * @see javax.speech.recognition.FinalRuleResult#getAlternativeTokens(int)
      * @see javax.speech.recognition.FinalDictationResult#getAlternativeTokens(ResultToken, ResultToken, int)
      */
-   int numTokens();
+    int numTokens();
 
     /**
      * Remove a listener from this Result.
@@ -607,5 +607,5 @@ public interface Result {
      * @see javax.speech.recognition.Recognizer#removeResultListener(javax.speech.recognition.ResultListener)
      * @see javax.speech.recognition.Grammar#removeResultListener(javax.speech.recognition.ResultListener)
      */
-   void removeResultListener(ResultListener var1);
+    void removeResultListener(ResultListener listener);
 }

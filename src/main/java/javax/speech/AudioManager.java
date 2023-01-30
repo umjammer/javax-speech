@@ -28,10 +28,10 @@ public interface AudioManager {
      * @see javax.speech.AudioListener
      * @see javax.speech.recognition.RecognizerAudioListener
      */
-   void addAudioListener(AudioListener listener);
+    void addAudioListener(AudioListener listener);
 
     /**
      * Detach an audio listener from this AudioManager.
      */
-   void removeAudioListener(AudioListener listener);
+    void removeAudioListener(AudioListener listener);
 }

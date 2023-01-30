@@ -2,6 +2,7 @@ package javax.speech;
 
 import java.util.EventObject;
 
+
 /**
  * The root event class for all speech events.
  * All events from a speech engine (recognizer or synthesizer)
@@ -37,35 +38,34 @@ public class SpeechEvent extends EventObject {
      *
      * @see javax.speech.SpeechEvent#getId()
      */
-   protected int id;
+    protected int id;
 
     /**
      * Constructs a SpeechEvent with a specified source.
      * The source must be non-null.
      */
-   protected SpeechEvent(Object var1) {
-      super(var1);
-   }
+    protected SpeechEvent(Object source) {
+        super(source);
+    }
 
     /**
      * Constructs a SpeechEvent.
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
+     *
+     * @param source the object that issued the event
+     * @param id     the identifier for the event type
      */
-   protected SpeechEvent(Object source, int id) {
-      super(source);
-      this.id = id;
-   }
+    protected SpeechEvent(Object source, int id) {
+        super(source);
+        this.id = id;
+    }
 
     /**
      * Return the event identifier.  Id values are defined for each sub-class
      * of SpeechEvent.
      */
-   public int getId() {
-      return this.id;
-   }
+    public int getId() {
+        return this.id;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -73,14 +73,14 @@ public class SpeechEvent extends EventObject {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      return "unknown type";
-   }
+    public String paramString() {
+        return "unknown type";
+    }
 
     /**
      * Return a printable String.  Useful for event-logging and debugging.
      */
-   public String toString() {
-      return this.getClass().getName() + "[" + this.paramString() + "] on " + super.source;
-   }
+    public String toString() {
+        return this.getClass().getName() + "[" + this.paramString() + "] on " + super.source;
+    }
 }

@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.EngineListener;
 
+
 /**
  * Defines an extension to the EngineListener interface
  * for specific events associated with a Recognizer.
@@ -35,7 +36,7 @@ public interface RecognizerListener extends EngineListener {
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_CHANGES_COMMITTED
      */
-   void changesCommitted(RecognizerEvent var1);
+    void changesCommitted(RecognizerEvent e);
 
     /**
      * FOCUS_GAINED event has been issued as a
@@ -52,7 +53,7 @@ public interface RecognizerListener extends EngineListener {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      * @see javax.speech.recognition.Recognizer#requestFocus()
      */
-   void focusGained(RecognizerEvent var1);
+    void focusGained(RecognizerEvent e);
 
     /**
      * FOCUS_LOST event has been issued as a
@@ -70,7 +71,7 @@ public interface RecognizerListener extends EngineListener {
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      * @see javax.speech.recognition.Recognizer#releaseFocus()
      */
-   void focusLost(RecognizerEvent var1);
+    void focusLost(RecognizerEvent e);
 
     /**
      * A RECOGNIZER_PROCESSING event has been issued
@@ -79,7 +80,7 @@ public interface RecognizerListener extends EngineListener {
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_PROCESSING
      */
-   void recognizerProcessing(RecognizerEvent var1);
+    void recognizerProcessing(RecognizerEvent e);
 
     /**
      * A RECOGNIZER_SUSPENDED event has been issued as a
@@ -93,5 +94,5 @@ public interface RecognizerListener extends EngineListener {
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   void recognizerSuspended(RecognizerEvent var1);
+    void recognizerSuspended(RecognizerEvent e);
 }

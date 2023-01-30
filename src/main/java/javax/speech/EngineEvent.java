@@ -19,7 +19,7 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#allocate()
      * @see javax.speech.EngineListener#engineAllocated(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_ALLOCATED = 501;
+    public static final int ENGINE_ALLOCATED = 501;
 
     /**
      * Identifier for event issued when engine deallocation is complete.
@@ -30,7 +30,7 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#allocate()
      * @see javax.speech.EngineListener#engineDeallocated(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_DEALLOCATED = 502;
+    public static final int ENGINE_DEALLOCATED = 502;
 
     /**
      * Identifier for event issued when engine allocation has commenced.
@@ -41,7 +41,7 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#allocate()
      * @see javax.speech.EngineListener#engineAllocatingResources(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_ALLOCATING_RESOURCES = 503;
+    public static final int ENGINE_ALLOCATING_RESOURCES = 503;
 
     /**
      * Identifier for event issued when engine deallocation has commenced.
@@ -52,7 +52,7 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#allocate()
      * @see javax.speech.EngineListener#engineDeallocatingResources(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_DEALLOCATING_RESOURCES = 504;
+    public static final int ENGINE_DEALLOCATING_RESOURCES = 504;
 
     /**
      * Identifier for event issued when engine is paused.
@@ -63,7 +63,7 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#pause()
      * @see javax.speech.EngineListener#enginePaused(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_PAUSED = 505;
+    public static final int ENGINE_PAUSED = 505;
 
     /**
      * Identifier for event issued when engine is resumed.
@@ -74,41 +74,37 @@ public class EngineEvent extends SpeechEvent {
      * @see javax.speech.Engine#resume()
      * @see javax.speech.EngineListener#engineResumed(javax.speech.EngineEvent)
      */
-   public static final int ENGINE_RESUMED = 506;
+    public static final int ENGINE_RESUMED = 506;
 
     /**
      * Engine state following this event.
      *
      * @see javax.speech.EngineEvent#getNewEngineState()
      */
-   protected long newEngineState;
+    protected long newEngineState;
 
     /**
      * Engine state following prior to this event.
      *
      * @see javax.speech.EngineEvent#getOldEngineState()
      */
-   protected long oldEngineState;
+    protected long oldEngineState;
 
     /**
      * Constructs an EngineEvent with an event identifier, old
      * engine state and new engine state.
      *
-     * @param source
-     *  the object that issued the event
-     * @param id
-     *  the identifier for the event type
-     * @param oldEngineState
-     *  engine state prior to this event
-     * @param newEngineState
-     *  engine state following this event
+     * @param source         the object that issued the event
+     * @param id             the identifier for the event type
+     * @param oldEngineState engine state prior to this event
+     * @param newEngineState engine state following this event
      * @see javax.speech.Engine#getEngineState()
      */
-   public EngineEvent(Engine source, int id, long oldEngineState, long newEngineState) {
-      super(source, id);
-      this.oldEngineState = oldEngineState;
-      this.newEngineState = newEngineState;
-   }
+    public EngineEvent(Engine source, int id, long oldEngineState, long newEngineState) {
+        super(source, id);
+        this.oldEngineState = oldEngineState;
+        this.newEngineState = newEngineState;
+    }
 
     /**
      * Return the state following this EngineEvent.
@@ -116,9 +112,9 @@ public class EngineEvent extends SpeechEvent {
      *
      * @see javax.speech.Engine#getEngineState()
      */
-   public long getNewEngineState() {
-      return this.newEngineState;
-   }
+    public long getNewEngineState() {
+        return this.newEngineState;
+    }
 
     /**
      * Return the state prior to this EngineEvent.
@@ -126,9 +122,9 @@ public class EngineEvent extends SpeechEvent {
      *
      * @see javax.speech.Engine#getEngineState()
      */
-   public long getOldEngineState() {
-      return this.oldEngineState;
-   }
+    public long getOldEngineState() {
+        return this.oldEngineState;
+    }
 
     /**
      * Returns a parameter string identifying this  event.
@@ -136,22 +132,22 @@ public class EngineEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
-   public String paramString() {
-      switch (super.id) {
-         case 501:
+    public String paramString() {
+        switch (super.id) {
+        case 501:
             return "ENGINE_ALLOCATED";
-         case 502:
+        case 502:
             return "ENGINE_DEALLOCATED";
-         case 503:
+        case 503:
             return "ENGINE_ALLOCATING_RESOURCES";
-         case 504:
+        case 504:
             return "ENGINE_DEALLOCATING_RESOURCES";
-         case 505:
+        case 505:
             return "ENGINE_PAUSED";
-         case 506:
+        case 506:
             return "ENGINE_RESUMED";
-         default:
+        default:
             return super.paramString();
-      }
-   }
+        }
+    }
 }

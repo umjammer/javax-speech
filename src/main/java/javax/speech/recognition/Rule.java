@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import java.io.Serializable;
 
+
 /**
  * A Rule object is the basic component of a
  * RuleGrammar and represents anything that may appear
@@ -38,7 +39,7 @@ public abstract class Rule implements Serializable {
      * Note: copy differs from the typical use of clone
      * because a clone is not normally a deep copy.
      */
-   public abstract Rule copy();
+    public abstract Rule copy();
 
     /**
      * Return a string representing the Rule in
@@ -49,5 +50,5 @@ public abstract class Rule implements Serializable {
      *
      * @return printable Java Speech Grammar Format string
      */
-   public abstract String toString();
+    public abstract String toString();
 }

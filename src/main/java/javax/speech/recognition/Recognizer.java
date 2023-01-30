@@ -44,7 +44,7 @@ import javax.speech.VocabManager;
  * A Recognizer is created by a call to
  * <p>
  * <A href="../Central.html#createRecognizer(javax.speech.EngineModeDesc)">
- *  createRecognizer</A>
+ * createRecognizer</A>
  * method of the Central class.
  * Detailed descriptions of the procedures for locating, selecting, creating and
  * initializing a Recognizer are provided in the documentation for
@@ -61,7 +61,7 @@ import javax.speech.VocabManager;
  * Inherits engine location by
  * <p>
  * <A href="../Central.html#availableRecognizers(javax.speech.EngineModeDesc)">
- *       Central.availableRecognizers</A>
+ * Central.availableRecognizers</A>
  * <p>
  * method and
  * {@link EngineModeDesc}
@@ -104,7 +104,7 @@ import javax.speech.VocabManager;
  * and
  * <p>
  * {@link Engine#testEngineState(long)}
- *
+ * <p>
  * methods from the
  * <p>
  * {@link Engine}
@@ -210,11 +210,11 @@ import javax.speech.VocabManager;
  * Inherits
  * <p>
  * <A href="../Engine.html#addEngineListener(javax.speech.EngineListener)">
- *       addEngineListener</A>
+ * addEngineListener</A>
  * and
  * <p>
  * <A href="../Engine.html#removeEngineListener(javax.speech.EngineListener)">
- *       removeEngineListener</A>
+ * removeEngineListener</A>
  * methods from the
  * <p>
  * {@link Engine}
@@ -314,7 +314,7 @@ import javax.speech.VocabManager;
  * The advanced
  * <p>
  * <A href="#loadJSGF(java.net.URL, java.lang.String, boolean, boolean, java.util.Vector)">
- *        loadJSGF</A>
+ * loadJSGF</A>
  * method provides additional load controls.
  * <p>
  * <A href="#readVendorGrammar(java.io.InputStream)">readVendorGrammar</A>
@@ -324,7 +324,7 @@ import javax.speech.VocabManager;
  * Other important rule grammar functions are:
  * <p>
  * <A href="#deleteRuleGrammar(javax.speech.recognition.RuleGrammar)">
- *        deleteRuleGrammar</A>
+ * deleteRuleGrammar</A>
  * deletes a loaded grammar.
  * <p>
  * <A href="#listRuleGrammars()">listRuleGrammars</A>
@@ -335,7 +335,7 @@ import javax.speech.VocabManager;
  * produces a string representing a RuleGrammar in Java Speech Grammar Format.
  * <p>
  * <A href="#writeVendorGrammar(java.io.OutputStream, javax.speech.recognition.Grammar)">
- *        writeVendorGrammar</A>
+ * writeVendorGrammar</A>
  * : write a grammar
  * in a vendor-specific (non-portable) format.
  * <p>
@@ -498,7 +498,7 @@ import javax.speech.VocabManager;
  * <p>
  * The Recognizer
  * <A href="Grammar.html#commit">
- *    commits all grammar changes</A>
+ * commits all grammar changes</A>
  * , issues a CHANGES_COMMITTED
  * event to RecognizerListeners to return to the
  * LISTENING state.  It also issues GRAMMAR_CHANGES_COMMITTED
@@ -589,12 +589,12 @@ import javax.speech.VocabManager;
  * not be mixed.  If a speech event occurs in the absence of
  * non-speech events, the
  * <A href="#normalEvents">normal event
- *  cycle</A>
+ * cycle</A>
  * takes place.
  * If a non-speech event occurs in the absence of any speech
  * events, the
  * <A href="#nonspeechEvents">non-speech event
- *  cycle</A>
+ * cycle</A>
  * takes place.
  * <p>
  * We need to consider two cases in which speech and non-speech
@@ -654,21 +654,21 @@ public interface Recognizer extends Engine {
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_PROCESSING">
-     *  RECOGNIZER_PROCESSING</A>
+     * RECOGNIZER_PROCESSING</A>
      * event is issued to
      * indicate a transition out of the LISTENING
      * state and into the PROCESSING state.
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_SUSPENDED">
-     *  RECOGNIZER_SUSPENDED</A>
+     * RECOGNIZER_SUSPENDED</A>
      * event is issued to
      * indicate a transition out of the LISTENING
      * state and into the SUSPENDED state.
      * <p>
      * A
      * <A href="RecognizerEvent.html#CHANGES_COMMITTED">
-     *  CHANGES_COMMITTED</A>
+     * CHANGES_COMMITTED</A>
      * event is issued to
      * indicate a transition into the LISTENING
      * state from the SUSPENDED state.
@@ -681,7 +681,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      */
-   long LISTENING = 4294967296L;
+    long LISTENING = 4294967296L;
 
     /**
      * PROCESSING is the bit of state that is set when
@@ -691,7 +691,7 @@ public interface Recognizer extends Engine {
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_SUSPENDED">
-     *  RECOGNIZER_SUSPENDED</A>
+     * RECOGNIZER_SUSPENDED</A>
      * event is issued to
      * indicate a transition out of the PROCESSING
      * state and into the SUSPENDED state
@@ -699,7 +699,7 @@ public interface Recognizer extends Engine {
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_PROCESSING">
-     *  RECOGNIZER_PROCESSING</A>
+     * RECOGNIZER_PROCESSING</A>
      * event is issued to
      * indicate a transition into the PROCESSING
      * state from the LISTENING state when
@@ -712,7 +712,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_PROCESSING
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   long PROCESSING = 8589934592L;
+    long PROCESSING = 8589934592L;
 
     /**
      * SUSPENDED is the bit of state that is set
@@ -734,7 +734,7 @@ public interface Recognizer extends Engine {
      * <p>
      * A
      * <A href="RecognizerEvent.html#CHANGES_COMMITTED">
-     *  CHANGES_COMMITTED</A>
+     * CHANGES_COMMITTED</A>
      * event is issued to
      * indicate a transition out of the SUSPENDED
      * state and into the LISTENING state when
@@ -742,7 +742,7 @@ public interface Recognizer extends Engine {
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_SUSPENDED">
-     *  RECOGNIZER_SUSPENDED</A>
+     * RECOGNIZER_SUSPENDED</A>
      * event is issued to
      * indicate a transition into the SUSPENDED
      * state from either the LISTENING state or
@@ -756,7 +756,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   long SUSPENDED = 17179869184L;
+    long SUSPENDED = 17179869184L;
 
     /**
      * FOCUS_ON is the bit of state that is set when
@@ -777,7 +777,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      * @see javax.speech.Engine#getEngineState()
      */
-   long FOCUS_ON = 281474976710656L;
+    long FOCUS_ON = 281474976710656L;
 
     /**
      * FOCUS_OFF is the bit of state that is set when
@@ -798,7 +798,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      * @see javax.speech.Engine#getEngineState()
      */
-   long FOCUS_OFF = 562949953421312L;
+    long FOCUS_OFF = 562949953421312L;
 
     /**
      * Request notifications of all events for all Result
@@ -829,7 +829,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.ResultEvent#RESULT_CREATED
      * @see javax.speech.recognition.ResultEvent#GRAMMAR_FINALIZED
      */
-   void addResultListener(ResultListener var1);
+    void addResultListener(ResultListener listener);
 
     /**
      * Commit changes to all loaded grammars and all changes
@@ -845,7 +845,7 @@ public interface Recognizer extends Engine {
      * rule name, illegal recursion and so on (see the
      * <p>
      * <A href="http://java.sun.com/products/java-media/speech/forDevelopers/JSGF/index.html">
-     *  Java Speech Grammar Format Specification</A>
+     * Java Speech Grammar Format Specification</A>
      * and the
      * <p>
      * <A href="GrammarSyntaxDetail.html">GrammarSyntaxDetail</A>
@@ -863,7 +863,7 @@ public interface Recognizer extends Engine {
      * <p>
      * The roll of commitChanges in
      * <A href="Grammar.html#commit">
-     *  applying grammar changes</A>
+     * applying grammar changes</A>
      * in described in the documentation for the
      * <p>
      * <A href="Grammar.html">Grammar</A>
@@ -871,7 +871,7 @@ public interface Recognizer extends Engine {
      * The effect of the commitChanges method upon
      * Recognizer states is
      * <A href="#nonspeechEvents">
-     *  described above</A>
+     * described above</A>
      * .  The use of suspend
      * with commitChanges and their use for processing
      * <p>
@@ -892,15 +892,15 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.recognition.GrammarException if the loaded grammars contain any logical errors
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws javax.speech.EngineStateError             if called for a Recognizer in the DEALLOCATED or
+     *                                                   DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#LISTENING
      * @see javax.speech.recognition.Recognizer#PROCESSING
      * @see javax.speech.recognition.Recognizer#SUSPENDED
      * @see javax.speech.recognition.Recognizer#suspend()
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      */
-   void commitChanges() throws GrammarException, EngineStateError;
+    void commitChanges() throws GrammarException, EngineStateError;
 
     /**
      * Delete a RuleGrammar from the Recognizer.
@@ -920,12 +920,12 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws java.lang.IllegalArgumentException if the Grammar is not known to the Recognizer
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws javax.speech.EngineStateError      if called for a Recognizer in the DEALLOCATED or
+     *                                            DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#commitChanges()
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      */
-   void deleteRuleGrammar(RuleGrammar var1) throws IllegalArgumentException, EngineStateError;
+    void deleteRuleGrammar(RuleGrammar grammar) throws IllegalArgumentException, EngineStateError;
 
     /**
      * If the Recognizer is in the PROCESSING state
@@ -955,9 +955,9 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      */
-   void forceFinalize(boolean var1) throws EngineStateError;
+    void forceFinalize(boolean flush) throws EngineStateError;
 
     /**
      * Return the DictationGrammar for a Recognizer.
@@ -986,10 +986,10 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.RecognizerModeDesc#isDictationGrammarSupported()
      */
-   DictationGrammar getDictationGrammar(String var1) throws EngineStateError;
+    DictationGrammar getDictationGrammar(String name) throws EngineStateError;
 
     /**
      * Return the RecognizerProperties object (a JavaBean).
@@ -1005,7 +1005,7 @@ public interface Recognizer extends Engine {
      * @return the RecognizerProperties object for this engine
      * @see javax.speech.Engine#getEngineProperties()
      */
-   RecognizerProperties getRecognizerProperties();
+    RecognizerProperties getRecognizerProperties();
 
     /**
      * Get the RuleGrammar with the specified name.
@@ -1020,13 +1020,12 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param name
-     *  the name of the grammar to be returned
+     * @param name the name of the grammar to be returned
      * @return a RuleGrammar reference or null
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      */
-   RuleGrammar getRuleGrammar(String name) throws EngineStateError;
+    RuleGrammar getRuleGrammar(String name) throws EngineStateError;
 
     /**
      * Return an object which provides management of the speakers
@@ -1048,7 +1047,7 @@ public interface Recognizer extends Engine {
      * @return the SpeakerManager for this Recognizer
      * @throws java.lang.SecurityException if the application does not have accessSpeakerProfiles permission
      */
-   SpeakerManager getSpeakerManager() throws SecurityException;
+    SpeakerManager getSpeakerManager() throws SecurityException;
 
     /**
      * List the RuleGrammars known to the Recognizer.
@@ -1063,9 +1062,9 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      */
-   RuleGrammar[] listRuleGrammars() throws EngineStateError;
+    RuleGrammar[] listRuleGrammars() throws EngineStateError;
 
     /**
      * Create a RuleGrammar from Java Speech Grammar Format text
@@ -1091,19 +1090,18 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param JSGF
-     *  the Reader from which the grammar text is loaded
+     * @param JSGF the Reader from which the grammar text is loaded
      * @throws javax.speech.recognition.GrammarException if the JSGF text contains any errors
-     * @throws java.io.IOException if an I/O error occurs
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.io.IOException                       if an I/O error occurs
+     * @throws javax.speech.EngineStateError             if called for a Recognizer in the DEALLOCATED or
+     *                                                   DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.net.URL, java.lang.String)
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.net.URL, java.lang.String
      * @see boolean
      * @see boolean
      * @see java.util.Vector)
      */
-   RuleGrammar loadJSGF(Reader JSGF) throws GrammarException, IOException, EngineStateError;
+    RuleGrammar loadJSGF(Reader JSGF) throws GrammarException, IOException, EngineStateError;
 
     /**
      * Load a RuleGrammar and its imported grammars
@@ -1136,7 +1134,7 @@ public interface Recognizer extends Engine {
      * The advanced
      * <p>
      * <A href="#loadJSGF(java.net.URL, java.lang.String, boolean, boolean, java.util.Vector)">
-     *  loadJSGF</A>
+     * loadJSGF</A>
      * method provides more control of the loading process.
      * This method is equivalent to:
      * <p>
@@ -1194,22 +1192,20 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param base
-     *  the URL context from which grammar locations are derived or
-     *    null to load exclusively from system resources
-     * @param grammarName
-     *  the name of the grammar to be loaded
+     * @param base        the URL context from which grammar locations are derived or
+     *                    null to load exclusively from system resources
+     * @param grammarName the name of the grammar to be loaded
      * @return a reference to grammarName
      * @throws javax.speech.recognition.GrammarException if any loaded JSGF text contains an error
-     * @throws java.net.MalformedURLException if problem encountered creating a URL
-     * @throws java.io.IOException if an I/O error occurs
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.net.MalformedURLException            if problem encountered creating a URL
+     * @throws java.io.IOException                       if an I/O error occurs
+     * @throws javax.speech.EngineStateError             if called for a Recognizer in the DEALLOCATED or
+     *                                                   DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.io.Reader)
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.net.URL, java.lang.String, boolean, boolean, java.util.Vector)
      * @see java.net.URL#URL(java.lang.String)
      */
-   RuleGrammar loadJSGF(URL base, String grammarName) throws GrammarException, MalformedURLException, IOException, EngineStateError;
+    RuleGrammar loadJSGF(URL base, String grammarName) throws GrammarException, MalformedURLException, IOException, EngineStateError;
 
     /**
      * Load a RuleGrammar in Java Speech Grammar Format text
@@ -1249,30 +1245,25 @@ public interface Recognizer extends Engine {
      * Recognizer loads any grammar it appends a
      * reference to that RuleGrammar to the Vector.
      *
-     * @param base
-     *  the URL context from which grammar locations are derived or
-     *    null to load exclusively from system resources
-     * @param grammarName
-     *  the name of the grammar to be loaded
-     * @param loadImports
-     *  if true, grammars imported by grammarName
-     *    are loaded plus their imports
-     * @param reloadGrammars
-     *  if true reload all grammars and imports, if false
-     *    do not load grammars already loaded into the Recognizer
-     * @param loadedGrammars
-     *  if non-null a reference to each loaded RuleGrammar
-     *    is appended as it is loaded
+     * @param base           the URL context from which grammar locations are derived or
+     *                       null to load exclusively from system resources
+     * @param grammarName    the name of the grammar to be loaded
+     * @param loadImports    if true, grammars imported by grammarName
+     *                       are loaded plus their imports
+     * @param reloadGrammars if true reload all grammars and imports, if false
+     *                       do not load grammars already loaded into the Recognizer
+     * @param loadedGrammars if non-null a reference to each loaded RuleGrammar
+     *                       is appended as it is loaded
      * @return a reference to grammarName
      * @throws javax.speech.recognition.GrammarException if any loaded JSGF text contains an error
-     * @throws java.net.MalformedURLException if problem encountered creating a URL
-     * @throws java.io.IOException if an I/O error occurs
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.net.MalformedURLException            if problem encountered creating a URL
+     * @throws java.io.IOException                       if an I/O error occurs
+     * @throws javax.speech.EngineStateError             if called for a Recognizer in the DEALLOCATED or
+     *                                                   DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.io.Reader)
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.net.URL, java.lang.String)
      */
-   RuleGrammar loadJSGF(URL base, String grammarName, boolean loadImports, boolean reloadGrammars, Vector loadedGrammars) throws GrammarException, MalformedURLException, IOException, EngineStateError;
+    RuleGrammar loadJSGF(URL base, String grammarName, boolean loadImports, boolean reloadGrammars, Vector loadedGrammars) throws GrammarException, MalformedURLException, IOException, EngineStateError;
 
     /**
      * Create a new RuleGrammar for this recognizer with
@@ -1290,13 +1281,12 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param name
-     *  name of the grammar to be created
+     * @param name name of the grammar to be created
      * @throws java.lang.IllegalArgumentException if grammar with name already exists
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws javax.speech.EngineStateError      if called for a Recognizer in the DEALLOCATED or
+     *                                            DEALLOCATING_RESOURCES states
      */
-   RuleGrammar newRuleGrammar(String name) throws IllegalArgumentException, EngineStateError;
+    RuleGrammar newRuleGrammar(String name) throws IllegalArgumentException, EngineStateError;
 
     /**
      * Create a new grammar by reading in a grammar stored in a
@@ -1314,15 +1304,14 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param input
-     *  InputStream from which grammar is loaded
+     * @param input InputStream from which grammar is loaded
      * @return reference to the loaded grammar
      * @throws javax.speech.VendorDataException if the input data format is not known to the Recognizer
-     * @throws java.io.IOException if an I/O error occurs.
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.io.IOException              if an I/O error occurs.
+     * @throws javax.speech.EngineStateError    if called for a Recognizer in the DEALLOCATED or
+     *                                          DEALLOCATING_RESOURCES states
      */
-   Grammar readVendorGrammar(InputStream input) throws VendorDataException, IOException, EngineStateError;
+    Grammar readVendorGrammar(InputStream input) throws VendorDataException, IOException, EngineStateError;
 
     /**
      * Read a Result object from a stream in a vendor-specific format.
@@ -1342,15 +1331,14 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param input
-     *  InputStream from which Result is loaded
+     * @param input InputStream from which Result is loaded
      * @return reference to the loaded result
      * @throws javax.speech.VendorDataException if the input data format is not known to the Recognizer
-     * @throws java.io.IOException if an I/O error occurs.
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.io.IOException              if an I/O error occurs.
+     * @throws javax.speech.EngineStateError    if called for a Recognizer in the DEALLOCATED or
+     *                                          DEALLOCATING_RESOURCES states
      */
-   Result readVendorResult(InputStream input) throws VendorDataException, IOException, EngineStateError;
+    Result readVendorResult(InputStream input) throws VendorDataException, IOException, EngineStateError;
 
     /**
      * Release the speech focus from this Recognizer.
@@ -1382,13 +1370,13 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#requestFocus()
      * @see javax.speech.recognition.Recognizer#FOCUS_OFF
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      * @see javax.speech.Engine#getEngineState()
      */
-   void releaseFocus() throws EngineStateError;
+    void releaseFocus() throws EngineStateError;
 
     /**
      * Remove a ResultListener from this Recognizer.
@@ -1400,7 +1388,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.Result#removeResultListener(javax.speech.recognition.ResultListener)
      * @see javax.speech.recognition.Grammar#removeResultListener(javax.speech.recognition.ResultListener)
      */
-   void removeResultListener(ResultListener var1);
+    void removeResultListener(ResultListener listener);
 
     /**
      * Request the speech focus for this Recognizer from
@@ -1429,13 +1417,13 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#releaseFocus()
      * @see javax.speech.recognition.Recognizer#FOCUS_ON
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_GAINED
      * @see javax.speech.Engine#getEngineState()
      */
-   void requestFocus() throws EngineStateError;
+    void requestFocus() throws EngineStateError;
 
     /**
      * Temporarily suspend recognition while the application updates
@@ -1479,12 +1467,12 @@ public interface Recognizer extends Engine {
      * DEALLOCATING_RESOURCES state.
      *
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      * @see javax.speech.recognition.Recognizer#commitChanges()
      * @see javax.speech.recognition.Recognizer#SUSPENDED
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
-   void suspend() throws EngineStateError;
+    void suspend() throws EngineStateError;
 
     /**
      * Store a grammar in a vendor-specific format.  The data can be
@@ -1510,15 +1498,13 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param output
-     *  OutputStream where grammar is written
-     * @param grammar
-     *  Grammar to be written
-     * @throws java.io.IOException if an I/O error occurs.
+     * @param output  OutputStream where grammar is written
+     * @param grammar Grammar to be written
+     * @throws java.io.IOException           if an I/O error occurs.
      * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     *                                       DEALLOCATING_RESOURCES states
      */
-   void writeVendorGrammar(OutputStream output, Grammar grammar) throws IOException, EngineStateError;
+    void writeVendorGrammar(OutputStream output, Grammar grammar) throws IOException, EngineStateError;
 
     /**
      * Store a finalized Result object in a vendor-specific format so
@@ -1536,14 +1522,12 @@ public interface Recognizer extends Engine {
      * if the Recognizer is in the DEALLOCATED or
      * DEALLOCATING_RESOURCES state.
      *
-     * @param output
-     *  OutputStream where the result is written
-     * @param result
-     *  Result to be written
+     * @param output OutputStream where the result is written
+     * @param result Result to be written
      * @throws javax.speech.recognition.ResultStateError if the Result is not in a finalized state
-     * @throws java.io.IOException if an I/O error occurs.
-     * @throws javax.speech.EngineStateError if called for a Recognizer in the DEALLOCATED or
-     *     DEALLOCATING_RESOURCES states
+     * @throws java.io.IOException                       if an I/O error occurs.
+     * @throws javax.speech.EngineStateError             if called for a Recognizer in the DEALLOCATED or
+     *                                                   DEALLOCATING_RESOURCES states
      */
-   void writeVendorResult(OutputStream output, Result result) throws IOException, ResultStateError, EngineStateError;
+    void writeVendorResult(OutputStream output, Result result) throws IOException, ResultStateError, EngineStateError;
 }

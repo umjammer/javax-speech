@@ -2,6 +2,7 @@ package javax.speech.recognition;
 
 import javax.speech.AudioAdapter;
 
+
 /**
  * Adaptor for a audio events of a recognizer.
  * The methods in this class are empty;  this class is provided as a
@@ -16,22 +17,22 @@ public class RecognizerAudioAdapter extends AudioAdapter implements RecognizerAu
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#AUDIO_LEVEL
      */
-   public void audioLevel(RecognizerAudioEvent var1) {
-   }
+    public void audioLevel(RecognizerAudioEvent e) {
+    }
 
     /**
      * The recognizer has detected a possible start of speech.
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STARTED
      */
-   public void speechStarted(RecognizerAudioEvent var1) {
-   }
+    public void speechStarted(RecognizerAudioEvent e) {
+    }
 
     /**
      * The recognizer has detected a possible end of speech.
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STOPPED
      */
-   public void speechStopped(RecognizerAudioEvent var1) {
-   }
+    public void speechStopped(RecognizerAudioEvent e) {
+    }
 }

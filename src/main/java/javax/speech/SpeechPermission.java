@@ -2,6 +2,7 @@ package javax.speech;
 
 import java.security.BasicPermission;
 
+
 /**
  * This class represents speech permissions.
  * A SpeechPermission contains a target name but
@@ -63,12 +64,11 @@ public final class SpeechPermission extends BasicPermission {
      * The name is the symbolic name of the SpeechPermission:
      * e.g., javax.speech.
      *
-     * @param name
-     *  the name of the SpeechPermission.
+     * @param name the name of the SpeechPermission.
      */
-   public SpeechPermission(String name) {
-      super(name);
-   }
+    public SpeechPermission(String name) {
+        super(name);
+    }
 
     /**
      * Creates a new SpeechPermission object with the specified name.
@@ -77,12 +77,10 @@ public final class SpeechPermission extends BasicPermission {
      * This constructor exists for use by the Policy object
      * to instantiate new Permission objects.
      *
-     * @param name
-     *  the name of the SpeechPermission.
-     * @param actions
-     *  should be null.
+     * @param name    the name of the SpeechPermission.
+     * @param actions should be null.
      */
-   public SpeechPermission(String name, String actions) {
-      super(name, actions);
-   }
+    public SpeechPermission(String name, String actions) {
+        super(name, actions);
+    }
 }

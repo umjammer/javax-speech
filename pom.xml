@@ -11,6 +11,13 @@
     <freetts.version>1.2.4</freetts.version>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/umjammer/javax-speech</url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <plugins>
       <plugin>

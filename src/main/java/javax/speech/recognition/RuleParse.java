@@ -1,6 +1,7 @@
 package javax.speech.recognition;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -188,8 +189,8 @@ public class RuleParse extends Rule {
      * rulename and rule set to null.
      */
     public RuleParse() {
-        this.setRuleName((RuleName) null);
-        this.setRule((Rule) null);
+        this.setRuleName(null);
+        this.setRule(null);
     }
 
     /**
@@ -209,6 +210,7 @@ public class RuleParse extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
+    @Override
     public Rule copy() {
         RuleName name = null;
         if (this.ruleName != null) {
@@ -236,25 +238,25 @@ public class RuleParse extends Rule {
     /**
      * List the tags matched in this parse structure.
      * Tags are listed in the order of tokens (from start
-     * to end) and from the lowest to highest attachment.
+     * to end) and from the lowest to the highest attachment.
      * (See the FinalRuleResult.getTags method for an example.)
      *
      * @see javax.speech.recognition.FinalRuleResult#getTags()
      */
     public String[] getTags() {
-        Vector tags = new Vector();
+        List<String> tags = new ArrayList<>();
         this.getTags(this.rule, tags);
-        return this.vectorToStringArray(tags);
+        return tags.toArray(new String[0]);
     }
 
-    private void getTags(Rule rule, Vector tags) {
+    private void getTags(Rule rule, List<String> tags) {
         if (!(rule instanceof RuleToken)) {
             if (rule instanceof RuleParse) {
                 this.getTags(((RuleParse) rule).getRule(), tags);
             } else if (rule instanceof RuleTag) {
                 RuleTag tag = (RuleTag) rule;
                 this.getTags(tag.getRule(), tags);
-                tags.addElement(tag.tag);
+                tags.add(tag.tag);
             } else {
                 int i;
                 if (rule instanceof RuleSequence) {
@@ -321,28 +323,14 @@ public class RuleParse extends Rule {
      * form in JSGF so RuleAlternatives structure is lost when printed.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("(");
+        StringBuilder sb = new StringBuilder("(");
         if (this.ruleName == null) {
             sb.append("<???>");
         } else {
-            sb.append(this.ruleName.toString());
+            sb.append(this.ruleName);
         }
 
-        sb.append(" = " + this.rule.toString() + ')');
+        sb.append(" = ").append(this.rule.toString()).append(')');
         return sb.toString();
-    }
-
-    private String[] vectorToStringArray(Vector list) {
-        if (list != null && list.size() != 0) {
-            String[] array = new String[list.size()];
-
-            for (int i = 0; i < list.size(); ++i) {
-                array[i] = (String) list.elementAt(i);
-            }
-
-            return array;
-        } else {
-            return null;
-        }
     }
 }

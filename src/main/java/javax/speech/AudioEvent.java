@@ -30,6 +30,7 @@ public class AudioEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         default:

@@ -27,7 +27,7 @@ public class RuleSequence extends Rule {
      * @see javax.speech.recognition.RuleName#NULL
      */
     public RuleSequence() {
-        this.setRules((Rule[]) null);
+        this.setRules(null);
     }
 
     public RuleSequence(Rule rule) {
@@ -90,6 +90,7 @@ public class RuleSequence extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
+    @Override
     public Rule copy() {
         Rule[] rule = null;
         if (this.rules != null) {
@@ -133,7 +134,7 @@ public class RuleSequence extends Rule {
         if (this.rules.length == 0) {
             return "<NULL>";
         } else {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < this.rules.length; ++i) {
                 if (i > 0) {
@@ -143,7 +144,7 @@ public class RuleSequence extends Rule {
                 if (!(this.rules[i] instanceof RuleAlternatives) && !(this.rules[i] instanceof RuleSequence)) {
                     sb.append(this.rules[i].toString());
                 } else {
-                    sb.append("( " + this.rules[i].toString() + " )");
+                    sb.append("( ").append(this.rules[i].toString()).append(" )");
                 }
             }
 

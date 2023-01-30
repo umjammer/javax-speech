@@ -38,7 +38,7 @@ package javax.speech.recognition;
  * the recognizer has about a speaker in a particular enrollment.
  * The contents of the profile are controlled by the recognizer.  Except
  * for the properties of the SpeakerProfile, this data is
- * not accessibile to an application.  The profile may include:
+ * not accessible to an application.  The profile may include:
  * <p>
  * Speaker data: full name, age, gender etc.
  * Speaker preferences: including settings of the RecognizerProperties
@@ -207,7 +207,7 @@ public class SpeakerProfile {
      * @throws java.lang.IllegalArgumentException if the speaker id is already being used by this recognizer
      */
     public void setId(String identifier) throws IllegalArgumentException {
-        this.id = this.id;
+        this.id = identifier;
     }
 
     /**

@@ -69,7 +69,7 @@ import java.util.Locale;
  * engine-created descriptors to select an appropriate engine for creation.
  * For example, the following code tests whether an engine mode supports
  * Swiss German:
- * <p>
+ * <pre>
  * EngineModeDesc fromEngine = ...;
  * // "de" is the ISO 639 language code for German
  * // "CH" is the ISO 3166 country code for Switzerland
@@ -77,25 +77,26 @@ import java.util.Locale;
  * EngineModeDesc require = new EngineModeDesc(new Locale("de", "CH"));
  * // test whether the engine mode supports Swiss German.
  * if (fromEngine.match(require)) ...
- * <p>
+ * </pre>
  * An application can create a descriptor and pass it to the
  * createRecognizer or createSynthesizer
  * methods of Central.  In this common approach,
  * the Central performs the engine selection.
- * <p>
+ * <pre>
  * // Create a mode descriptor that requires French
  * EngineModeDesc desc = new EngineModeDesc(Locale.FRENCH);
  * // Create a synthesizer that supports French
  * Synthesizer synth = Central.createSynthesizer(desc);
- * <p>
+ * </pre>
  * Applications that need advanced selection criterion will
- * <p>
- * Request a list of engine mode descriptors from
- * availableRecognizers or availableSynthesizers,
- * Select one of the descriptors using the methods of
- * EngineList and EngineModeDesc and its sub-classes,
- * Pass the selected descriptor to the createRecognizer or
- * createSynthesizer method of Central.
+ * <ol>
+ * <li>Request a list of engine mode descriptors from
+ * availableRecognizers or availableSynthesizers,</li>
+ * <li>Select one of the descriptors using the methods of
+ * EngineList and EngineModeDesc and its sub-classes,</li>
+ * <li>Pass the selected descriptor to the createRecognizer or
+ * createSynthesizer method of Central.</li>
+ * </ol>
  * @see javax.speech.recognition.RecognizerModeDesc
  * @see javax.speech.synthesis.SynthesizerModeDesc
  * @see javax.speech.Central

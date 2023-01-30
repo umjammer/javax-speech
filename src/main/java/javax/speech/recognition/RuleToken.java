@@ -19,7 +19,7 @@ public class RuleToken extends Rule {
      * Empty constructor sets token text to null.
      */
     public RuleToken() {
-        this.setText((String) null);
+        this.setText(null);
     }
 
     /**
@@ -45,6 +45,7 @@ public class RuleToken extends Rule {
     /**
      * Return a deep copy of this rule.
      */
+    @Override
     public Rule copy() {
         return new RuleToken(this.text);
     }
@@ -80,7 +81,7 @@ public class RuleToken extends Rule {
         if (!this.containsWhiteSpace(this.text) && this.text.indexOf(92) < 0 && this.text.indexOf(34) < 0) {
             return this.text;
         } else {
-            StringBuffer sb = new StringBuffer(this.text);
+            StringBuilder sb = new StringBuilder(this.text);
 
             for (int i = sb.length() - 1; i >= 0; --i) {
                 char c;

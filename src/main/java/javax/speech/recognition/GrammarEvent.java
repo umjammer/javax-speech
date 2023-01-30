@@ -30,7 +30,7 @@ public class GrammarEvent extends SpeechEvent {
      * The enabledChanged and definitionChanged
      * flags are set accordingly.
      * <p>
-     * A GRAMMAR_CHANGES_COMMITTED event can triggered without
+     * A GRAMMAR_CHANGES_COMMITTED event can trigger without
      * an explicit call to commitChanges - there is usually an
      * implicit commitChanges at the completion of
      * result finalization event processing.  If any syntactic or
@@ -49,7 +49,7 @@ public class GrammarEvent extends SpeechEvent {
 
     /**
      * A GRAMMAR_ACTIVATED event is issued when a
-     * grammar changes state from deactivated to activated.  The
+     * grammar changes state from deactivated to activate.  The
      * isActive method of the Grammar
      * will now return true.
      * <p>
@@ -189,10 +189,11 @@ public class GrammarEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 200:
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append("GRAMMAR_CHANGES_COMMITTED");
             if (this.enabledChanged) {
                 sb.append(": enabledChanged");
@@ -203,7 +204,7 @@ public class GrammarEvent extends SpeechEvent {
             }
 
             if (this.grammarException != null) {
-                sb.append(": " + this.grammarException.getMessage());
+                sb.append(": ").append(this.grammarException.getMessage());
             }
 
             return sb.toString();

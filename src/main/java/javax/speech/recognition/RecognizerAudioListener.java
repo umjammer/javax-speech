@@ -5,7 +5,7 @@ import javax.speech.AudioListener;
 
 /**
  * Extends the set of audio event of an engine for a recognizer
- * by adding a audio level event.
+ * by adding an audio level event.
  * <p>
  * The RecognizerAudioAdapter class provided a
  * trivial implementation of this listener.

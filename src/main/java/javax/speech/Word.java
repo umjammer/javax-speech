@@ -18,7 +18,7 @@ package javax.speech;
  * optional.  Typically, one or more of the optional properties are
  * specified.  The Word class allows the specification
  * of multiple pronunciations and multiple grammatical categories.
- * Each pronunciation must be approporiate to each category.  If not,
+ * Each pronunciation must be appropriate to each category.  If not,
  * separate Word objects should be created.
  * <p>
  * All the optional properties of a word are hints to the speech engine.
@@ -134,7 +134,7 @@ public class Word {
     public static final long CONTRACTION = 16384L;
 
     /**
-     * Word is an abbreviation or acronynm.
+     * Word is an abbreviation or acronym.
      * English examples: "Mr.", "USA".
      */
     public static final long ABBREVIATION = 32768L;
@@ -177,10 +177,10 @@ public class Word {
      * The categories may be UNKNOWN or may be an
      * OR'ed set of the defined categories such as NOUN,
      * VERB, PREPOSITION.  For example:
-     * <p>
+     * <pre>
      * Word w = new Word("running");
      * w.setCategories(Word.NOUN | Word.VERB);
-     * <p>
+     * </pre>
      * The category information is a guide to the word's grammatical role.
      * Speech synthesizers can use
      * this information to improve phrasing and accenting.

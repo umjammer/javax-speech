@@ -13,6 +13,7 @@ public class GrammarAdapter implements GrammarListener {
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      */
+    @Override
     public void grammarActivated(GrammarEvent e) {
     }
 
@@ -26,6 +27,7 @@ public class GrammarAdapter implements GrammarListener {
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_CHANGES_COMMITTED
      */
+    @Override
     public void grammarChangesCommitted(GrammarEvent e) {
     }
 
@@ -34,6 +36,7 @@ public class GrammarAdapter implements GrammarListener {
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      */
+    @Override
     public void grammarDeactivated(GrammarEvent e) {
     }
 }

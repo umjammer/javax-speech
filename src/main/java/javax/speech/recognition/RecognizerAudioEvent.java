@@ -60,7 +60,7 @@ import javax.speech.AudioEvent;
  * <p>
  * In short, applications should treat the SPEECH_STARTED
  * and SPEECH_STOPPED events as operating entirely
- * independently from the result system of a Recognizer.
+ * independently of the result system of a Recognizer.
  * <p>
  * <A/>
  * Audio Level Events
@@ -135,7 +135,7 @@ public class RecognizerAudioEvent extends AudioEvent {
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#getAudioLevel()
      */
-    protected float audioLevel = 0.0F;
+    protected float audioLevel;
 
     /**
      * Constructs an RecognizerAudioEvent with a specified
@@ -187,6 +187,7 @@ public class RecognizerAudioEvent extends AudioEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 1100:

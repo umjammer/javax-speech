@@ -26,7 +26,7 @@ package javax.speech.synthesis;
 public class SynthesizerQueueItem {
 
     /**
-     * The soure object for an item on the speech output queue.
+     * The source object for an item on the speech output queue.
      *
      * @see javax.speech.synthesis.SynthesizerQueueItem#getSource()
      */

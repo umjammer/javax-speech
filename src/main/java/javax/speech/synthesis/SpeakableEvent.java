@@ -158,7 +158,7 @@ public class SpeakableEvent extends SpeechEvent {
      * contained in the JSML text of a speech output queue item.
      * The event text is the string of the MARK attribute.
      * The markerType indicates whether the mark is
-     * at the openning or close of a JSML element or
+     * at the opening or close of a JSML element or
      * is an attribute of an empty element (no close).
      *
      * @see javax.speech.synthesis.SpeakableListener#markerReached(javax.speech.synthesis.SpeakableEvent)
@@ -171,14 +171,14 @@ public class SpeakableEvent extends SpeechEvent {
     public static final int MARKER_REACHED = 608;
 
     /**
-     * The type of MARKER_REACHED event issued at the openning
+     * The type of MARKER_REACHED event issued at the opening
      * of a JSML container element with a MARK attribute.
      * An ELEMENT_OPEN event is followed by an ELEMENT_CLOSE
      * event for the closing of the element (unless the Speakable
      * is cancelled).
      * <p>
      * Example: the event for the MARK attribute on the
-     * openning SENT tag will be issued before the start
+     * opening SENT tag will be issued before the start
      * of the word "Testing" in:
      * <p>
      * SENT MARK="open"
@@ -195,12 +195,12 @@ public class SpeakableEvent extends SpeechEvent {
     /**
      * The type of MARKER_REACHED event issued at the close
      * of a JSML container element that has a MARK attribute on
-     * the matching openning tag.   The ELEMENT_CLOSE event
+     * the matching opening tag.   The ELEMENT_CLOSE event
      * always follows a matching ELEMENT_OPEN event for the
-     * matching openning tag.
+     * matching opening tag.
      * <p>
      * Example: the event for the closing SENT tag for the
-     * MARK attribute at the openning of the SENT
+     * MARK attribute at the opening of the SENT
      * element.  The event will be issued after the word "three" is spoken.
      * <p>
      * SENT MARK="open"
@@ -353,6 +353,7 @@ public class SpeakableEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 601:
@@ -370,8 +371,8 @@ public class SpeakableEvent extends SpeechEvent {
         case 607:
             return "WORD_STARTED \"" + this.text + "\" from: " + this.wordStart + " to: " + this.wordEnd;
         case 608:
-            StringBuffer sb = new StringBuffer("MARKER_REACHED: ");
-            sb.append("\"" + this.text + "\" at ");
+            StringBuilder sb = new StringBuilder("MARKER_REACHED: ");
+            sb.append("\"").append(this.text).append("\" at ");
             switch (this.markerType) {
             case 620:
                 sb.append("ELEMENT_OPEN");

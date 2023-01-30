@@ -25,6 +25,7 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      * @see javax.speech.recognition.RecognizerEvent#CHANGES_COMMITTED
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_CHANGES_COMMITTED
      */
+    @Override
     public void changesCommitted(RecognizerEvent e) {
     }
 
@@ -35,6 +36,7 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_GAINED
      */
+    @Override
     public void focusGained(RecognizerEvent e) {
     }
 
@@ -45,6 +47,7 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#FOCUS_LOST
      */
+    @Override
     public void focusLost(RecognizerEvent e) {
     }
 
@@ -55,6 +58,7 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_PROCESSING
      */
+    @Override
     public void recognizerProcessing(RecognizerEvent e) {
     }
 
@@ -66,6 +70,7 @@ public class RecognizerAdapter extends EngineAdapter implements RecognizerListen
      *
      * @see javax.speech.recognition.RecognizerEvent#RECOGNIZER_SUSPENDED
      */
+    @Override
     public void recognizerSuspended(RecognizerEvent e) {
     }
 }

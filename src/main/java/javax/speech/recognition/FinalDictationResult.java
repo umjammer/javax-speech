@@ -16,7 +16,7 @@ package javax.speech.recognition;
  * <p>
  * Every Result object provided by a Recognizer
  * implements the FinalDictationResult and the
- * FinalRuleResult interfaces (and by inheritence the
+ * FinalRuleResult interfaces (and by inheritance the
  * FinalResult and Result interfaces).
  * However, the methods of FinalDictationResult
  * should only be called if the Result.getGrammar

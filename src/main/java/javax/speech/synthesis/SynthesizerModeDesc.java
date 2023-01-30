@@ -18,7 +18,7 @@ import javax.speech.EngineModeDesc;
  * Like EngineModeDesc, there are two types of
  * SynthesizerModeDesc: those created by an application
  * which are used in engine selection, and those created by an
- * engine which descibe a particular mode of operation of the engine.
+ * engine which describe a particular mode of operation of the engine.
  * Descriptor provided engines are obtained through the
  * availableSynthesizers method of the Central
  * class and must have all their features
@@ -151,6 +151,7 @@ public class SynthesizerModeDesc extends EngineModeDesc {
      * @see javax.speech.EngineModeDesc#match(javax.speech.EngineModeDesc)
      * @see javax.speech.synthesis.Voice#match(javax.speech.synthesis.Voice)
      */
+    @Override
     public boolean match(EngineModeDesc require) {
         if (!super.match(require)) {
             return false;

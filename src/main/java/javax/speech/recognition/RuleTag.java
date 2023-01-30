@@ -42,8 +42,8 @@ public class RuleTag extends Rule {
      * Empty constructor sets the rule and tag to null.
      */
     public RuleTag() {
-        this.setRule((Rule) null);
-        this.setTag((String) null);
+        this.setRule(null);
+        this.setTag(null);
     }
 
     /**
@@ -65,12 +65,13 @@ public class RuleTag extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
+    @Override
     public Rule copy() {
         return new RuleTag(this.rule.copy(), this.tag);
     }
 
     private String escapeTag(String tag) {
-        StringBuffer sb = new StringBuffer(tag);
+        StringBuilder sb = new StringBuilder(tag);
         if (tag.indexOf('}') >= 0 || tag.indexOf('\\') >= 0) {
             for (int i = sb.length() - 1; i >= 0; --i) {
                 char c = sb.charAt(i);
@@ -127,6 +128,6 @@ public class RuleTag extends Rule {
      */
     public String toString() {
         String s = " {" + this.escapeTag(this.tag) + "}";
-        return !(this.rule instanceof RuleToken) && !(this.rule instanceof RuleName) ? "(" + this.rule.toString() + ")" + s : this.rule.toString() + s;
+        return !(this.rule instanceof RuleToken) && !(this.rule instanceof RuleName) ? "(" + this.rule.toString() + ")" + s : this.rule + s;
     }
 }

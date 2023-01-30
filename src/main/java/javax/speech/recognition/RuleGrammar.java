@@ -28,7 +28,7 @@ package javax.speech.recognition;
  * A set of defined rules: each definition is identified by a unique
  * rulename (unique within the RuleGrammar), a boolean
  * flag indicating whether the rule is public, and a Rule
- * object that provides the logical expansion of the rule (how it spoken).
+ * object that provides the logical expansion of the rule (how it has spoken).
  * <p>
  * The set of imports and the rule definitions can be changed by
  * applications.  For any change to take effect the application must
@@ -175,7 +175,7 @@ public interface RuleGrammar extends Grammar {
     /**
      * Returns a reference to a recognizer's internal rule object identified
      * by a rule name.  The application should never modify the returned
-     * object.  This method is intented for use by parsers and other
+     * object.  This method is intended for use by parsers and other
      * software that needs to quickly analyse a recognizer's grammars
      * without modifying them (without the overhead of making copies,
      * as required by getRule).  If the returned object is ever modified
@@ -204,6 +204,7 @@ public interface RuleGrammar extends Grammar {
      *
      * @return true if RuleGrammar is enabled, otherwise false
      */
+    @Override
     boolean isEnabled();
 
     /**
@@ -325,7 +326,7 @@ public interface RuleGrammar extends Grammar {
      * If the input rulename is a fully-qualified rulename, then the method
      * checks whether that rulename exists (and could therefore be successfully
      * referenced in this RuleGrammar).  If the rulename exists, then
-     * the retun value is the same as the input value, otherwise the
+     * the return value is the same as the input value, otherwise the
      * method returns null.
      *
      * @param ruleName reference to rulename to be resolved
@@ -426,6 +427,7 @@ public interface RuleGrammar extends Grammar {
      * @see javax.speech.recognition.RuleGrammar#isEnabled()
      * @see javax.speech.recognition.Grammar#setActivationMode(int)
      */
+    @Override
     void setEnabled(boolean enabled);
 
     void setEnabled(String[] ruleNames, boolean enabled) throws IllegalArgumentException;

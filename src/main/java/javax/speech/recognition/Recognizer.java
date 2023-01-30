@@ -528,7 +528,7 @@ import javax.speech.VocabManager;
  * timer events, multi-threading events, socket events and much more.
  * <p>
  * When a non-speech event occurs which changes the application
- * state or applicatin data it is often necessary to update
+ * state or application data it is often necessary to update
  * the recognizer's grammars.  Furthermore, it is typically
  * necessary to do this as if the change occurred in real time
  * - at exactly the point in time at which the event occurred.
@@ -575,7 +575,7 @@ import javax.speech.VocabManager;
  * <p>
  * Note: an application is not technically required to
  * call suspend prior to calling commitChanges.
- * If the suspend call is ommitted the
+ * If the suspend call is omitted the
  * Recognizer behaves as if suspend
  * had been called immediately prior to calling commitChanges.
  * An application that does not call suspend risks
@@ -695,7 +695,7 @@ public interface Recognizer extends Engine {
      * event is issued to
      * indicate a transition out of the PROCESSING
      * state and into the SUSPENDED state
-     * when recgonition of a Result is completed.
+     * when recognition of a Result is completed.
      * <p>
      * A
      * <A href="RecognizerEvent.html#RECOGNIZER_PROCESSING">
@@ -730,7 +730,7 @@ public interface Recognizer extends Engine {
      * that audio input to the Recognizer is being ignored.
      * In addition, the SUSPENDED state is
      * a temporary state, whereas a Recognizer
-     * can stay in the PAUSED state indefinately.
+     * can stay in the PAUSED state indefinitely.
      * <p>
      * A
      * <A href="RecognizerEvent.html#CHANGES_COMMITTED">
@@ -973,7 +973,7 @@ public interface Recognizer extends Engine {
      * supports dictation by calling the isDictationGrammarSupported
      * method of the RecognizerModeDesc.
      * <p>
-     * Note: the name parameter is provided for future extenion
+     * Note: the name parameter is provided for future extension
      * of the API to allow more than one DictationGrammar to
      * be defined.
      * <p>
@@ -1263,7 +1263,7 @@ public interface Recognizer extends Engine {
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.io.Reader)
      * @see javax.speech.recognition.Recognizer#loadJSGF(java.net.URL, java.lang.String)
      */
-    RuleGrammar loadJSGF(URL base, String grammarName, boolean loadImports, boolean reloadGrammars, Vector loadedGrammars) throws GrammarException, MalformedURLException, IOException, EngineStateError;
+    RuleGrammar loadJSGF(URL base, String grammarName, boolean loadImports, boolean reloadGrammars, Vector<?> loadedGrammars) throws GrammarException, MalformedURLException, IOException, EngineStateError;
 
     /**
      * Create a new RuleGrammar for this recognizer with
@@ -1439,7 +1439,7 @@ public interface Recognizer extends Engine {
      * a Recognizer is suspended whereas incoming audio is ignored
      * while in the PAUSED state.  Also, the SUSPENDED
      * state should only be visited temporarily, whereas a
-     * Recognizer can be PAUSED indefinately.
+     * Recognizer can be PAUSED indefinitely.
      * <p>
      * The suspend method is asynchronous.  When
      * the call returns, the recognizer is not necessarily suspended.

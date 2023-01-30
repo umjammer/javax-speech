@@ -132,6 +132,7 @@ public class EngineEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 501:

@@ -57,7 +57,7 @@ public class RuleCount extends Rule {
      * Empty constructor sets rule to null and count to OPTIONAL.
      */
     public RuleCount() {
-        this.setRule((Rule) null);
+        this.setRule(null);
         this.setCount(OPTIONAL);
     }
 
@@ -75,6 +75,7 @@ public class RuleCount extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
+    @Override
     public Rule copy() {
         return new RuleCount(this.rule.copy(), this.count);
     }
@@ -136,7 +137,7 @@ public class RuleCount extends Rule {
         if (this.count == OPTIONAL) {
             return '[' + this.rule.toString() + ']';
         } else {
-            String ruleString = null;
+            String ruleString;
             if (!(this.rule instanceof RuleToken) && !(this.rule instanceof RuleName)) {
                 ruleString = '(' + this.rule.toString() + ')';
             } else {

@@ -19,6 +19,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_ALLOCATED
      */
+    @Override
     public void engineAllocated(EngineEvent e) {
     }
 
@@ -27,6 +28,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_ALLOCATING_RESOURCES
      */
+    @Override
     public void engineAllocatingResources(EngineEvent e) {
     }
 
@@ -35,6 +37,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_DEALLOCATED
      */
+    @Override
     public void engineDeallocated(EngineEvent e) {
     }
 
@@ -43,6 +46,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_DEALLOCATING_RESOURCES
      */
+    @Override
     public void engineDeallocatingResources(EngineEvent e) {
     }
 
@@ -50,6 +54,7 @@ public class EngineAdapter implements EngineListener {
      * An EngineErrorEvent has occurred and the
      * Engine is unable to continue normal operation.
      */
+    @Override
     public void engineError(EngineErrorEvent e) {
     }
 
@@ -58,6 +63,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_PAUSED
      */
+    @Override
     public void enginePaused(EngineEvent e) {
     }
 
@@ -66,6 +72,7 @@ public class EngineAdapter implements EngineListener {
      *
      * @see javax.speech.EngineEvent#ENGINE_RESUMED
      */
+    @Override
     public void engineResumed(EngineEvent e) {
     }
 }

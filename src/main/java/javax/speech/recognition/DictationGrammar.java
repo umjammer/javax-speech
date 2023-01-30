@@ -17,7 +17,7 @@ package javax.speech.recognition;
  * convention as a RuleGrammar and will typically
  * reflect the language and domain it supports.  The grammar
  * name is obtained through the Grammar.getName
- * method.  For example, the general general dictation for
+ * method.  For example, the general dictation for
  * US English from Acme speech company might be called:
  * <p>
  * com.acme.dictation.english.us.general
@@ -121,8 +121,7 @@ public interface DictationGrammar extends Grammar {
      * A change in a DictationGrammar is applied
      * to the recognition process only after
      * <p>
-     * <A href="Grammar.html#commit">changes have been committed</A>
-     * .
+     * <A href="Grammar.html#commit">changes have been committed</A>.
      *
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
@@ -146,8 +145,7 @@ public interface DictationGrammar extends Grammar {
      * A change in a DictationGrammar is applied
      * to the recognition process only after
      * <p>
-     * <A href="Grammar.html#commit">changes have been committed</A>
-     * .
+     * <A href="Grammar.html#commit">changes have been committed</A>.
      *
      * @see javax.speech.recognition.Recognizer#commitChanges()
      */
@@ -157,9 +155,7 @@ public interface DictationGrammar extends Grammar {
      * Provide the recognition engine with the current textual context
      * with arrays of the previous and following tokens.  Dictation
      * recognizers use the context information to improve recognition
-     * accuracy.  (Context is
-     * <A href="#context">discussed above.</A>
-     * )
+     * accuracy.  (Context is <A href="#context">discussed above.</A>)
      * <p>
      * When dictating a sequence of words, the recognizer updates its
      * context.  The app does not need to inform the recognizer when

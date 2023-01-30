@@ -21,10 +21,10 @@ import javax.speech.VendorDataException;
  * and recognition accuracy.  For example, the recognizer might adjust
  * to vocabulary preferences and accent.
  * <p>
- * The role of the SpeakerManager is provide access to the
+ * The role of the SpeakerManager is provided access to the
  * known SpeakerProfiles, to enable storage and loading of
  * the profiles once a recognizer is running, and to provide other
- * management functions (storage to file, deletion etc).  The SpeakerManager
+ * management functions (storage to file, deletion etc.).  The SpeakerManager
  * has a "current speaker" - the profile which is currently being used
  * by the recognizer.
  * <p>

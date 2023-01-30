@@ -136,7 +136,7 @@ package javax.speech.recognition;
  * (attention) is directed to grammars of your application.
  * Release focus when it is not required.
  * <p>
- * The general principal underlying these conventions is that
+ * The general principle underlying these conventions is that
  * increasing the number of active grammars and/or increasing the
  * complexity of those grammars can lead to slower response time, greater CPU
  * load and reduced recognition accuracy (more mistakes).
@@ -202,7 +202,7 @@ package javax.speech.recognition;
  * <p>
  * The commit changes mechanism has two important properties:
  * <p>
- * Updates to grammar definations and the enabled property take
+ * Updates to grammar definitions and the enabled property take
  * effect atomically (all changes take effect at once).  There
  * are no intermediate states in which some, but not all,
  * changes have been applied.
@@ -380,7 +380,7 @@ public interface Grammar {
      * Activation is not directly controlled by applications and so can
      * only be tested (there is no setActive method).
      * <p>
-     * Rules of a RuleGrammar can be individuallly enabled
+     * Rules of a RuleGrammar can be individually enabled
      * and disabled.  However all rules share the same ActivationMode
      * and the same activation state.  Thus, when a RuleGrammar is
      * active, all the enabled rules of the grammar are active for recognition.

@@ -19,14 +19,14 @@ package javax.speech.recognition;
  * <p>
  * The ResultToken provides the following information:
  * <p>
- * Required: Spoken-form text
- * Required: reference to the Result that contains this token
- * Optional: Start and end time
- * Dictation only: Written-form text
- * Dictation only: Presentation hints (capitalization and spacing)
- * <p>
+ * <li>Required: Spoken-form text
+ * <li>Required: reference to the Result that contains this token
+ * <li>Optional: Start and end time
+ * <li>Dictation only: Written-form text
+ * <li>Dictation only: Presentation hints (capitalization and spacing)
+ * <h3>
  * <A>Spoken vs. Written Form</A>
- * <p>
+ * </h3>
  * The distinction between spoken and written forms of a
  * ResultToken applies only to results for a
  * DictationGrammar.  For a result matching a
@@ -55,10 +55,10 @@ package javax.speech.recognition;
  * formatting characters (shown here as spoken form for US English, written
  * form as a Unicode character number):
  * <p>
- * New line character is "\u000A" and equals the
+ * <li>New line character is "\u000A" and equals the
  * static string NEW_LINE.
  * In English, it might be spoken as "new line", "line break" or similar.
- * New paragraph character is "\u2029" and equals the
+ * <li>New paragraph character is "\u2029" and equals the
  * static string NEW_PARAGRAPH.
  * In English, it might be spoken as "new paragraph",
  * "start paragraph" or something similar.
@@ -69,21 +69,15 @@ package javax.speech.recognition;
  * may even allow one punctuation character to be spoken multiple ways.
  * Also the set of characters may be engine-specific and language-specific.
  * <p>
- * "space bar" -
- * " " (u0020)
- * "exclamation mark", "exclamation point" -
- * "!" (u0021)
- * "open quote", "begin quote", "open-\"" -
- * "\"" (u0022) (single quote char)
- * "dash", "hyphen", "minus" -
- * "-" (u002D)
- * "pound sign" -
- * "�" (u00A3)
- * "yen sign" -
- * "�" (u00A5)
- * <p>
+ * <li>"space bar" - " " (u0020)
+ * <li>"exclamation mark", "exclamation point" - "!" (u0021)
+ * <li>"open quote", "begin quote", "open-\"" - "\"" (u0022) (single quote char)
+ * <li>"dash", "hyphen", "minus" - "-" (u002D)
+ * <li>"pound sign" - "г" (u00A3)
+ * <li>"yen sign" - "е" (u00A5)
+ * <h3>
  * <A>Presentation Hints</A>
- * <p>
+ * </h3>
  * Note: results for rule grammars do not provide presentation hints.
  * Default values are returns for both SpacingHint and
  * CapitalizationHint.
@@ -96,17 +90,17 @@ package javax.speech.recognition;
  * SpacingHint is an int with several
  * flags indicating how the token should be spaced.
  * <p>
- * SpacingHint==SEPARATE
+ * <li>SpacingHint==SEPARATE
  * (value of 0) when all the flags are false.
  * The token should be surrounding by preceding and following
  * spaces.
- * ATTACH_PREVIOUS:
+ * <li>ATTACH_PREVIOUS:
  * Flag is true if the token should be attached
  * to the previous token: i.e. no space between this token and the previous token.
- * ATTACH_FOLLOWING:
+ * <li>ATTACH_FOLLOWING:
  * Flag is true if the token should be attached
  * to the following token: i.e. no space between this token and the following token.
- * ATTACH_GROUP:
+ * <li>ATTACH_GROUP:
  * If this flag is true and if the ATTACH_GROUP
  * flag for a previous and/or following token is true,
  * then override the other spacing flags and put no space between
@@ -130,27 +124,27 @@ package javax.speech.recognition;
  * A legal value might be (ATTACH_PREVIOUS | ATTACH_FOLLOWING).
  * The SEPARATE value is 0 (zero).
  * A flag can be tested by the following code:
- * <p>
+ * <pre>
  * // if attach previous ...
  * if ((token.getSpacingHint() & ResultToken.ATTACH_PREVIOUS) != 0)
- * ...
- * <p>
+ *   ...
+ * </pre>
  * capitalizationHint indicates how the written form
  * of the following token should be capitalized.  The options are
  * <p>
- * CAP_AS_IS:
+ * <li>CAP_AS_IS:
  * As-is indicates the capitalization of the spoken form of
  * the following should not be changed
- * CAP_FIRST:
+ * <li>CAP_FIRST:
  * Capitalize first character of the spoken form of the following token
- * UPPERCASE: All uppercase following token
- * LOWERCASE: All lowercase following token
+ * <li>UPPERCASE: All uppercase following token
+ * <li>LOWERCASE: All lowercase following token
  * <p>
  * The Internationalized case conversion methods of the java.lang.String
  * are recommended for implementing the capitalization hints.
- * <p>
+ * <h3>
  * <A>Null Written Form</A>
- * <p>
+ * </h3>
  * Some spoken directives to recognizers produce tokens that have
  * no printable form.  These tokens return null for the written form.
  * Typically, these directives give explicit capitalization or
@@ -158,10 +152,10 @@ package javax.speech.recognition;
  * non-null (to allow the application to provide appropriate feedback
  * to a user.  Example directives for English might include:
  * <p>
- * "Capitalize next", "Cap next", "Upper case"
- * "Lowercase"
- * "Uppercase"
- * "No space"
+ * <li>"Capitalize next", "Cap next", "Upper case"
+ * <li>"Lowercase"
+ * <li>"Uppercase"
+ * <li>"No space"
  * <p>
  * For these tokens, the interpretation of the capitalization and
  * spacing hints is specialized.  If the spacing hint
@@ -171,24 +165,24 @@ package javax.speech.recognition;
  * CAP_AS_IS, it overrides the capitalization hints of
  * previous non-null token (which in fact applies to the following
  * token also).
- * <p>
+ * <h3>
  * <A>Example</A>
- * <p>
+ * </h3>
  * This example shows how a string of result tokens should
  * be processed to produce a single printable string.
  * The following is a sequence of tokens in a FinalDictationResult
  * shown as spoken form, written form, and spacing and capitalization hints.
- * <p>
- * "NEW_LINE", "\u000A", SEPARATE, CAP_FIRST
- * "the", "the", SEPARATE, CAP_AS_IS
- * "UPPERCASE_NEXT", "", SEPARATE, UPPERCASE
- * "index", "index", SEPARATE, CAP_AS_IS
- * "is", "is" SEPARATE, CAP_AS_IS
- * "seven", "7", ATTACH_GROUP, CAP_AS_IS
- * "-", "-", ATTACH_GROUP, CAP_AS_IS
- * "two", "2", ATTACH_GROUP, CAP_AS_IS
- * "period", ".", ATTACH_PREVIOUS, CAP_FIRST
- * <p>
+ * <ol>
+ * <li>"NEW_LINE", "\u000A", SEPARATE, CAP_FIRST
+ * <li>"the", "the", SEPARATE, CAP_AS_IS
+ * <li>"UPPERCASE_NEXT", "", SEPARATE, UPPERCASE
+ * <li>"index", "index", SEPARATE, CAP_AS_IS
+ * <li>"is", "is" SEPARATE, CAP_AS_IS
+ * <li>"seven", "7", ATTACH_GROUP, CAP_AS_IS
+ * <li>"-", "-", ATTACH_GROUP, CAP_AS_IS
+ * <li>"two", "2", ATTACH_GROUP, CAP_AS_IS
+ * <li>"period", ".", ATTACH_PREVIOUS, CAP_FIRST
+ * </ol>
  * that could be converted to "\nThe INDEX is 7-2."
  *
  * @see javax.speech.recognition.Result
@@ -221,16 +215,15 @@ public interface ResultToken {
      * ATTACH_PREVIOUS,
      * ATTACH_FOLLOWING,
      * and ATTACH_GROUP are all false.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      * <p>
      * SEPARATE is the default spacing hint value.
      * <p>
      * Example:
-     * <p>
+     * <pre>
      * if (resultToken.getSpacingHint() == ResultToken.SEPARATE)
      * ...;
+     * </pre>
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
@@ -239,14 +232,13 @@ public interface ResultToken {
     /**
      * A SpacingHint flag set true when a token should be
      * attached to the preceding token.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      * <p>
      * Example:
-     * <p>
+     * <pre>
      * if ((resultToken.getSpacingHint() & ResultToken.ATTACH_PREVIOUS) != 0)
      * ...;
+     * </pre>
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
@@ -255,14 +247,13 @@ public interface ResultToken {
     /**
      * A SpacingHint flag set true when a token should be
      * attached to the following token.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      * <p>
      * Example:
-     * <p>
+     * <pre>
      * if ((resultToken.getSpacingHint() & ResultToken.ATTACH_FOLLOWING) != 0)
      * ...;
+     * </pre>
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
@@ -272,15 +263,14 @@ public interface ResultToken {
      * A SpacingHint flag set true when a token should be
      * attached to preceding and/or following tokens which also have the
      * ATTACH_GROUP flag set true.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      * <p>
      * Example:
-     * <p>
+     * <pre>
      * if (((thisToken.getSpacingHint() & ResultToken.ATTACH_GROUP) != 0)
      * && ((prevToken.getSpacingHint() & ResultToken.ATTACH_GROUP) != 0))
      * ...;
+     * </pre>
      *
      * @see javax.speech.recognition.ResultToken#getSpacingHint()
      */
@@ -290,43 +280,33 @@ public interface ResultToken {
      * A CapitalizationHint indicating that the following word
      * should be presented without changes in capitalization.
      * This is the default value.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      */
     int CAP_AS_IS = 10;
 
     /**
      * A CapitalizationHint indicating that the following word
      * should be presented with the first character in uppercase.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      */
     int CAP_FIRST = 11;
 
     /**
      * A CapitalizationHint indicating that the following word
      * should be presented in uppercase.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      */
     int UPPERCASE = 12;
 
     /**
      * A CapitalizationHint indicating that the following word
      * should be presented in lowercase.
-     * (See the
-     * <A href="#Presentation">description</A>
-     * above.)
+     * (See the <A href="#Presentation">description</A> above.)
      */
     int LOWERCASE = 13;
 
     /**
-     * Get the capitalization hint. (See
-     * <A href="#Presentation">description</A>
-     * above.)
+     * Get the capitalization hint. (See <A href="#Presentation">description</A> above.)
      * Values are CAP_AS_IS (the default),
      * CAP_FIRST,
      * UPPERCASE,
@@ -361,9 +341,7 @@ public interface ResultToken {
     Result getResult();
 
     /**
-     * Get the spacing hints. (See
-     * <A href="#Presentation">description</A>
-     * above.)
+     * Get the spacing hints. (See <A href="#Presentation">description</A> above.)
      * The value equals SEPARATE (the default) if
      * the token should be presented with surrounding spaces.
      * Otherwise any or all of the following flags can be true:

@@ -61,7 +61,7 @@ import java.beans.PropertyChangeListener;
  * property ("Pitch"), the old value (120) and the new value (200).
  * <p>
  * Set calls take effect in the order in which they are received.
- * If multiple changed are requested are requested for a single property,
+ * If multiple changed are requested for a single property,
  * a separate event is issued for each call, even if the multiple changes
  * take place simultaneously.
  * <p>

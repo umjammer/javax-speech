@@ -13,6 +13,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#MARKER_REACHED
      */
+    @Override
     public void markerReached(SpeakableEvent e) {
     }
 
@@ -21,6 +22,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_CANCELLED
      */
+    @Override
     public void speakableCancelled(SpeakableEvent e) {
     }
 
@@ -29,6 +31,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_ENDED
      */
+    @Override
     public void speakableEnded(SpeakableEvent e) {
     }
 
@@ -37,6 +40,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_PAUSED
      */
+    @Override
     public void speakablePaused(SpeakableEvent e) {
     }
 
@@ -45,6 +49,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_RESUMED
      */
+    @Override
     public void speakableResumed(SpeakableEvent e) {
     }
 
@@ -53,6 +58,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#SPEAKABLE_STARTED
      */
+    @Override
     public void speakableStarted(SpeakableEvent e) {
     }
 
@@ -61,6 +67,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#TOP_OF_QUEUE
      */
+    @Override
     public void topOfQueue(SpeakableEvent e) {
     }
 
@@ -69,6 +76,7 @@ public class SpeakableAdapter implements SpeakableListener {
      *
      * @see javax.speech.synthesis.SpeakableEvent#WORD_STARTED
      */
+    @Override
     public void wordStarted(SpeakableEvent e) {
     }
 }

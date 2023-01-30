@@ -399,7 +399,7 @@ public interface Synthesizer extends Engine {
      * the top of the queue.
      * <p>
      * A SpeakableListener can also provided for an
-     * indivudal speech output item by providing it as a parameter
+     * individual speech output item by providing it as a parameter
      * to one of the speak or speakPlainText
      * methods.
      * <p>
@@ -498,7 +498,7 @@ public interface Synthesizer extends Engine {
      * A QUEUE_EMPTIED event is issued to attached
      * SynthesizerListeners.
      * <p>
-     * A cancelAll is implictly performed before
+     * A cancelAll is implicitly performed before
      * a Synthesizer is deallocated.
      * <p>
      * The cancel methods work in the
@@ -557,7 +557,7 @@ public interface Synthesizer extends Engine {
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      * @see javax.speech.Engine#addEngineListener(javax.speech.EngineListener)
      */
-    Enumeration enumerateQueue() throws EngineStateError;
+    Enumeration<?> enumerateQueue() throws EngineStateError;
 
     /**
      * Return the SynthesizerProperties object (a JavaBean).
@@ -782,7 +782,7 @@ public interface Synthesizer extends Engine {
      * for synthesizers in the DEALLOCATED or
      * DEALLOCATING_RESOURCES states.
      *
-     * @param JSMLText String contains plaing text to be spoken
+     * @param JSMLText String contains playing text to be spoken
      * @param listener receives notification of events as synthesis output proceeds
      * @throws javax.speech.EngineStateError if called for a synthesizer in the DEALLOCATED or
      *                                       DEALLOCATING_RESOURCES states

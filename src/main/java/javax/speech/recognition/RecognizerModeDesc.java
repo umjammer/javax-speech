@@ -19,12 +19,12 @@ import javax.speech.EngineModeDesc;
  * Like EngineModeDesc, there are two types of
  * RecognizerModeDesc: those created by an application
  * for use in engine selection, and those created by an
- * engine which descibe a particular mode of operation of the engine.
+ * engine which describe a particular mode of operation of the engine.
  * Descriptors provided by engines are obtained through the
  * availableRecognizers method of the Central
  * class.  These descriptors must have all their features
  * defined.  A descriptor created by an application may make
- * any or all of the features null to indictae a "don't care"
+ * any or all of the features null to indicate a "don't care"
  * value (null features are ignored in engine selection).
  * <p>
  * [Note: the Boolean "is running" feature
@@ -143,7 +143,7 @@ public class RecognizerModeDesc extends EngineModeDesc {
      * speaker profiles have been constructed yet.
      * <p>
      * The list of speaker profiles is the same as returned by the
-     * the listKnownSpeakers method of SpeakerManager
+     * listKnownSpeakers method of SpeakerManager
      * if this engine is running.
      *
      * @throws java.lang.SecurityException if the application does not have accessSpeakerProfiles permission
@@ -196,6 +196,7 @@ public class RecognizerModeDesc extends EngineModeDesc {
      * Match dictation supported Boolean value if
      * the required value is null or if exact boolean match.
      */
+    @Override
     public boolean match(EngineModeDesc require) {
         if (!super.match(require)) {
             return false;
@@ -245,6 +246,6 @@ public class RecognizerModeDesc extends EngineModeDesc {
      * May be null.
      */
     public void setSpeakerProfiles(SpeakerProfile[] speakers) {
-        this.profiles = this.profiles;
+        this.profiles = speakers;
     }
 }

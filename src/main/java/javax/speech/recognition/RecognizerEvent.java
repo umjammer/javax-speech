@@ -95,7 +95,7 @@ public class RecognizerEvent extends EngineEvent {
      * <A href="Recognizer.html#normalEvents">
      * state transition documentation</A>
      * for a Recognizer
-     * with the the
+     * with the
      * <A href="Grammar.html#commit">committing changes
      * documentation</A>
      * for a Grammar.
@@ -114,7 +114,7 @@ public class RecognizerEvent extends EngineEvent {
      * FOCUS_GAINED event is issued when a
      * Recognizer changes from the FOCUS_OFF
      * state to the FOCUS_ON state.  This event
-     * typically occurs as a result of a call the the
+     * typically occurs as a result of a call the
      * requestFocus method of the Recognizer.
      * <p>
      * The event indicates that the FOCUS_ON bit
@@ -152,7 +152,7 @@ public class RecognizerEvent extends EngineEvent {
      * policy for grammars, a FOCUS_LOST event is followed
      * by a GRAMMAR_DEACTIVATED event to the
      * GrammarListeners of each Grammar
-     * that loses activatation.  Activation conditions and the role
+     * that loses activation.  Activation conditions and the role
      * of recognizer focus are detailed in the documentation for
      * the Grammar interface.
      *
@@ -213,6 +213,7 @@ public class RecognizerEvent extends EngineEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 1200:

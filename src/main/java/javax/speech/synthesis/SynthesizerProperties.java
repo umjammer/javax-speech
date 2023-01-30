@@ -17,7 +17,7 @@ import javax.speech.EngineProperties;
  * <p>
  * Each property has a get and set method.  (JavaBeans property method patterns)
  * Engines may ignore calls to change properties, for example
- * by applying maximum and minimum setttings.
+ * by applying maximum and minimum settings.
  * Calls to set methods may be asynchronous (they may return
  * before the property change takes effect).  The Engine
  * will apply a change as soon as possible.  A PropertyChangeEvent

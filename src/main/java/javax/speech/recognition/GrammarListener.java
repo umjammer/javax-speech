@@ -28,7 +28,7 @@ public interface GrammarListener extends EventListener {
 
     /**
      * A GRAMMAR_ACTIVATED event is issued when a
-     * grammar changes from deactivated to activated.
+     * grammar changes from deactivated to activate.
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_ACTIVATED
      * @see javax.speech.recognition.Grammar
@@ -58,7 +58,7 @@ public interface GrammarListener extends EventListener {
 
     /**
      * A GRAMMAR_DEACTIVATED event is issued when a
-     * grammar changes from activated to deactivated.
+     * grammar changes from activated to deactivate.
      *
      * @see javax.speech.recognition.GrammarEvent#GRAMMAR_DEACTIVATED
      * @see javax.speech.recognition.Grammar

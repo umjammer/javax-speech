@@ -64,7 +64,7 @@ import java.util.StringTokenizer;
  * <p>
  * The angle brackets placed around rulenames are syntactic constructs in JSGF
  * but are not a part of the rulename.  For clarity of code, the angle brackets
- * may be included in calls to this class but they are automatically stripped.
+ * may be included in calls to this class, but they are automatically stripped.
  * <p>
  * The following referencing and name resolution conditions of JSGF apply.
  * <p>
@@ -155,6 +155,7 @@ public class RuleName extends Rule {
     /**
      * Return a deep copy of this rule.
      */
+    @Override
     public Rule copy() {
         return new RuleName(this.packageName, this.simpleGrammarName, this.simpleRuleName);
     }
@@ -177,7 +178,7 @@ public class RuleName extends Rule {
     }
 
     /**
-     * Get therulename including the package and grammar name
+     * Get the rulename including the package and grammar name
      * if they are non-null.  The return value may be a fully-qualified
      * rulename, qualified rulename, or simple rulename.
      */
@@ -239,7 +240,7 @@ public class RuleName extends Rule {
 
             if (name.length() == 0) {
                 return false;
-            } else if (!name.startsWith(".") && !name.endsWith(".") && name.indexOf("..") < 0) {
+            } else if (!name.startsWith(".") && !name.endsWith(".") && !name.contains("..")) {
                 StringTokenizer tokenizer = new StringTokenizer(name, ".");
 
                 while (tokenizer.hasMoreTokens()) {
@@ -324,13 +325,13 @@ public class RuleName extends Rule {
             this.packageName = packageName;
             this.simpleGrammarName = simpleGrammarName;
             this.simpleRuleName = stripRuleName(simpleRuleName);
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             if (packageName != null) {
-                sb.append(packageName + '.');
+                sb.append(packageName).append('.');
             }
 
             if (simpleGrammarName != null) {
-                sb.append(simpleGrammarName + '.');
+                sb.append(simpleGrammarName).append('.');
             }
 
             sb.append(simpleRuleName);

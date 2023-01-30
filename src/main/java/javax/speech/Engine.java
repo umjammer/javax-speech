@@ -338,25 +338,26 @@ public interface Engine {
      * allocation in a background thread and proceed with other activities.
      * The following code uses an inner class implementation of Runnable
      * to create a background thread for engine allocation:
-     * <p>
+     * <pre>
      * static Engine engine;
-     * <p>
+     *
      * public static void main(String argv[])
      * {
-     * engine = Central.createRecognizer();
-     * <p>
-     * new Thread(new Runnable() {
-     * public void run() {
-     * engine.allocate();
+     *  engine = Central.createRecognizer();
+     *
+     *  new Thread(new Runnable() {
+     *    public void run() {
+     *     engine.allocate();
+     *    }
+     *  }).start();
+     *
+     *  // Do other stuff while allocation takes place
+     *  ...
+     *
+     *  // Now wait until allocation is complete
+     *  engine.waitEngineState(Engine.ALLOCATED);
      * }
-     * }).start();
-     * <p>
-     * // Do other stuff while allocation takes place
-     * ...
-     * <p>
-     * // Now wait until allocation is complete
-     * engine.waitEngineState(Engine.ALLOCATED);
-     * }
+     * </pre>
      *
      * @throws javax.speech.EngineException  if an allocation error occurred or the engine is not operational.
      * @throws javax.speech.EngineStateError if called for an engine in the DEALLOCATING_RESOURCES state
@@ -524,7 +525,7 @@ public interface Engine {
      * are connected to that engine.  Engines are typically paused and resumed
      * by request from a user.
      * <p>
-     * Applications may pause an engine indefinately.  When an engine
+     * Applications may pause an engine indefinitely.  When an engine
      * moves from the RESUMED state to the PAUSED
      * state, an ENGINE_PAUSED event is issued to each
      * EngineListener attached to the Engine.
@@ -558,19 +559,19 @@ public interface Engine {
      * of Runnable with inner classes</A>
      * that can perform
      * pause in a separate thread.
-     * <p>
+     * <h3>
      * Pausing a
      * <A href="synthesis/Synthesizer.html">Synthesizer</A>
-     * <p>
+     * </h3>
      * The pause/resume mechanism for a synthesizer is analogous
      * to pause/resume on a tape player or CD player.
      * The audio output stream is paused.  The speaking
      * queue is left intact and a subsequent resume continues output from
      * the point at which the pause took effect.
-     * <p>
+     * <h3>
      * Pausing a
      * <A href="recognition/Recognizer.html">Recognizer</A>
-     * <p>
+     * </h3>
      * Pause and resume for a recognizer are analogous to turning
      * a microphone off and on.
      * Pausing stops the input audio input stream as close as
@@ -683,13 +684,13 @@ public interface Engine {
      * example the following returns true only if the
      * Synthesizer queue is empty, irrespective
      * of the pause/resume and allocation states.
-     * <p>
+     * <pre>
      * if (synth.testEngineState(Synthesizer.QUEUE_EMPTY)) ...
-     * <p>
+     * </pre>
      * The testEngineState method is equivalent to:
-     * <p>
+     * <pre>
      * if ((engine.getEngineState() & state) == state)
-     * <p>
+     * </pre>
      * The testEngineState method can be called
      * successfully in any Engine state.
      *

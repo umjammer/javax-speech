@@ -40,7 +40,7 @@ public class Voice implements Cloneable {
     public static final int GENDER_MALE = 2;
 
     /**
-     * Neutral voice that is neither male or female
+     * Neutral voice that is neither male nor female
      * (for example, artificial voices, robotic voices).
      *
      * @see javax.speech.synthesis.Voice#getGender()
@@ -140,6 +140,7 @@ public class Voice implements Cloneable {
      *
      * @return A copy of this
      */
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -181,11 +182,12 @@ public class Voice implements Cloneable {
     /**
      * Get the voice age.  Age values are OR'able.  For example,
      * to test whether a voice is child or teenager (less than 20):
-     * <p>
+     * <pre>
      * Voice voice = ...;
      * Voice test = new Voice();
      * test.setAge(Voice.AGE_CHILD | Voice.AGE_TEENAGER);
      * if (voice.match(test)) ...
+     * </pre
      *
      * @see javax.speech.synthesis.Voice#AGE_CHILD
      * @see javax.speech.synthesis.Voice#AGE_TEENAGER
@@ -202,11 +204,12 @@ public class Voice implements Cloneable {
     /**
      * Get the voice gender.  Gender values are OR'able.  For example,
      * to test whether a voice is male and/or neutral:
-     * <p>
+     * <pre>
      * Voice voice = ...;
      * Voice test = new Voice();
      * test.setGender(Voice.GENDER_MALE | Voice.GENDER_NEUTRAL);
      * if (voice.match(test)) ...
+     * </pre>
      *
      * @see javax.speech.synthesis.Voice#GENDER_FEMALE
      * @see javax.speech.synthesis.Voice#GENDER_MALE
@@ -235,13 +238,13 @@ public class Voice implements Cloneable {
 
     /**
      * Determine whether a Voice has all the features
-     * defined in the require object.  Strings in
+     * defined in the <code>require</code> object.  Strings in
      * require which are either null or
      * zero-length ("") are ignored.
      * All string comparisons are exact matches (case-sensitive).
      * <p>
-     * GENDER_DONT_CARE and AGE_DONT_CARE
-     * values in the require object are ignored.
+     * GENDER_DONT_CARE and <code>AGE_DONT_CARE</code>
+     * values in the <code>require</code> object are ignored.
      * The age and gender parameters are OR'ed: e.g. the required age
      * can be AGE_TEENAGER | AGE_CHILD.
      */

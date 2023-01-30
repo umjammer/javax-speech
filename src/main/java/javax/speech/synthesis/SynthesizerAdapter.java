@@ -16,6 +16,7 @@ public class SynthesizerAdapter extends EngineAdapter implements SynthesizerList
      *
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_EMPTIED
      */
+    @Override
     public void queueEmptied(SynthesizerEvent e) {
     }
 
@@ -24,6 +25,7 @@ public class SynthesizerAdapter extends EngineAdapter implements SynthesizerList
      *
      * @see javax.speech.synthesis.SynthesizerEvent#QUEUE_UPDATED
      */
+    @Override
     public void queueUpdated(SynthesizerEvent e) {
     }
 }

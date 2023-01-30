@@ -4,7 +4,7 @@ package javax.speech.recognition;
  * RuleAlternatives represents a Rule composed of a
  * set of alternative sub-rules.  RuleAlternatives are used to
  * construct RuleGrammar objects.  A RuleAlternatives
- * object is spoken by saying one, and only one, of of its sub-rules.
+ * object is spoken by saying one, and only one, of its sub-rules.
  * <p>
  * A RuleAlternatives object contains a set of zero or more
  * Rule objects.  A set of zero alternatives is equivalent to
@@ -44,7 +44,7 @@ public class RuleAlternatives extends Rule {
      * (i.e. unspeakable).
      */
     public RuleAlternatives() {
-        this.setRules((Rule[]) null);
+        this.setRules(null);
         this.weights = null;
     }
 
@@ -73,7 +73,6 @@ public class RuleAlternatives extends Rule {
      */
     public RuleAlternatives(String[] tokens) {
         if (tokens == null) {
-            tokens = new String[0];
             this.weights = null;
         } else {
             this.rules = new Rule[tokens.length];
@@ -134,6 +133,7 @@ public class RuleAlternatives extends Rule {
      * <A href="Rule.html#copy()">Rule.copy</A>
      * documentation for an explanation of deep copy.
      */
+    @Override
     public Rule copy() {
         float[] weights = null;
         if (this.weights != null) {
@@ -214,20 +214,20 @@ public class RuleAlternatives extends Rule {
             } else {
                 float weight = 0.0F;
 
-                for (int i = 0; i < weights.length; ++i) {
-                    if (Float.isNaN(weights[i])) {
+                for (float v : weights) {
+                    if (Float.isNaN(v)) {
                         throw new IllegalArgumentException("illegal weight value: NaN");
                     }
 
-                    if (Float.isInfinite(weights[i])) {
+                    if (Float.isInfinite(v)) {
                         throw new IllegalArgumentException("illegal weight value: infinite");
                     }
 
-                    if ((double) weights[i] < 0.0) {
+                    if ((double) v < 0.0) {
                         throw new IllegalArgumentException("illegal weight value: negative");
                     }
 
-                    weight += weights[i];
+                    weight += v;
                 }
 
                 if ((double) weight <= 0.0) {
@@ -248,7 +248,7 @@ public class RuleAlternatives extends Rule {
      */
     public String toString() {
         if (this.rules != null && this.rules.length != 0) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < this.rules.length; ++i) {
                 if (i > 0) {
@@ -256,11 +256,11 @@ public class RuleAlternatives extends Rule {
                 }
 
                 if (this.weights != null) {
-                    sb.append("/" + this.weights[i] + "/ ");
+                    sb.append("/").append(this.weights[i]).append("/ ");
                 }
 
                 if (this.rules[i] instanceof RuleAlternatives) {
-                    sb.append("( " + this.rules[i].toString() + " )");
+                    sb.append("( ").append(this.rules[i].toString()).append(" )");
                 } else {
                     sb.append(this.rules[i].toString());
                 }

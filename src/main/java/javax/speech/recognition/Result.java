@@ -5,15 +5,16 @@ package javax.speech.recognition;
  * an incoming utterance that matches an active Grammar.
  * The Result interface provides the application with access
  * to the following information about a recognized utterance:
- * <p>
- * A sequence of finalized tokens (words) that have been recognized,
- * A sequence of unfinalized tokens,
- * Reference to the grammar matched by the result,
- * The result state: UNFINALIZED,
- * ACCEPTED or REJECTED.
- * <p>
+ * <ol>
+ * <li>A sequence of finalized tokens (words) that have been recognized,</li>
+ * <li>A sequence of unfinalized tokens,</li>
+ * <li>Reference to the grammar matched by the result,</li>
+ * <li>The result state: UNFINALIZED,
+ * ACCEPTED or REJECTED.</li>
+ * </ol>
+ * <h3>
  * Multiple Result Interfaces
- * <p>
+ * </h3>
  * Every Result object provided by a Recognizer implements
  * both the FinalRuleResult and FinalDictationResult
  * interfaces.  Thus, by extension every result also implements the
@@ -52,9 +53,9 @@ package javax.speech.recognition;
  * will match either a RuleGrammar or DictationGrammar,
  * but never both.  The reason for this is that when the result is
  * created (RESULT_CREATED event), the grammar is not always known.
- * <p>
+ * <h3>
  * <A>Result States</A>
- * <p>
+ * </h3>
  * The separate interfaces determine what information is available for a result
  * in the different stages of its life-cycle.  The state of a Result
  * is determined by calling the getResultState method.  The
@@ -70,33 +71,33 @@ package javax.speech.recognition;
  * <p>
  * Following are descriptions of a result object in each of the three states
  * including information on which interfaces can be used in each state.
- * <p>
+ * <h4>
  * getResultState() == Result.UNFINALIZED
- * <p>
- * Recognition of the result is in progress.
- * A new result is created with a RESULT_CREATED event
+ * </h4>
+ * <li>Recognition of the result is in progress.
+ * <li>A new result is created with a RESULT_CREATED event
  * that is issued to each ResultListener attached
  * to a Recognizer.  The new result is created in
  * in the UNFINALIZED state.
- * A result remains in the UNFINALIZED state until
+ * <li>A result remains in the UNFINALIZED state until
  * it is finalized by either a RESULT_ACCEPTED
  * or RESULT_REJECTED event.
- * Applications should only call the methods of the Result
+ * <li>Applications should only call the methods of the Result
  * interface.  A ResultStateError is issued on calls to the
  * methods of FinalResult, FinalRuleResult
  * and FinalDictationResult interfaces.
- * Events 1: zero or more RESULT_UPDATED events
+ * <li>Events 1: zero or more RESULT_UPDATED events
  * may be issued as (a) tokens are finalized, or (b) as the
  * unfinalized tokens changes.
- * Events 2: one GRAMMAR_FINALIZED event must be
+ * <li>Events 2: one GRAMMAR_FINALIZED event must be
  * issued in the UNFINALIZED state before result
  * finalization by an RESULT_ACCEPTED event.
  * (Not required if a result is rejected.)
- * Events 3: the GRAMMAR_FINALIZED event is optional
+ * <li>Events 3: the GRAMMAR_FINALIZED event is optional
  * if the result is finalized by a RESULT_REJECTED
  * event.  (It is not always possible for a recognizer to identify
  * a best-match grammar for a rejected result.)
- * Prior to the GRAMMAR_FINALIZED event, the
+ * <li>Prior to the GRAMMAR_FINALIZED event, the
  * getGrammar returns null.
  * Following the GRAMMAR_FINALIZED event the
  * getGrammar method returns a non-null reference to
@@ -104,89 +105,89 @@ package javax.speech.recognition;
  * numTokens returns the number of finalized tokens.
  * While in the UNFINALIZED this number may increase
  * as ResultEvent.RESULT_UPDATED events are issued.
- * The best guess for each finalized token is available through
+ * <li>The best guess for each finalized token is available through
  * getBestToken(int num).  The best guesses are guaranteed
  * not to change through the remaining life of the result.
  * getUnfinalizedTokens may return zero or more tokens and
  * these may change at any time when a ResultEvent.RESULT_UPDATED
  * event is issued.
- * <p>
+ * <h4>
  * getResultState() == Result.ACCEPTED
- * <p>
- * Recognition of the Result is complete and the recognizer
+ * </h4>
+ * <li>Recognition of the Result is complete and the recognizer
  * is confident it has the correct result (not a rejected result).
  * Non-rejection is not a guarantee of a correct result - only sufficient
  * confidence that the guess is correct.
- * Events 1: a result transitions from the UNFINALIZED state to
+ * <li>Events 1: a result transitions from the UNFINALIZED state to
  * the ACCEPTED state when an RESULT_ACCEPTED
  * event is issued.
- * Events 2: AUDIO_RELEASED and TRAINING_INFO_RELEASED
+ * <li>Events 2: AUDIO_RELEASED and TRAINING_INFO_RELEASED
  * events may occur optionally (once) in the ACCEPTED state.
- * numTokens will return 1 or greater (there must be at least
+ * <li>numTokens will return 1 or greater (there must be at least
  * one finalized token) and the number of finalized tokens will not change.
  * [Note: A rejected result may have zero finalized tokens.]
- * The best guess for each finalized token is available through the
+ * <li>The best guess for each finalized token is available through the
  * getBestToken(int tokNum) method.  The best guesses will
  * not change through the remaining life of the result.
- * getUnfinalizedTokens method returns null.
- * The getGrammar method returns the grammar matched by
+ * <li>getUnfinalizedTokens method returns null.
+ * <li>The getGrammar method returns the grammar matched by
  * this result.  It may be either a RuleGrammar or
  * DictationGrammar.
- * For either a RuleGrammar or DictationGrammar
+ * <li>For either a RuleGrammar or DictationGrammar
  * the methods of FinalResult may be used to access
  * audio data and to perform correction/training.
- * If the result matches a RuleGrammar, the methods
+ * <li>If the result matches a RuleGrammar, the methods
  * of FinalRuleResult may be used to get alternative
  * guesses for the complete utterance and to get tags and other
  * information associated with the RuleGrammar.
  * (Calls to any methods of the FinalDictationResult
  * interface cause a ResultStateError.)
- * If the result matches a DictationGrammar, the methods
+ * <li>If the result matches a DictationGrammar, the methods
  * of FinalDictationResult may be used to get alternative
  * guesses for tokens and token sequences.
  * (Calls to any methods of the FinalRuleResult
  * interface cause a ResultStateError.)
- * <p>
+ * <h4>
  * getResultState() == Result.REJECTED
- * <p>
- * Recognition of the Result is complete but the recognizer
+ * </h4>
+ * <li>Recognition of the Result is complete but the recognizer
  * believes it does not have the correct result.  Programmatically,
  * an accepted and rejected result are very similar but the contents
  * of a rejected result must be treated differently - they are likely to be wrong.
- * Events 1: a result transitions from the UNFINALIZED state to
+ * <li>Events 1: a result transitions from the UNFINALIZED state to
  * the REJECTED state when an RESULT_REJECTED
  * event is issued.
- * Events 2: (same as for the ACCEPTED state)
+ * <li>Events 2: (same as for the ACCEPTED state)
  * AUDIO_RELEASED and TRAINING_INFO_RELEASED
  * events may occur optionally (once) in the REJECTED state.
- * numTokens will return 0 or greater.
+ * <li>numTokens will return 0 or greater.
  * The number of tokens will not change for the remaining life
  * of the result.  [Note: an accepted result always has at least
  * one finalized token.]
- * As with an accepted result,
+ * <li>As with an accepted result,
  * the best guess for each finalized token is available through the
  * getBestToken(int num) method and the tokens are guaranteed
  * not to change through the remaining life of the result.  Because
  * the result has been rejected the guesses are not likely to be correct.
- * getUnfinalizedTokens method returns null.
- * If the GRAMMAR_FINALIZED was issued during recognition
+ * <li>getUnfinalizedTokens method returns null.
+ * <li>If the GRAMMAR_FINALIZED was issued during recognition
  * of the result, the getGrammar method returns the
  * grammar matched by this result otherwise it returns null.
  * It may be either a RuleGrammar or DictationGrammar.
  * For rejected results, there is a greater chance that this
  * grammar is wrong.
- * The FinalResult interface behaves the same as
+ * <li>The FinalResult interface behaves the same as
  * for a result in the ACCEPTED state expect that the information
  * is less likely to be reliable.
- * If the grammar is known, the FinalRuleResult and
+ * <li>If the grammar is known, the FinalRuleResult and
  * FinalDictationResult interfaces behave the same as
  * for a result in the ACCEPTED state expect that the information
  * is less likely to be reliable.  If the grammar is unknown, then
  * a ResultStateError is thrown on calls to the methods of both
  * FinalRuleResult and FinalDictationResult.
- * <p>
+ * <h3>
  * Result State and Recognizer States
- * <p>
+ * </h3>
  * The state system of a Recognizer is linked to the
  * state of recognition of the current result.  The Recognizer
  * interface documents the
@@ -196,7 +197,7 @@ package javax.speech.recognition;
  * The following is an overview of the ways in which the two state
  * systems are linked:
  * <p>
- * The ALLOCATED state of a Recognizer has
+ * <li>The ALLOCATED state of a Recognizer has
  * three sub-states.  In the LISTENING state, the
  * recognizer is listening to background audio and there is
  * no result being produced.  In the SUSPENDED
@@ -204,28 +205,28 @@ package javax.speech.recognition;
  * while its grammars are updated.  In the PROCESSING
  * state, the recognizer has detected incoming audio that
  * may match an active grammar and is producing a Result.
- * The Recognizer moves from the LISTENING
+ * <li>The Recognizer moves from the LISTENING
  * state to the PROCESSING state with a
  * RECOGNIZER_PROCESSING event immediately prior to
  * issuing a RESULT_CREATED event.
- * The RESULT_UPDATED and GRAMMAR_FINALIZED
+ * <li>The RESULT_UPDATED and GRAMMAR_FINALIZED
  * events are produced while the Recognizer is in
  * the PROCESSING state.
- * The Recognizer finalizes a Result with
+ * <li>The Recognizer finalizes a Result with
  * RESULT_ACCEPTED or RESULT_REJECTED
  * event immediately after it transitions from the PROCESSING
  * state to the SUSPENDED state with a
  * RECOGNIZER_SUSPENDED event.
- * Unless there is a pending suspend, the
+ * <li>Unless there is a pending suspend, the
  * Recognizer commits grammar changes with a
  * CHANGES_COMMITTED event as soon as the
  * result finalization event is processed.
- * The TRAINING_INFO_RELEASED and AUDIO_RELEASED
+ * <li>The TRAINING_INFO_RELEASED and AUDIO_RELEASED
  * events can occur in any state of an ALLOCATED
  * Recognizer.
- * <p>
+ * <h3>
  * Accept or Reject?
- * <p>
+ * </h3>
  * Rejection of a result indicates that the recognizer is not confident that it
  * has accurately recognized what a user says.  Rejection can be controlled
  * through the RecognizerProperties interface with the
@@ -235,20 +236,20 @@ package javax.speech.recognition;
  * <p>
  * Important: the acceptance of a result (an RESULT_ACCEPTED
  * event rather than a RESULT_REJECTED event) does not mean the
- * result is correct.  Instead acceptance implies that the recognizer has a
+ * result is correct.  Instead, acceptance implies that the recognizer has a
  * sufficient level of confidence that the result is correct.
  * <p>
  * It is difficult for recognizers to reliably determine when they make mistakes.
  * Applications need to determine the cost of incorrect recognition of any
  * particular results and take appropriate actions.  For example, confirm
  * with a user that they said "delete all files" before deleting anything.
- * <p>
+ * <h3>
  * <A>Result Events</A>
- * <p>
+ * </h3>
  * Events are issued when a new result is created and when there is any change
  * in the state or information content of a result.  The following
  * describes the event sequence for an accepted result.  It provides the
- * same information as above for result states, but focusses on legal event
+ * same information as above for result states, but focuses on legal event
  * sequences.
  * <p>
  * Before a new result is created for incoming speech, a recognizer
@@ -304,12 +305,12 @@ package javax.speech.recognition;
  * the result is finalized.
  * <p>
  * Once the recognizer completes recognition of the Result
- * that it choses to accept, it finalizes the result with an
+ * that it chooses to accept, it finalizes the result with an
  * RESULT_ACCEPTED event that is issued to the
  * ResultListeners attached to the Recognizer,
  * the matched Grammar, and the Result.
  * This event may also indicate finalization of zero or more tokens,
- * and/or the reseting of the unfinalized tokens to null.
+ * and/or the resetting of the unfinalized tokens to null.
  * The result finalization event occurs immediately after the
  * Recognizer makes a transition from the PROCESSING
  * state to the SUSPENDED state with a
@@ -329,9 +330,9 @@ package javax.speech.recognition;
  * A result may be rejected with or without any unfinalized or finalized
  * tokens being created (no RESULT_UPDATED events), and
  * with or without a GRAMMAR_FINALIZED event.
- * <p>
+ * <h3>
  * When does a Result start and end?
- * <p>
+ * </h3>
  * A new result object is created when a recognizer has detected
  * possible incoming speech which may match an active grammar.
  * <p>
@@ -350,22 +351,21 @@ package javax.speech.recognition;
  * The set of conditions that may cause a result matching a
  * DictationGrammar to be finalized includes:
  * <p>
- * The user pauses for a period of time (a timeout).
- * A call to the
- * <p>
+ * <li>The user pauses for a period of time (a timeout).
+ * <li>A call to the
  * <A href="Recognizer.html#forceFinalize(boolean)">forceFinalize</A>
  * method of the recognizer.
- * User has spoken text matching an active RuleGrammar
+ * <li>User has spoken text matching an active RuleGrammar
  * (the dictation result is finalized and a new Result
  * is issued for the RuleGrammar).
- * The engine is paused.
+ * <li>The engine is paused.
  * <p>
  * The following conditions apply to all finalized results:
  * <p>
- * N-best alternative token guesses available through the
+ * <li>N-best alternative token guesses available through the
  * FinalRuleResult and FinalDictationResult
  * interfaces cannot cross result boundaries.
- * Correction/training is only possible within a single result object.
+ * <li>Correction/training is only possible within a single result object.
  *
  * @see javax.speech.recognition.FinalResult
  * @see javax.speech.recognition.FinalRuleResult
@@ -510,12 +510,13 @@ public interface Result {
      * a result matching either kind of grammar.
      * <p>
      * Example:
-     * <p>
+     * <pre>
      * Result result;
      * if (result.getGrammar() instanceof RuleGrammar) {
-     * FinalRuleResult frr = (FinalRuleResult)result;
-     * ...
+     *   FinalRuleResult frr = (FinalRuleResult)result;
+     *   ...
      * }
+     * </pre>
      *
      * @see javax.speech.recognition.Result#getResultState()
      */
@@ -525,8 +526,7 @@ public interface Result {
      * Returns the current state of the Result object: UNFINALIZED,
      * ACCEPTED or REJECTED.  The details of
      * a Result in each state are
-     * <A href="#states">described above</A>
-     * .
+     * <A href="#states">described above</A>.
      *
      * @see javax.speech.recognition.Result#UNFINALIZED
      * @see javax.speech.recognition.Result#ACCEPTED

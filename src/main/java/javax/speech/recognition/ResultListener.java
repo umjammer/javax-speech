@@ -8,17 +8,17 @@ import java.util.EventListener;
  * events related to a Result object.  A ResultListener
  * may be attached to any of three entities:
  * <p>
- * Recognizer: a ResultListener attached
+ * <li>Recognizer: a ResultListener attached
  * to a Recognizer receives notification of all
  * ResultEvents for all results produced by that
  * recognizer.
- * Grammar: a ResultListener attached to a
+ * <li>Grammar: a ResultListener attached to a
  * Grammar receives all events for all results that have
  * been finalized for that grammar.  Specifically, it receives the
  * GRAMMAR_FINALIZED event and following events.
  * (Note: it never receives a RESULT_CREATED event because
  * that event always precedes the GRAMMAR_FINALIZED event).
- * Result: a ResultListener attached to
+ * <li>Result: a ResultListener attached to
  * a Result receives all events for that result starting
  * from the time at which the listener is attached.
  * (Note: it never receives a RESULT_CREATED event
@@ -54,7 +54,7 @@ import java.util.EventListener;
 public interface ResultListener extends EventListener {
 
     /**
-     * A AUDIO_RELEASED event has occured.
+     * A AUDIO_RELEASED event has occurred.
      * This event is only issued to finalized results.
      * See the documentation of the isAudioAvailable method
      * the FinalResult interface for details.
@@ -72,7 +72,7 @@ public interface ResultListener extends EventListener {
     void audioReleased(ResultEvent e);
 
     /**
-     * A GRAMMAR_FINALIZED event has occured because
+     * A GRAMMAR_FINALIZED event has occurred because
      * the Recognizer has determined which Grammar
      * is matched by the incoming speech.
      * <p>
@@ -85,7 +85,7 @@ public interface ResultListener extends EventListener {
     void grammarFinalized(ResultEvent e);
 
     /**
-     * An RESULT_ACCEPTED event has occured indicating
+     * An RESULT_ACCEPTED event has occurred indicating
      * that a Result has transitioned from the
      * UNFINALIZED state to the ACCEPTED
      * state.
@@ -103,26 +103,26 @@ public interface ResultListener extends EventListener {
      * then the result object can be safely cast to FinalDictationResult
      * (methods of FinalRuleResult throw an exception).
      * For example:
-     * <p>
+     * <pre>
      * void resultAccepted(ResultEvent e) {
-     * Object source = e.getSource();
-     * <p>
-     * // always safe
-     * Result result = (Result)source;
-     * FinalResult fr = (FinalResult)source;
-     * <p>
-     * // find the grammar-specific details
-     * // the null test is only useful for rejected results
-     * if (result.getGrammar() != null) {
-     * if (result.getGrammar() instanceof RuleGrammar) {
-     * FinalRuleResult frr = (FinalRuleResult)source;
-     * ...
-     * }
-     * else if (result.getGrammar() instanceof DictationGrammar) {
-     * FinalDictationResult fdr = (FinalDictationResult)source;
-     * ...
-     * }
-     * <p>
+     *   Object source = e.getSource();
+     *
+     *   // always safe
+     *   Result result = (Result)source;
+     *   FinalResult fr = (FinalResult)source;
+     *
+     *   // find the grammar-specific details
+     *   // the null test is only useful for rejected results
+     *   if (result.getGrammar() != null) {
+     *     if (result.getGrammar() instanceof RuleGrammar) {
+     *       FinalRuleResult frr = (FinalRuleResult)source;
+     *       ...
+     *     }
+     *     else if (result.getGrammar() instanceof DictationGrammar) {
+     *       FinalDictationResult fdr = (FinalDictationResult)source;
+     *       ...
+     *     }
+     * </pew>
      * The event is issued to each ResultListener attached
      * to the Recognizer, Result, and
      * matched Grammar.
@@ -170,7 +170,7 @@ public interface ResultListener extends EventListener {
     void resultCreated(ResultEvent e);
 
     /**
-     * An RESULT_REJECTED event has occured indicating
+     * An RESULT_REJECTED event has occurred indicating
      * that a Result has transitioned from the
      * UNFINALIZED state to the REJECTED state.
      * <p>
@@ -198,7 +198,7 @@ public interface ResultListener extends EventListener {
     void resultRejected(ResultEvent e);
 
     /**
-     * A RESULT_UPDATED event has occured because a token has
+     * A RESULT_UPDATED event has occurred because a token has
      * been finalized and/or the unfinalized text of a result has changed.
      * <p>
      * The event is issued to each ResultListener attached
@@ -212,7 +212,7 @@ public interface ResultListener extends EventListener {
     void resultUpdated(ResultEvent e);
 
     /**
-     * A TRAINING_INFO_RELEASED event has occured.
+     * A TRAINING_INFO_RELEASED event has occurred.
      * This event is only issued to finalized results.
      * See the documentation of the isTrainingInfoAvailable method
      * the FinalResult interface for details.

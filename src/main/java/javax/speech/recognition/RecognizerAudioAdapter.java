@@ -4,7 +4,7 @@ import javax.speech.AudioAdapter;
 
 
 /**
- * Adaptor for a audio events of a recognizer.
+ * Adaptor for an audio events of a recognizer.
  * The methods in this class are empty;  this class is provided as a
  * convenience for easily creating listeners by extending this class
  * and overriding only the methods of interest.
@@ -17,6 +17,7 @@ public class RecognizerAudioAdapter extends AudioAdapter implements RecognizerAu
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#AUDIO_LEVEL
      */
+    @Override
     public void audioLevel(RecognizerAudioEvent e) {
     }
 
@@ -25,6 +26,7 @@ public class RecognizerAudioAdapter extends AudioAdapter implements RecognizerAu
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STARTED
      */
+    @Override
     public void speechStarted(RecognizerAudioEvent e) {
     }
 
@@ -33,6 +35,7 @@ public class RecognizerAudioAdapter extends AudioAdapter implements RecognizerAu
      *
      * @see javax.speech.recognition.RecognizerAudioEvent#SPEECH_STOPPED
      */
+    @Override
     public void speechStopped(RecognizerAudioEvent e) {
     }
 }

@@ -82,7 +82,7 @@ public class SynthesizerEvent extends EngineEvent {
      *
      * @see javax.speech.synthesis.SynthesizerEvent#getTopOfQueueChanged()
      */
-    protected boolean topOfQueueChanged = false;
+    protected boolean topOfQueueChanged;
 
     /**
      * Construct a SynthesizerEvent with a specified event id
@@ -116,6 +116,7 @@ public class SynthesizerEvent extends EngineEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
         switch (super.id) {
         case 700:

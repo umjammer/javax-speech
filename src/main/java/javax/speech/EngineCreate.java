@@ -12,15 +12,15 @@ package javax.speech;
  * RecognizerModeDesc or SynthesizerModeDesc
  * to implement the EngineCreate interface.
  * For example:
- * <p>
+ * <pre>
  * public MyRecognizerModeDesc extends RecognizerModeDesc implements EngineCreate
  * ...
- * public Engine createEngine() {
- * // Use mode desc propoerties to create an appropriate engine
- * }
- * <p>
+ *   public Engine createEngine() {
+ *   // Use mode desc properties to create an appropriate engine
+ *   }
+ * </pre>
  * This implementation mechanism allows the engine to embed additional
- * mode information (engine-specific mode identifiers, GUIDs etc)
+ * mode information (engine-specific mode identifiers, GUIDs etc.)
  * that simplify creation of the engine if requested by the Central class.
  * The engine-specific mode descriptor may need to override equals and
  * other methods if engine-specific features are defined.

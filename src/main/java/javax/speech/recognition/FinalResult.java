@@ -66,7 +66,7 @@ import java.applet.AudioClip;
  * it should call releaseTrainingInfo to free up
  * system resources.  Also, a recognizer may choose at any time to free
  * up training information.  In both cases, the application is
- * notified of the the release with a TRAINING_INFO_RELEASED
+ * notified of the release with a TRAINING_INFO_RELEASED
  * event to ResultListeners.
  * <p>
  * Audio Data

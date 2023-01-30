@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * EngineList is a container for a set of EngineModeDesc objects.
  * An EngineList is used in the selection of speech
- * engines in conjuction with the methods of the Central class.
+ * engines in conjunction with the methods of the Central class.
  * It provides convenience methods for the purpose of testing and manipulating the
  * EngineModeDesc objects it contains.
  * <p>
@@ -17,7 +17,7 @@ import java.util.Vector;
  * rejectMatch methods are used to prune the
  * list to find the best match given multiple criteria.
  */
-public class EngineList extends Vector {
+public class EngineList extends Vector<Object> {
 
     /**
      * Return true if one or more EngineModeDesc

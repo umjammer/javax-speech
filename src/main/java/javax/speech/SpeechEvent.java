@@ -23,7 +23,7 @@ import java.util.EventObject;
  * needs to create a non-visual AWT Component to
  * receive the engine's AWTEvent.  When the
  * AWT event is notified to the engine's component, the engine
- * should issue the approporiate speech event.  The speech event
+ * should issue the appropriate speech event.  The speech event
  * can be issued either from the AWT event thread or from a
  * separate thread created by the speech engine.
  * (Note that SpeechEvent is not a sub-class

@@ -238,7 +238,7 @@ public class ResultEvent extends SpeechEvent {
 
     /**
      * TRAINING_INFO_RELEASED event is issued when the
-     * training information for a finaliized result is released.
+     * training information for a finalized result is released.
      * The release may have been requested by an application call to the
      * releaseTrainingInfo method in the FinalResult
      * interface or may be initiated by the recognizer to reclaim memory.
@@ -265,7 +265,7 @@ public class ResultEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.ResultEvent#isTokenFinalized()
      */
-    protected boolean tokenFinalized = false;
+    protected boolean tokenFinalized;
 
     /**
      * True if the ResultEvent indicates that the
@@ -276,7 +276,7 @@ public class ResultEvent extends SpeechEvent {
      *
      * @see javax.speech.recognition.ResultEvent#isUnfinalizedTokensChanged()
      */
-    protected boolean unfinalizedTokensChanged = false;
+    protected boolean unfinalizedTokensChanged;
 
     /**
      * Constructs a ResultEvent with an event type identifier.
@@ -358,8 +358,9 @@ public class ResultEvent extends SpeechEvent {
      *
      * @return a string identifying the event
      */
+    @Override
     public String paramString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         switch (super.id) {
         case 801:
             sb.append("RESULT_CREATED");

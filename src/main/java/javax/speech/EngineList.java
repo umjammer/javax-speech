@@ -17,7 +17,8 @@ import java.util.Vector;
  * rejectMatch methods are used to prune the
  * list to find the best match given multiple criteria.
  */
-public class EngineList extends Vector<Object> {
+@SuppressWarnings({"rawtypes", "unchecked"})
+public class EngineList extends Vector {
 
     /**
      * Return true if one or more EngineModeDesc
@@ -125,6 +126,5 @@ public class EngineList extends Vector<Object> {
                 this.removeElementAt(i);
             }
         }
-
     }
 }

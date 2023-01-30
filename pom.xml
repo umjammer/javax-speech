@@ -7,6 +7,10 @@
   <artifactId>speech</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
+  <properties>
+    <freetts.version>1.2.4</freetts.version>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -54,12 +58,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.github.umjammer</groupId>
-      <artifactId>vavi-commons</artifactId>
-      <version>1.1.8</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
@@ -72,6 +70,58 @@
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-commons</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.umjammer</groupId>
+      <artifactId>vavi-commons</artifactId>
+      <version>1.1.8</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jvoicexml</groupId>
+      <artifactId>freetts_jsapi10</artifactId>
+      <version>${freetts.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvoicexml</groupId>
+      <artifactId>freetts</artifactId>
+      <version>${freetts.version}</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.speech</groupId>
+          <artifactId>speech</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jvoicexml</groupId> <!-- jspi 2.0 conflict -->
+          <artifactId>javax.speech</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jvoicexml</groupId>
+          <artifactId>org.jvoicexml.jsapi2.freetts</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.jvoicexml</groupId>
+      <artifactId>cmulex</artifactId>
+      <version>${freetts.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvoicexml</groupId>
+      <artifactId>en_us</artifactId>
+      <version>${freetts.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvoicexml</groupId>
+      <artifactId>cmu_us_kal</artifactId>
+      <version>${freetts.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -1,90 +1,153 @@
 package javax.speech.recognition;
 
+/**
+ * RuleSequence is a Rule composed of a sequence of
+ * sub-rules that must each be spoken in order.  If there are zero rules in the
+ * sequence, the sequence is equivalent to
+ * <p>
+ * NULL
+ * .
+ */
 public class RuleSequence extends Rule {
+
+    /**
+     * Set of rules to be spoken in sequence.
+     *
+     * @see javax.speech.recognition.RuleSequence#getRules()
+     */
    protected Rule[] rules;
 
+    /**
+     * Empty constructor creates a sequence with zero rules.
+     * A sequence with zero rules is equivalent to
+     * <p>
+     * NULL
+     * .
+     *
+     * @see javax.speech.recognition.RuleName#NULL
+     */
    public RuleSequence() {
       this.setRules((Rule[])null);
    }
 
-   public RuleSequence(Rule var1) {
-      Rule[] var2 = new Rule[]{var1};
-      this.setRules(var2);
+   public RuleSequence(Rule rule) {
+      Rule[] rules = new Rule[]{rule};
+      this.setRules(rules);
    }
 
-   public RuleSequence(String[] var1) {
-      if (var1 == null) {
-         var1 = new String[0];
+    /**
+     * Constructor for RuleSequence that is a sequence of
+     * strings that are converted to RuleTokens.
+     * <p>
+     * A string containing multiple words (e.g. "san francisco") is treated as
+     * a single token. If appropriate, an application should parse such strings
+     * to produce separate tokens.
+     * <p>
+     * The token list may be zero-length or null. This will produce a zero-length
+     * sequence which is equivalent to
+     * NULL
+     * .
+     *
+     * @see javax.speech.recognition.RuleToken
+     */
+   public RuleSequence(String[] tokens) {
+      if (tokens == null) {
+         tokens = new String[0];
       }
 
-      this.rules = new Rule[var1.length];
+      this.rules = new Rule[tokens.length];
 
-      for(int var2 = 0; var2 < var1.length; ++var2) {
-         this.rules[var2] = new RuleToken(var1[var2]);
+      for(int i = 0; i < tokens.length; ++i) {
+         this.rules[i] = new RuleToken(tokens[i]);
       }
-
    }
 
-   public RuleSequence(Rule[] var1) {
-      this.setRules(var1);
+    /**
+     * Construct a RuleSequence object containing a single Rule.
+     */
+   public RuleSequence(Rule[] rules) {
+      this.setRules(rules);
    }
 
-   public void append(Rule var1) {
-      if (var1 == null) {
+    /**
+     * Append a single rule to the end of the sequence.
+     */
+   public void append(Rule rule) {
+      if (rule == null) {
          throw new NullPointerException("null rule to append");
       } else {
-         int var2 = this.rules.length;
-         Rule[] var3 = new Rule[var2 + 1];
-         System.arraycopy(this.rules, 0, var3, 0, var2);
-         var3[var2] = var1;
-         this.rules = var3;
+         int length = this.rules.length;
+         Rule[] nextRule = new Rule[length + 1];
+         System.arraycopy(this.rules, 0, nextRule, 0, length);
+         nextRule[length] = rule;
+         this.rules = nextRule;
       }
    }
 
+    /**
+     * Return a deep copy of this rule.
+     * See the
+     * <A href="Rule.html#copy()">Rule.copy</A>
+     * documentation for an explanation of deep copy.
+     */
    public Rule copy() {
-      Rule[] var1 = null;
+      Rule[] rule = null;
       if (this.rules != null) {
-         var1 = new Rule[this.rules.length];
+         rule = new Rule[this.rules.length];
 
-         for(int var2 = 0; var2 < this.rules.length; ++var2) {
-            var1[var2] = this.rules[var2].copy();
+         for(int i = 0; i < this.rules.length; ++i) {
+            rule[i] = this.rules[i].copy();
          }
       }
 
-      return new RuleSequence(var1);
+      return new RuleSequence(rule);
    }
 
+    /**
+     * Return the array of rules in the sequence.
+     */
    public Rule[] getRules() {
       return this.rules;
    }
 
-   public void setRules(Rule[] var1) {
-      if (var1 == null) {
-         var1 = new Rule[0];
+    /**
+     * Set the array of rules in the sequence.
+     * The array may be zero-length or null. This will produce a zero-length
+     * sequence which is equivalent to
+     * NULL
+     * .
+     */
+   public void setRules(Rule[] rules) {
+      if (rules == null) {
+         rules = new Rule[0];
       }
 
-      this.rules = var1;
+      this.rules = rules;
    }
 
+    /**
+     * Return a String representing this RuleSequence object as partial
+     * Java Speech Grammar Format.
+     */
    public String toString() {
       if (this.rules.length == 0) {
          return "<NULL>";
       } else {
-         StringBuffer var1 = new StringBuffer();
+         StringBuffer sb = new StringBuffer();
 
-         for(int var2 = 0; var2 < this.rules.length; ++var2) {
-            if (var2 > 0) {
-               var1.append(' ');
+         for(int i = 0; i < this.rules.length; ++i) {
+            if (i > 0) {
+               sb.append(' ');
             }
 
-            if (!(this.rules[var2] instanceof RuleAlternatives) && !(this.rules[var2] instanceof RuleSequence)) {
-               var1.append(this.rules[var2].toString());
+            if (!(this.rules[i] instanceof RuleAlternatives) && !(this.rules[i] instanceof RuleSequence)) {
+               sb.append(this.rules[i].toString());
             } else {
-               var1.append("( " + this.rules[var2].toString() + " )");
+               sb.append("( " + this.rules[i].toString() + " )");
             }
          }
 
-         return var1.toString();
+         return sb.toString();
       }
    }
 }

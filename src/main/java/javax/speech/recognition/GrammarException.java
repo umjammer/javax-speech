@@ -2,39 +2,78 @@ package javax.speech.recognition;
 
 import javax.speech.SpeechException;
 
+/**
+ * Thrown if a problem is found with a Java Speech Grammar Format (JSGF)
+ * file or with a RuleGrammar object derived from JSGF.
+ * <p>
+ * Grammar problems are typically identified and fixed during
+ * application development.  This class provides information that allows
+ * a debugging environment to handle the error.
+ * <p>
+ * The exception message is a printable string.  Recognizers may
+ * optionally provide details of each syntax problem.
+ */
 public class GrammarException extends SpeechException {
+
    private GrammarSyntaxDetail[] details;
 
+    /**
+     * Constructs a GrammarException with no detail message.
+     */
    public GrammarException() {
       this.details = null;
    }
 
-   public GrammarException(String var1) {
-      super(var1);
+    /**
+     * Constructs a GrammarException with the specified detail message.
+     *
+     * @param s
+     *  a printable detail message
+     */
+   public GrammarException(String s) {
+      super(s);
       this.details = null;
    }
 
-   public GrammarException(String var1, GrammarSyntaxDetail[] var2) {
-      super(var1);
-      this.details = var2;
+    /**
+     * Constructs a GrammarException with the specified detail message
+     * and an optional programmatic description of each error.
+     *
+     * @param s
+     *  a printable detail message
+     * @param detail
+     *  detail of each error encountered or null
+     */
+   public GrammarException(String s, GrammarSyntaxDetail[] detail) {
+      super(s);
+      this.details = detail;
    }
 
-   public void addDetail(GrammarSyntaxDetail var1) {
-      GrammarSyntaxDetail[] var2 = this.details;
-      if (var2 == null) {
-         var2 = new GrammarSyntaxDetail[0];
+    /**
+     * Add a syntax error description (appended to the existing array of details).
+     */
+   public void addDetail(GrammarSyntaxDetail detail) {
+      GrammarSyntaxDetail[] details = this.details;
+      if (details == null) {
+         details = new GrammarSyntaxDetail[0];
       }
 
-      this.details = new GrammarSyntaxDetail[var2.length + 1];
-      System.arraycopy(var2, 0, this.details, 0, var2.length);
-      this.details[var2.length] = var1;
+      this.details = new GrammarSyntaxDetail[details.length + 1];
+      System.arraycopy(details, 0, this.details, 0, details.length);
+      this.details[details.length] = detail;
    }
 
+    /**
+     * Return the list of grammar syntax problem descriptions.
+     */
    public GrammarSyntaxDetail[] getDetails() {
       return this.details;
    }
 
-   public void setDetails(GrammarSyntaxDetail[] var1) {
-      this.details = var1;
+    /**
+     * Set the grammar syntax problem descriptions.
+     */
+   public void setDetails(GrammarSyntaxDetail[] details) {
+      this.details = details;
    }
 }

@@ -233,6 +233,7 @@ public class Central {
      * @return list of mode descriptors with the required properties
      * @throws java.lang.SecurityException if the caller does not have permission to use speech recognition
      */
+    @SuppressWarnings("unchecked")
     public static synchronized EngineList availableRecognizers(EngineModeDesc require) throws SecurityException {
         if (require == null) {
             require = new RecognizerModeDesc();
@@ -282,6 +283,7 @@ public class Central {
      *
      * @throws java.lang.SecurityException if the caller does not have permission to use speech engines
      */
+    @SuppressWarnings("unchecked")
     public static synchronized EngineList availableSynthesizers(EngineModeDesc require) throws SecurityException {
         if (require == null) {
             require = new SynthesizerModeDesc();

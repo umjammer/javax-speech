@@ -5,7 +5,7 @@
 
   <groupId>javax.speech</groupId>
   <artifactId>speech</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <properties>
     <freetts.version>1.2.4</freetts.version>
